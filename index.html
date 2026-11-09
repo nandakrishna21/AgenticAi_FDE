@@ -34,9 +34,15 @@
     <div class="stat-card"><b><span id="taskCount">0</span>/<span id="taskTotal">0</span></b>Tasks complete</div>
     <div class="stat-card highlight"><b><span id="dayCount">0</span>/45</b>Days complete</div>
     <div class="stat-card streak"><b><span id="streakCount">0</span> 🔥</b>Day streak</div>
+    <div class="stat-card level"><b><span id="levelName">Rookie</span></b><span class="level-bar"><span id="levelFill"></span></span><small><span id="xpCount">0</span> XP</small></div>
   </div>
 </header>
 
+<div class="sprint-banner" id="sprintBanner" hidden>
+  <div class="sb-left"><b id="sbDay">Day 1</b><span id="sbPace">Set your sprint start date to track pacing</span></div>
+  <label class="sb-right">Sprint starts <input type="date" id="startDate"></label>
+</div>
+<section class="badges-strip" id="badgesStrip" aria-label="Achievements"></section>
 <main id="planView">
   <nav class="sidebar" aria-label="Day planner">
     <div class="search-wrap"><input type="text" id="search" placeholder="Search days, topics, tasks…" aria-label="Search days"></div>

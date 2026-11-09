@@ -143,6 +143,7 @@
     const pct = Math.round(done / totalTasks * 100);
     document.getElementById('pct').textContent = pct + '%';
     document.getElementById('bar').style.width = pct + '%';
+    if (document.getElementById('levelName')) { renderLevel(); renderBadges(); updateSprintBanner(); }
   }
 
   document.getElementById('search').addEventListener('input', e => { filter = e.target.value.trim().toLowerCase(); renderList(); });
@@ -261,6 +262,69 @@
       if (now - start < 2200) requestAnimationFrame(frame); else canvas.remove();
     })(start);
   }
+
+  /* ===== XP, levels, badges, sprint banner ===== */
+  const XP_PER = { ai: 10, fde: 15, dsa: 20, int: 10 };
+  const LEVELS = [[0, 'Rookie'], [150, 'Explorer'], [350, 'Builder'], [600, 'Engineer'], [900, 'Agent Tamer'], [1200, 'FDE Material'], [1550, 'Offer Ready'], [1950, 'Legend']];
+  const totalXp = () => Object.keys(state).reduce((sum, k) => sum + (XP_PER[k.split('-')[1]] || 0), 0);
+  const tasksDone = () => Object.keys(state).length;
+
+  function renderLevel() {
+    const xp = totalXp();
+    let li = 0;
+    for (let i = 0; i < LEVELS.length; i++) if (xp >= LEVELS[i][0]) li = i;
+    const [floor, name] = LEVELS[li];
+    const ceil = li + 1 < LEVELS.length ? LEVELS[li + 1][0] : floor + 400;
+    const fill = Math.min(100, Math.round(((xp - floor) / (ceil - floor)) * 100));
+    document.getElementById('levelName').textContent = name;
+    document.getElementById('xpCount').textContent = xp;
+    document.getElementById('levelFill').style.width = fill + '%';
+  }
+
+  const BADGES = [
+    { id: 'first', glyph: '★', name: 'First Blood', desc: 'Complete your first task', test: () => tasksDone() >= 1 },
+    { id: 'd1', glyph: 'I', name: 'Day One Down', desc: 'Complete Day 1', test: () => dayComplete(0) },
+    { id: 'p1', glyph: 'II', name: 'Foundation Set', desc: 'Finish Phase 1', test: () => [0,1,2,3,4,5,6].every(dayComplete) },
+    { id: 'rag', glyph: 'III', name: 'RAG Runner', desc: 'Finish Phase 2', test: () => [7,8,9,10,11,12,13].every(dayComplete) },
+    { id: 'agent', glyph: 'IV', name: 'Agent Tamer', desc: 'Finish Phase 3', test: () => [14,15,16,17,18,19,20].every(dayComplete) },
+    { id: 'prod', glyph: 'V', name: 'Production Hardened', desc: 'Finish Phase 4', test: () => [21,22,23,24,25,26,27].every(dayComplete) },
+    { id: 'ship', glyph: 'VI', name: 'Shipper', desc: 'Finish Phase 5 — flagship deployed', test: () => [28,29,30,31,32,33,34].every(dayComplete) },
+    { id: 'offer', glyph: 'VII', name: 'Offer Ready', desc: 'Finish all 45 days', test: () => DAYS.every((_, i) => dayComplete(i)) },
+    { id: 'centurion', glyph: 'C', name: 'Centurion', desc: 'Complete 100 tasks', test: () => tasksDone() >= 100 },
+    { id: 'streak3', glyph: 'S3', name: 'On Fire', desc: '3-day streak', test: () => currentStreak() >= 3 },
+    { id: 'streak7', glyph: 'S7', name: 'Unstoppable', desc: '7-day streak', test: () => currentStreak() >= 7 }
+  ];
+  function currentStreak() {
+    const dates = new Set(getActiveDates());
+    let streak = 0;
+    const d = new Date();
+    if (!dates.has(d.toISOString().slice(0, 10))) d.setDate(d.getDate() - 1);
+    while (dates.has(d.toISOString().slice(0, 10))) { streak++; d.setDate(d.getDate() - 1); }
+    return streak;
+  }
+  function renderBadges() {
+    document.getElementById('badgesStrip').innerHTML = BADGES.map(b => {
+      const earned = b.test();
+      return `<div class="badge ${earned ? 'earned' : ''}" title="${b.desc}"><span class="badge-glyph">${b.glyph}</span><span class="badge-name">${b.name}</span></div>`;
+    }).join('');
+  }
+
+  function updateSprintBanner() {
+    const start = localStorage.getItem('sprint45-start');
+    const banner = document.getElementById('sprintBanner');
+    const input = document.getElementById('startDate');
+    banner.hidden = false;
+    if (start) input.value = start;
+    if (!start) { document.getElementById('sbDay').textContent = 'Not started'; document.getElementById('sbPace').textContent = 'Pick your start date — Day 1 begins now'; return; }
+    const dayNum = Math.floor((Date.now() - new Date(start + 'T00:00:00')) / 86400000) + 1;
+    const clamped = Math.max(1, Math.min(45, dayNum));
+    const done = DAYS.filter((_, i) => dayComplete(i)).length;
+    const delta = done - (clamped - 1);
+    const pace = delta >= 0 ? `On track — ${delta} day(s) ahead` : `Behind by ${-delta} day(s) — double down today`;
+    document.getElementById('sbDay').textContent = dayNum > 45 ? 'Sprint complete — go get the offer' : `Day ${clamped} of 45`;
+    document.getElementById('sbPace').textContent = pace;
+  }
+  document.getElementById('startDate').addEventListener('change', e => { localStorage.setItem('sprint45-start', e.target.value); updateSprintBanner(); });
 
   /* ===== Roles & Roadmaps view ===== */
   let activeRole = 0;
