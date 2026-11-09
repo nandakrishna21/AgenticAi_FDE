@@ -1,5 +1,5 @@
 (function () {
-  const { R, YT, PHASES, DAYS, ROLES, PHASE_GUIDE, SYLLABUS, MODULES } = window.SPRINT_DATA;
+  const { R, YT, PHASES, DAYS, ROLES, PHASE_GUIDE, SYLLABUS, MODULES, QUIZ, GLOSSARY } = window.SPRINT_DATA;
   const STORAGE_KEY = 'sprint45v2';
   const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
   let current = 0;
@@ -109,6 +109,10 @@
         <div class="pg-tip">Study tip: ${pg.studyTip}</div>
       </details>
       <div class="resources"><h3>Free Resources</h3>${resHtml}</div>
+      <div class="quiz-block">
+        <div class="quiz-q"><span class="quiz-badge">Self-test</span><p>${QUIZ[current][0]}</p></div>
+        <details class="quiz-a"><summary>Reveal answer</summary><p>${QUIZ[current][1]}</p></details>
+      </div>
       <div class="notes-block">
         <label for="dayNotes">Day ${current + 1} notes — write what confused you, what you built, what to revisit</label>
         <textarea id="dayNotes" placeholder="e.g. 'Cosine similarity clicked when I visualized it. Still stuck on hybrid BM25 weighting…'">${notes.replace(/</g, '&lt;')}</textarea>
@@ -328,6 +332,14 @@
   }
   document.getElementById('startDate').addEventListener('change', e => { localStorage.setItem('sprint45-start', e.target.value); updateSprintBanner(); });
 
+  function renderGlossary(filter = '') {
+    const grid = document.getElementById('glossGrid');
+    const items = GLOSSARY.filter(([t, d]) => !filter || `${t} ${d}`.toLowerCase().includes(filter));
+    grid.innerHTML = items.length
+      ? items.map(([t, d]) => `<div class="gloss-item"><b>${t}</b><span>${d}</span></div>`).join('')
+      : '<div class="no-results">No terms match.</div>';
+  }
+
   function renderModules() {
     document.getElementById('moduleList').innerHTML = MODULES.map(m => `
       <article class="module-card">
@@ -410,7 +422,7 @@
     Object.entries(tabs).forEach(([key, el]) => { el.classList.toggle('active', key === view); el.setAttribute('aria-selected', key === view); });
     yt.style.display = view === 'plan' ? '' : 'none';
     if (view === 'roles') { renderRolePicker(); renderRoleDetail(); }
-    if (view === 'syllabus' && !document.getElementById('moduleList').innerHTML) renderModules();
+    if (view === 'syllabus' && !document.getElementById('moduleList').innerHTML) { renderModules(); renderGlossary(); const gs = document.getElementById('glossSearch'); if (gs && !gs.dataset.wired) { gs.addEventListener('input', e => renderGlossary(e.target.value.trim().toLowerCase())); gs.dataset.wired = '1'; } }
     window.scrollTo(0, 0);
   }
 
