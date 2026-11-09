@@ -1,5 +1,5 @@
 (function () {
-  const { R, YT, PHASES, DAYS, ROLES, PHASE_GUIDE } = window.SPRINT_DATA;
+  const { R, YT, PHASES, DAYS, ROLES, PHASE_GUIDE, SYLLABUS } = window.SPRINT_DATA;
   const STORAGE_KEY = 'sprint45v2';
   const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
   let current = 0;
@@ -96,6 +96,10 @@
         ${group(d.fde, 'fde', 'FDE — Customer & Delivery', 'fde')}
         ${group(d.dsa, 'dsa', 'DSA', 'dsa')}
         ${group(d.int, 'int', 'Interview Prep', 'int')}
+      </div>
+      <div class="syllabus-block">
+        <h3><span>Detailed day syllabus</span> — study in this exact order</h3>
+        <ol>${SYLLABUS[current].map(item => `<li>${item}</li>`).join('')}</ol>
       </div>
       <div class="phase-guide">
         <div class="pg-row"><b>Phase focus</b><span>${pg.focus}</span></div>

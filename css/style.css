@@ -316,3 +316,11 @@ kbd { background: var(--panel2); border: 1px solid var(--border); border-radius:
   .ps-cols ul { margin-left: 14px; }
   .ps-cols li { line-height: 1.35; }
 }
+
+/* ===== Detailed day syllabus ===== */
+.syllabus-block { background: var(--panel2); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin-top: 18px; }
+.syllabus-block h3 { font-size: 0.78rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 1.4px; margin-bottom: 10px; }
+.syllabus-block ol { counter-reset: syn; list-style: none; display: grid; gap: 6px; }
+.syllabus-block li { counter-increment: syn; position: relative; padding: 6px 10px 6px 38px; font-size: 0.85rem; line-height: 1.5; border-radius: 8px; transition: background .15s; }
+.syllabus-block li:hover { background: rgba(46,230,168,0.06); }
+.syllabus-block li::before { content: counter(syn); position: absolute; left: 6px; top: 6px; width: 22px; height: 22px; border-radius: 6px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #06122a; font-size: 0.72rem; font-weight: 800; display: grid; place-items: center; }
