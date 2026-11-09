@@ -410,16 +410,16 @@ const ROLES = [
       "DSA: standard patterns (arrays ? DP) � NeetCode 150"
     ],
     youtube: [
-      ["1. Andrej Karpathy — LLM internals from scratch","https://www.youtube.com/@AndrejKarpathy"],
-      ["2. CampusX (Nitish Singh) — GenAI + LLM fundamentals","https://www.youtube.com/@campusx-official"],
-      ["3. Krish Naik — LLM APIs & prompting","https://www.youtube.com/@krishnaik06"],
-      ["4. RAG From Scratch — LangChain official playlist","https://www.youtube.com/playlist?list=PLfaIDFEXuae2LXbO1_PKyVJiQ23ZztA0x"],
-      ["5. Greg Kamradt — LangChain 101","https://www.youtube.com/playlist?list=PLqZXAkvF1bPNQER9mLmDbntNfSpzdDIU5"],
-      ["6. freeCodeCamp — Production RAG full course (7h)","https://www.youtube.com/@freecodecamp"],
-      ["7. AssemblyAI — tool calling, MCP, LLM pipelines","https://www.youtube.com/@AssemblyAI"],
-      ["8. Krish Naik — LLMOps: tracing, deployment, guardrails","https://www.youtube.com/@krishnaik06"],
-      ["9. NeetCode — 150 DSA pattern videos","https://www.youtube.com/@NeetCode"],
-      ["10. ByteByteGo — system design for interviews","https://www.youtube.com/@ByteByteGo"]
+      ["1. Generative AI for Beginners — Microsoft full course","https://www.youtube.com/playlist?list=PLlrxD0HtieHj2nfK54c62lcs3-YSTx3Je"],
+      ["2. Hugging Face LLM Course — official","https://www.youtube.com/playlist?list=PLo2EIpI_JMQvWfQndUesu0nPBAtZ9gP1o"],
+      ["3. Generative AI Full Course — freeCodeCamp","https://youtu.be/mEsleV16qdo"],
+      ["4. RAG from Scratch — freeCodeCamp","https://youtu.be/sVcwVQRHIc8"],
+      ["5. RAG From Scratch — LangChain official series","https://www.youtube.com/playlist?list=PLfaIDFEXuae2LXbO1_PKyVJiQ23ZztA0x"],
+      ["6. Master LangChain — Krish Naik playlist","https://www.youtube.com/playlist?list=PLZoTAELRMXVORE4VF7WQ_fAl0L1Gljtar"],
+      ["7. Complete Agentic AI Course (10h) — Krish Naik","https://www.youtube.com/watch?v=rV3HJ4LEZ7k"],
+      ["8. NeetCode — 150 DSA pattern videos","https://www.youtube.com/@NeetCode"],
+      ["9. ByteByteGo — system design for interviews","https://www.youtube.com/@ByteByteGo"],
+      ["10. Krish Naik — MCP (Model Context Protocol) playlist","https://www.krishnaik.in/playlists"]
     ],
     resources: [
       ["DeepLearning.AI short courses","https://www.deeplearning.ai/short-courses/"],
@@ -465,15 +465,16 @@ const ROLES = [
       "MCP: why a protocol beats per-app tool glue"
     ],
     youtube: [
-      ["1. Andrej Karpathy — 'Let's build GPT' (agent foundations)","https://www.youtube.com/@AndrejKarpathy"],
-      ["2. Krish Naik — Complete Agentic AI course (10h, LangGraph + guardrails + evals)","https://www.youtube.com/@krishnaik06"],
-      ["3. codebasics — Agentic AI Crash Course with LangChain","https://www.youtube.com/@codebasics"],
-      ["4. LangChain (official) — LangGraph agents & state machines","https://www.youtube.com/@LangChain"],
-      ["5. Dave Ebbelaar — LangGraph deep-dives & real architectures","https://www.youtube.com/@DaveEbbelaar"],
-      ["6. AssemblyAI — MCP servers & agent tool design","https://www.youtube.com/@AssemblyAI"],
-      ["7. Greg Kamradt — LangChain 101 tool use series","https://www.youtube.com/playlist?list=PLqZXAkvF1bPNQER9mLmDbntNfSpzdDIU5"],
-      ["8. Krish Naik — LangSmith tracing & evals walkthroughs","https://www.youtube.com/@krishnaik06"],
-      ["9. NeetCode — DSA patterns (heaps, graphs, DP)","https://www.youtube.com/@NeetCode"]
+      ["1. Complete Agentic AI Course (10h) — Krish Naik: LangGraph, RAG, guardrails, evals","https://www.youtube.com/watch?v=rV3HJ4LEZ7k"],
+      ["2. Get Started with LangGraph — official quickstart","https://youtu.be/gqvFmK7LpDo"],
+      ["3. Agentic AI with LangGraph — Krish Naik playlist (12 videos)","https://www.youtube.com/playlist?list=PLZoTAELRMXVPFd7JdvB-rnTb_5V26NYNO"],
+      ["4. LangGraph beginner → advanced — Sunny Savita playlist","https://www.youtube.com/playlist?list=PLQxDHpeGU14AJ4sBRWLBqjMthxrLXJmgF"],
+      ["5. Code Your First AI Agent — Akshit Madan","https://youtu.be/nQnN31yg-MU"],
+      ["6. Building AI Agent Projects — Sonu Kumar playlist","https://www.youtube.com/playlist?list=PLrLEqwuz-mRLLOov7hBru67qyiq9oZyF1"],
+      ["7. LangSmith Evaluations — LangChain official playlist","https://www.youtube.com/playlist?list=PLfaIDFEXuae0um8Fj0V4dHG37fGFU8Q5S"],
+      ["8. RAG & Agents with Prof. Tom Yeh — full playlist","https://www.youtube.com/playlist?list=PL0cq-CiC5Qht17CmxgQDotcT-mlOulxqg"],
+      ["9. Updated LangChain series — Krish Naik (2025/26)","https://www.youtube.com/playlist?list=PLZoTAELRMXVOQPRG7VAuHL--y97opD5GQ"],
+      ["10. NeetCode — heaps, graphs, DP for interviews","https://www.youtube.com/@NeetCode"]
     ],
     resources: [
       ["LangGraph docs","https://python.langchain.com/docs/introduction/"],
@@ -520,14 +521,15 @@ const ROLES = [
       "Your flagship as a case study: constraint ? what shipped ? numbers ? lesson"
     ],
     youtube: [
-      ["1. YouTube search: 'forward deployed engineer' — Palantir & OpenAI talks","https://www.youtube.com/results?search_query=forward+deployed+engineer"],
-      ["2. ByteByteGo — explaining systems to non-engineers (core FDE skill)","https://www.youtube.com/@ByteByteGo"],
-      ["3. Krish Naik — end-to-end GenAI projects with client demos","https://www.youtube.com/@krishnaik06"],
-      ["4. Dave Ebbelaar — build-along agent projects you can clone & demo","https://www.youtube.com/@DaveEbbelaar"],
-      ["5. codebasics — portfolio GenAI projects with full source code","https://www.youtube.com/@codebasics"],
-      ["6. Exponent — mock interviews: behavioral, scoping & negotiation","https://www.youtube.com/@Exponent"],
-      ["7. NeetCode — DSA for the coding round","https://www.youtube.com/@NeetCode"],
-      ["8. freeCodeCamp — Docker & deployment (for customer-VPC rollouts)","https://www.youtube.com/@freecodecamp"]
+      ["1. Generative AI for Beginners — Microsoft (speak the customer's language)","https://www.youtube.com/playlist?list=PLlrxD0HtieHj2nfK54c62lcs3-YSTx3Je"],
+      ["2. Generative AI Full Course — freeCodeCamp (build & demo end-to-end)","https://youtu.be/mEsleV16qdo"],
+      ["3. Complete Agentic AI Course (10h) — Krish Naik (your demo workhorse)","https://www.youtube.com/watch?v=rV3HJ4LEZ7k"],
+      ["4. RAG from Scratch — freeCodeCamp (the #1 FDE deliverable)","https://youtu.be/sVcwVQRHIc8"],
+      ["5. ByteByteGo — explaining systems to non-engineers","https://www.youtube.com/@ByteByteGo"],
+      ["6. Exponent — behavioral, scoping & negotiation mocks","https://www.youtube.com/@Exponent"],
+      ["7. Krish Naik — all project playlists (clone-ready demos)","https://www.krishnaik.in/playlists"],
+      ["8. NeetCode — DSA for the coding round","https://www.youtube.com/@NeetCode"],
+      ["9. YouTube search: 'forward deployed engineer' — Palantir & OpenAI talks","https://www.youtube.com/results?search_query=forward+deployed+engineer"]
     ],
     resources: [
       ["DeepLearning.AI — The Batch: FDEs","https://www.deeplearning.ai/the-batch/forward-deployed-engineers-and-the-future-of-ai-engineering"],
