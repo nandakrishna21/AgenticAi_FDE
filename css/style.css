@@ -238,3 +238,12 @@ kbd { background: var(--panel2); border: 1px solid var(--border); border-radius:
 .yt-item { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); background: var(--panel2); border: 1px solid var(--border); border-radius: 10px; padding: 8px 12px; font-size: 0.84rem; line-height: 1.4; transition: all .15s; }
 .yt-item:hover { border-color: #ff7b7b; transform: translateX(4px); }
 .yt-play { color: #ff7b7b; font-size: 0.9rem; flex-shrink: 0; }
+
+/* ===== FDE Playbook ===== */
+.playbook { margin-top: 22px; }
+.playbook h4 { font-size: 0.78rem; color: var(--fde); text-transform: uppercase; letter-spacing: 1.4px; margin-bottom: 12px; }
+.playbook-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 12px; }
+.playbook-card { background: var(--panel2); border: 1px solid var(--border); border-left: 3px solid var(--fde); border-radius: 12px; padding: 14px 16px; }
+.playbook-card h5 { font-size: 0.85rem; color: var(--fde); margin-bottom: 8px; }
+.playbook-card ul { list-style: none; }
+.playbook-card li { font-size: 0.8rem; color: var(--muted); line-height: 1.5; padding: 3px 0; }

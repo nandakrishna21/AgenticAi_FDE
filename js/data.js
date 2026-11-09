@@ -511,7 +511,50 @@ const ROLES = [
       { days: "Days 15�21", focus: "Agents with guardrails + the autonomy ladder � FDE demos live on this", phase: 3 },
       { days: "Days 22�28", focus: "The negotiated-eval skill + acceptance criteria � FDE's #1 interview topic", phase: 4 },
       { days: "Days 29�35", focus: "CORE PHASE � build the flagship as a customer engagement: SOW ? build ? deploy ? handover pack", phase: 5 },
-      { days: "Days 36�45", focus: "FDE resume variant, 5 targeted FDE applications, mock FDE rounds, negotiation", phase: 6 }
+      { days: "Days 36–45", focus: "FDE resume variant, 5 targeted FDE applications, mock FDE rounds, negotiation", phase: 6 }
+    ],
+    playbook: [
+      { h: "The FDE loop (memorize this)", items: [
+        "1. AUDIT — sit with users, watch the real workflow (not the documented one). Shadow before building.",
+        "2. NEGOTIATED EVAL — domain experts define 'correct', they disagree; you drive a shared rubric. It IS the acceptance test and SOW exit criteria.",
+        "3. SANDBOX → PILOT → CANARY → FULL ROLLOUT — autonomy expands only as trust is earned; rollback at every stage.",
+        "4. HANDOVER — runbook + eval report + 15-min walkthrough. The system must survive your departure."
+      ]},
+      { h: "Discovery questions (ask these first)", items: [
+        "What does success look like, in numbers? Who signs off?",
+        "Where does the data live? Who owns it? What's messy about it?",
+        "What has already been tried? Why did it fail?",
+        "What can we NOT touch (security, compliance, existing systems)?",
+        "Who is the skeptic? Who is the champion? Who has the budget?",
+        "What's the 2-week POC vs the 2-month build?"
+      ]},
+      { h: "The autonomy ladder", items: [
+        "Stage 1 — Suggest: agent proposes, human decides (low trust, week 1)",
+        "Stage 2 — Draft: agent drafts actions/outputs, human reviews before anything executes",
+        "Stage 3 — Act with approval: agent executes after explicit human yes",
+        "Stage 4 — Act autonomously: agent executes; humans audit samples (weeks 4+)"
+      ]},
+      { h: "Negotiated eval — the #1 FDE interview topic", items: [
+        "Step 1: collect 30–50 real cases from the customer's workflow",
+        "Step 2: two domain experts label them independently — log every disagreement",
+        "Step 3: adjudicate each disagreement; convert decisions into explicit rubric criteria",
+        "Step 4: rubric becomes the LLM-judge prompt + golden set + CI gate + SOW acceptance clause",
+        "Step 5: re-baseline quarterly — the definition of 'correct' drifts"
+      ]},
+      { h: "Security & rollout checklist", items: [
+        "Data residency: where does data live? Does anything leave their VPC?",
+        "RBAC: who can see traces? PII redaction in logs?",
+        "Sandbox first, mirror of prod, rollback rehearsed",
+        "Pilot with 1 team → canary 10% → full rollout; weekly eval report to sponsor",
+        "Postmortem template ready BEFORE the first incident"
+      ]},
+      { h: "Customer comms that work", items: [
+        "Weekly email: progress (with numbers) + risk + one clear ask",
+        "Say no with a reason + a smaller yes (not X, but here's Y in 2 weeks)",
+        "Never demo without a backup environment and a rehearsed failure plan",
+        "10-minute exec update formula: problem → what shipped → number → next ask",
+        "Leave every meeting with: decision made, owner, date — in writing"
+      ]}
     ],
     interviewFocus: [
       "'Scope a POC from this messy brief, out loud, in 10 minutes' � the signature Palantir-style round",
