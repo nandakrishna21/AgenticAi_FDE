@@ -3,99 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>45-Day AI Engineer / Agentic / FDE Sprint</title>
-<style>
-  :root {
-    --bg: #0f1420; --panel: #171e2e; --panel2: #1f2740; --accent: #4f8cff;
-    --accent2: #22d3a5; --fde: #f0b429; --text: #e6e9f2; --muted: #8a93ad;
-    --border: #2a3350;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; }
-  header { padding: 20px 24px; background: var(--panel); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; }
-  h1 { font-size: 1.35rem; }
-  h1 span { color: var(--accent2); }
-  h1 em { color: var(--fde); font-style: normal; }
-  .sub { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
-  .progress-wrap { margin-top: 12px; background: var(--panel2); border-radius: 8px; height: 14px; overflow: hidden; }
-  .progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); width: 0%; transition: width .4s; }
-  .stats { display: flex; gap: 18px; margin-top: 10px; font-size: 0.85rem; color: var(--muted); flex-wrap: wrap; }
-  .stats b { color: var(--text); }
-  main { display: grid; grid-template-columns: 360px 1fr; gap: 16px; padding: 16px 24px; max-width: 1500px; margin: 0 auto; }
-  @media (max-width: 1000px) { main { grid-template-columns: 1fr; } }
-  .day-list { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 12px; max-height: 80vh; overflow-y: auto; }
-  .phase-label { color: var(--accent2); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; margin: 12px 6px 6px; }
-  .day-btn { display: flex; align-items: center; gap: 10px; width: 100%; background: transparent; border: 1px solid transparent; color: var(--text); padding: 7px 10px; border-radius: 8px; cursor: pointer; text-align: left; font-size: 0.83rem; }
-  .day-btn:hover { background: var(--panel2); }
-  .day-btn.active { border-color: var(--accent); background: var(--panel2); }
-  .day-btn.done .day-title { color: var(--accent2); }
-  .dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--muted); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; }
-  .day-btn.done .dot { border-color: var(--accent2); background: var(--accent2); color: #06281e; }
-  .detail { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
-  .detail h2 { font-size: 1.2rem; margin-bottom: 4px; }
-  .phase { color: var(--accent); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
-  .topic { color: var(--muted); margin: 8px 0 16px; font-size: 0.9rem; }
-  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } }
-  .card { background: var(--panel2); border-radius: 10px; padding: 13px; }
-  .card h3 { font-size: 0.78rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-  .card.ai h3 { color: var(--accent); }
-  .card.fde h3 { color: var(--fde); }
-  .card.dsa h3 { color: #c792ea; }
-  .card.int h3 { color: var(--accent2); }
-  label.task { display: flex; gap: 10px; align-items: flex-start; padding: 6px 4px; border-radius: 6px; cursor: pointer; font-size: 0.88rem; }
-  label.task:hover { background: rgba(255,255,255,0.04); }
-  label.task input { margin-top: 3px; accent-color: var(--accent2); }
-  label.task.checked { color: var(--muted); text-decoration: line-through; }
-  .resources { margin-top: 16px; }
-  .resources h3 { font-size: 0.8rem; color: var(--accent); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-  .resources a { display: inline-block; background: var(--panel); border: 1px solid var(--border); color: var(--accent); text-decoration: none; font-size: 0.78rem; padding: 5px 10px; border-radius: 20px; margin: 3px 4px 3px 0; }
-  .resources a:hover { border-color: var(--accent); }
-  .resources a.yt { color: #ff6b6b; }
-  .btn { background: var(--accent); color: #fff; border: none; padding: 10px 16px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; margin-top: 16px; }
-  .btn.ghost { background: transparent; border: 1px solid var(--border); color: var(--muted); }
-  .footer-bar { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 8px; }
-  .timer { font-variant-numeric: tabular-nums; }
-  #yt { max-width: 1500px; margin: 0 auto; padding: 0 24px 24px; }
-  #yt h2 { font-size: 1.1rem; margin-bottom: 12px; }
-  #yt h2 span { color: var(--accent2); }
-  .yt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
-  .yt-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
-  .yt-card h3 { font-size: 0.78rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-  .yt-card a { display: block; color: var(--accent); text-decoration: none; font-size: 0.85rem; padding: 4px 0; }
-  .yt-card a:hover { text-decoration: underline; }
-  .yt-card small { color: var(--muted); display: block; font-size: 0.72rem; }
-</style>
+<meta name="description" content="45-day structured sprint to become an AI Engineer / Agentic Engineer / Forward Deployed Engineer — every day covers AI + Agentic engineering, FDE delivery, DSA and interview prep, with 100% free resources.">
+<title>45-Day AI Engineer + Agentic + FDE Sprint</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23171e2e%22/><text x=%2250%22 y=%2268%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22%232ee6a8%22 font-family=%22sans-serif%22 font-weight=%22800%22>45</text></svg>">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header>
-  <h1>45-Day <span>AI Engineer</span> + <em>Agentic</em> + <span>FDE</span> Sprint</h1>
-  <div class="sub">12h/day &middot; AI Eng 4h &middot; Agentic Eng 2h &middot; DSA 3.5h &middot; FDE 1.5h &middot; Interview 0.5h &middot; all free resources</div>
+  <div class="header-inner">
+    <div class="logo-badge">45</div>
+    <div>
+      <h1>45-Day <span>AI Engineer</span> + <em>Agentic</em> + <span>FDE</span> Sprint</h1>
+      <div class="sub">12h/day &middot; AI Eng 4h &middot; Agentic Eng 2h &middot; DSA 3.5h &middot; FDE 1.5h &middot; Interview 0.5h &middot; 100% free resources</div>
+    </div>
+    <div class="header-right">
+      <div class="view-tabs" role="tablist">
+        <button class="view-tab active" id="tabPlan" role="tab" aria-selected="true">📅 45-Day Plan</button>
+        <button class="view-tab" id="tabRoles" role="tab" aria-selected="false">🎯 Roles &amp; Roadmaps</button>
+      </div>
+      <div class="timer-chip">⏱ <b class="timer" id="timer">00:00:00</b> <button class="icon-btn" id="timerBtn" style="padding:2px 12px;font-size:0.78rem">Start</button></div>
+      <button class="icon-btn" id="resetBtn" title="Reset all progress">Reset</button>
+    </div>
+  </div>
   <div class="progress-wrap"><div class="progress-bar" id="bar"></div></div>
   <div class="stats">
-    <span>Progress: <b id="pct">0%</b></span>
-    <span>Tasks: <b id="taskCount">0</b>/<b id="taskTotal">0</b></span>
-    <span>Days complete: <b id="dayCount">0</b>/45</span>
-    <span>Timer: <b class="timer" id="timer">00:00</b> <button class="btn ghost" id="timerBtn" style="padding:2px 10px;margin:0;font-size:0.75rem">Start</button></span>
+    <div class="stat-card"><b id="pct">0%</b>Overall progress</div>
+    <div class="stat-card"><b><span id="taskCount">0</span>/<span id="taskTotal">0</span></b>Tasks complete</div>
+    <div class="stat-card highlight"><b><span id="dayCount">0</span>/45</b>Days complete</div>
   </div>
 </header>
-<main>
-  <nav class="day-list" id="dayList" aria-label="Days"></nav>
+
+<main id="planView">
+  <nav class="sidebar" aria-label="Day planner">
+    <div class="search-wrap"><input type="text" id="search" placeholder="Search days, topics, tasks…" aria-label="Search days"></div>
+    <div class="day-list" id="dayList"></div>
+  </nav>
   <section class="detail" id="detail" aria-live="polite"></section>
 </main>
+
+<section id="rolesView" hidden>
+  <div class="roles-intro">
+    <h2>Three roles. One skill stack. First AI Engineer, then Agentic depth, then FDE.</h2>
+    <p>Click any role to see its full syllabus, day-by-day roadmap inside this 45-day plan, interview focus, and curated free resources.</p>
+    <div class="role-picker" id="rolePicker" role="tablist" aria-label="Choose a role"></div>
+  </div>
+  <div class="role-detail" id="roleDetail" role="tabpanel"></div>
+</section>
 
 <section id="yt">
   <h2><span>YouTube resources by phase</span> (all free)</h2>
   <div class="yt-grid">
     <div class="yt-card">
-      <h3>Phase 1 — Foundations & LLM APIs</h3>
+      <h3>Phase 1 — Foundations &amp; LLM APIs</h3>
       <a href="https://www.youtube.com/@AndrejKarpathy" target="_blank" rel="noopener">Andrej Karpathy<small>"Let's build GPT" — LLM internals from scratch</small></a>
       <a href="https://www.youtube.com/@krishnaik06" target="_blank" rel="noopener">Krish Naik<small>LLM APIs, prompting, complete Agentic AI course</small></a>
       <a href="https://www.youtube.com/@campusx-official" target="_blank" rel="noopener">CampusX (Nitish Singh)<small>Best GenAI playlists for absolute beginners</small></a>
       <a href="https://www.youtube.com/@AssemblyAI" target="_blank" rel="noopener">AssemblyAI<small>LLM, tool-calling, MCP walkthroughs</small></a>
     </div>
     <div class="yt-card">
-      <h3>Phase 2 — RAG & Retrieval (AI Eng)</h3>
+      <h3>Phase 2 — RAG &amp; Retrieval (AI Eng)</h3>
       <a href="https://www.youtube.com/playlist?list=PLfaIDFEXuae2LXbO1_PKyVJiQ23ZztA0x" target="_blank" rel="noopener">RAG From Scratch — LangChain official<small>Canonical RAG build series</small></a>
       <a href="https://www.youtube.com/playlist?list=PLqZXAkvF1bPNQER9mLmDbntNfSpzdDIU5" target="_blank" rel="noopener">LangChain 101 — Greg Kamradt<small>Chains, retrievers, loaders</small></a>
       <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">freeCodeCamp — Production RAG full course<small>LangChain + vector DBs, 7h+</small></a>
@@ -105,12 +71,12 @@
       <h3>Phase 3 — Agentic Engineering</h3>
       <a href="https://www.youtube.com/@LangChain" target="_blank" rel="noopener">LangChain (official)<small>LangGraph agents, state machines</small></a>
       <a href="https://www.youtube.com/@codebasics" target="_blank" rel="noopener">codebasics<small>"Agentic AI Crash Course using LangChain"</small></a>
-      <a href="https://www.youtube.com/@krishnaik06" target="_blank" rel="noopener">Krish Naik — Agentic AI / LangGraph<small>10h complete course incl. guardrails & evals</small></a>
+      <a href="https://www.youtube.com/@krishnaik06" target="_blank" rel="noopener">Krish Naik — Agentic AI / LangGraph<small>10h complete course incl. guardrails &amp; evals</small></a>
       <a href="https://www.youtube.com/@DaveEbbelaar" target="_blank" rel="noopener">Dave Ebbelaar — LangGraph deep-dives<small>Real architectures, not toy demos</small></a>
     </div>
     <div class="yt-card">
-      <h3>Phase 4 — Evals, LLMOps & Production</h3>
-      <a href="https://www.deeplearning.ai/short-courses/" target="_blank" rel="noopener">DeepLearning.AI short courses<small>Evaluating & debugging LLMs, LLMOps, agents</small></a>
+      <h3>Phase 4 — Evals, LLMOps &amp; Production</h3>
+      <a href="https://www.deeplearning.ai/short-courses/" target="_blank" rel="noopener">DeepLearning.AI short courses<small>Evaluating &amp; debugging LLMs, LLMOps, agents</small></a>
       <a href="https://www.youtube.com/@LangChain" target="_blank" rel="noopener">LangChain — LangSmith tracing<small>Evals in CI, feedback loops</small></a>
       <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">freeCodeCamp — Docker / MLOps courses<small>Containers, CI/CD</small></a>
     </div>
@@ -118,10 +84,10 @@
       <h3>Phase 5 — FDE Track</h3>
       <a href="https://www.youtube.com/results?search_query=forward+deployed+engineer" target="_blank" rel="noopener">YouTube search: "forward deployed engineer"<small>Palantir FDSE talks, OpenAI/Anthropic FDE interviews</small></a>
       <a href="https://www.youtube.com/@ByteByteGo" target="_blank" rel="noopener">ByteByteGo<small>Explaining systems to non-engineers — essential FDE skill</small></a>
-      <a href="https://www.youtube.com/@Exponent" target="_blank" rel="noopener">Exponent<small>Behavioral, scoping & negotiation mocks</small></a>
+      <a href="https://www.youtube.com/@Exponent" target="_blank" rel="noopener">Exponent<small>Behavioral, scoping &amp; negotiation mocks</small></a>
     </div>
     <div class="yt-card">
-      <h3>Phase 6 — DSA & Interview prep</h3>
+      <h3>Phase 6 — DSA &amp; Interview prep</h3>
       <a href="https://www.youtube.com/@NeetCode" target="_blank" rel="noopener">NeetCode<small>150 pattern videos + mock interviews</small></a>
       <a href="https://www.youtube.com/@ByteByteGo" target="_blank" rel="noopener">ByteByteGo — system design<small>RAG/agent system design for interviews</small></a>
       <a href="https://www.youtube.com/@Exponent" target="_blank" rel="noopener">Exponent<small>Mock interviews, negotiation (free tier)</small></a>
@@ -129,444 +95,12 @@
   </div>
 </section>
 
-<div class="footer-bar">
-  <span>100% free resources &middot; Progress saved in your browser (localStorage)</span>
-  <button class="btn ghost" id="resetBtn">Reset all progress</button>
-</div>
+<footer class="footer-bar">
+  <span>100% free resources &middot; Progress saved locally in your browser (localStorage)</span>
+  <span>45-Day Sprint &middot; built for Nanda Krishna</span>
+</footer>
 
-<script>
-const R = {
-  python: ["Python for Everybody (freeCodeCamp)","https://www.freecodecamp.org/learn/scientific-computing-with-python/"],
-  llm: ["OpenAI Cookbook","https://cookbook.openai.com/"],
-  anthropic: ["Anthropic Docs & Guides","https://docs.anthropic.com/"],
-  prompt: ["Prompt Engineering Guide","https://www.promptingguide.ai/"],
-  deeplearning: ["DeepLearning.AI short courses (free)","https://www.deeplearning.ai/short-courses/"],
-  langchain: ["LangChain / LangGraph Docs","https://python.langchain.com/docs/introduction/"],
-  mcp: ["MCP Docs","https://modelcontextprotocol.io/"],
-  neetcode: ["NeetCode 150 + videos (free)","https://neetcode.io/practice"],
-  lc: ["LeetCode (free tier)","https://leetcode.com/"],
-  fcc: ["freeCodeCamp YouTube","https://www.youtube.com/@freecodecamp"],
-  yt: ["Krish Naik YouTube","https://www.youtube.com/@krishnaik06"],
-  hf: ["Hugging Face LLM Course (free)","https://huggingface.co/learn/llm-course"],
-  pgvector: ["pgvector GitHub","https://github.com/pgvector/pgvector"],
-  chroma: ["Chroma Docs","https://docs.trychroma.com/"],
-  langsmith: ["LangSmith Docs (tracing)","https://docs.smith.langchain.com/"],
-  phoenix: ["Arize Phoenix — open-source tracing/evals","https://docs.arize.com/phoenix"],
-  docker: ["Docker Get Started (free)","https://docs.docker.com/get-started/"],
-  render: ["Render free deploy tier","https://render.com/"],
-  fly: ["Fly.io free allowance","https://fly.io/"],
-  github: ["GitHub Skills (free)","https://skills.github.com/"],
-  sysdesign: ["System Design Primer (free)","https://github.com/donnemartin/system-design-primer"],
-  behavioral: ["STAR method guide","https://www.themuse.com/advice/star-interview-method"],
-  fdeDeep: ["DeepLearning.AI — The Batch: FDEs & the future","https://www.deeplearning.ai/the-batch/forward-deployed-engineers-and-the-future-of-ai-engineering"],
-  fdeMarket: ["open-fde.ai — FDE job market analysis (2026)","https://open-fde.ai/jobs/market/"],
-  fdeGuide: ["FDE Interview Prep — role guide","https://fdeinterviewprep.com/blog/fde-vs-ai-engineer"],
-  fdeComp: ["FDE vs AI Engineer — Re:Sourced","https://www.resourced.com.au/articles/agentic-ai-engineer-vs-forward-deployed-engineer"],
-  excalidraw: ["Excalidraw (free diagrams)","https://excalidraw.com/"],
-  loom: ["Loom free tier (demo videos)","https://www.loom.com/"],
-  star: ["STAR stories worksheet","https://www.themuse.com/advice/star-interview-method"]
-};
-const YT = {
-  karpathy: ["▶ Karpathy — LLM internals","https://www.youtube.com/@AndrejKarpathy"],
-  krishnaik: ["▶ Krish Naik","https://www.youtube.com/@krishnaik06"],
-  campusx: ["▶ CampusX","https://www.youtube.com/@campusx-official"],
-  freecodecamp: ["▶ freeCodeCamp","https://www.youtube.com/@freecodecamp"],
-  langchainYt: ["▶ LangChain (official)","https://www.youtube.com/@LangChain"],
-  ragScratch: ["▶ RAG From Scratch playlist","https://www.youtube.com/playlist?list=PLfaIDFEXuae2LXbO1_PKyVJiQ23ZztA0x"],
-  kamradt: ["▶ Greg Kamradt — LangChain 101","https://www.youtube.com/playlist?list=PLqZXAkvF1bPNQER9mLmDbntNfSpzdDIU5"],
-  codebasics: ["▶ codebasics","https://www.youtube.com/@codebasics"],
-  ebbelaar: ["▶ Dave Ebbelaar","https://www.youtube.com/@DaveEbbelaar"],
-  assemblyai: ["▶ AssemblyAI","https://www.youtube.com/@AssemblyAI"],
-  neetcodeYt: ["▶ NeetCode videos","https://www.youtube.com/@NeetCode"],
-  bytebytego: ["▶ ByteByteGo","https://www.youtube.com/@ByteByteGo"],
-  exponent: ["▶ Exponent","https://www.youtube.com/@Exponent"]
-};
-
-const PHASES = [
-  {until: 7,  label: "Phase 1 — Foundations: Python, LLMs, Prompting, DSA basics"},
-  {until: 14, label: "Phase 2 — AI Engineering: RAG & Retrieval"},
-  {until: 21, label: "Phase 3 — Agentic Engineering: Agents, LangGraph, MCP"},
-  {until: 28, label: "Phase 4 — Production AI: Evals, LLMOps, Guardrails"},
-  {until: 35, label: "Phase 5 — FDE Track: Customer scoping, deploy, flagship"},
-  {until: 45, label: "Phase 6 — Interview Sprint: Design, behavioral, mocks, offers"}
-];
-
-const DAYS = [
-  {t:"Python + LLM APIs", d:"Setup + first LLM calls",
-   ai:["Python refresh: venv, pip, requests/httpx","Call OpenAI + Anthropic APIs, stream responses","Tokens, context window, pricing — write notes"],
-   fde:["Read what an FDE actually does (Re:Sourced comparison)","Map your past work to FDE signals: ownership, ambiguity, customer"],
-   dsa:["Arrays basics — 3 problems","Big-O refresher + pattern notebook setup"],
-   int:["Explain what an LLM is to a non-engineer — out loud, 60s"],
-   res:["python","llm","anthropic","fdeComp","neetcode","karpathy","campusx"]},
-
-  {t:"Prompting & structured outputs", d:"System prompts, few-shot, JSON mode",
-   ai:["Prompt patterns: role, few-shot, CoT, delimiters","Structured outputs / JSON schema mode","Build reusable prompt template library"],
-   fde:["Write a 1-page 'LLM capability brief' for a non-technical stakeholder"],
-   dsa:["Hashing — 3 problems (two-sum, group anagrams)"],
-   int:["Q: 'How do you stop an LLM hallucinating?' — draft your answer"],
-   res:["prompt","deeplearning","fdeGuide","neetcode","krishnaik"]},
-
-  {t:"Tool / function calling", d:"Define tools, schemas, error paths",
-   ai:["Tool calling end-to-end with strict schemas","Build: calculator + web-search tool","Handle malformed tool outputs gracefully"],
-   fde:["Demo script: show the tool call to a skeptical customer in 3 steps"],
-   dsa:["Two pointers — 3 problems"],
-   int:["Q: 'Function calling vs fine-tuning — when?' — answer out loud"],
-   res:["anthropic","llm","assemblyai","neetcode"]},
-
-  {t:"Build: CLI chatbot", d:"Ship a tool-using chatbot",
-   ai:["Build CLI chatbot with 2+ tools + memory (SQLite)","Add /help and graceful exit","README with run instructions"],
-   fde:["Write the 'demo to customer' version of the README — problem first, tech second"],
-   dsa:["Sliding window — 3 problems"],
-   int:["Record 60-second demo of your chatbot on phone"],
-   res:["github","yt","fdeGuide","neetcode"]},
-
-  {t:"Embeddings & vector DBs", d:"How retrieval works",
-   ai:["Embeddings: cosine similarity, dimensions","Install Chroma or pgvector locally","Embed 100 docs and query them"],
-   fde:["Explain embeddings to a business user in one sentence + one analogy — write it down"],
-   dsa:["Binary search — 3 problems"],
-   int:["Q: 'Why not just keyword search?' — draft answer"],
-   res:["chroma","pgvector","hf","neetcode","ragScratch"]},
-
-  {t:"Chatbot v2 + chunking", d:"Integrate retrieval into chatbot",
-   ai:["Add retrieval to your chatbot (RAG v0)","Chunking: fixed / recursive / semantic — test all 3","Measure which chunking wins on 5 queries"],
-   fde:["Customer scenario: 'our PDFs are scans, mixed quality' — list 5 questions you'd ask"],
-   dsa:["Linked lists — 3 problems"],
-   int:["Q: 'How do you choose chunk size?' — answer out loud"],
-   res:["deeplearning","langchain","ragScratch","neetcode"]},
-
-  {t:"Week 1 review + FDE research", d:"Consolidate + FDE landscape",
-   ai:["Re-do weakest topic from the week","Weekly learning log: learned / built / stuck"],
-   fde:["Read DeepLearning.AI FDE article + open-fde.ai market analysis","List the 5 FDE 'jobs behind the title' — pick your lean (builder vs strategist)","Update resume headline: 'AI Engineer | Agentic Systems | Customer-facing delivery'"],
-   dsa:["Weekly review — 2 easy timed mocks"],
-   int:["Mock: 5-min self-intro + why AI engineering"],
-   res:["fdeDeep","fdeMarket","fcc","neetcode"]},
-
-  {t:"RAG architecture", d:"End-to-end retrieval design",
-   ai:["RAG pipeline: ingest → retrieve → generate","Naive vs advanced RAG (HyDE, query rewrite, multi-query)","Write the design doc for your RAG project"],
-   fde:["Draft customer discovery questions for a RAG project (data? users? success metric?)"],
-   dsa:["Stacks & queues — 3 problems"],
-   int:["Q: 'Walk me through a RAG system you'd build for us' — 2 min answer"],
-   res:["deeplearning","langchain","ragScratch","neetcode"]},
-
-  {t:"Vector DB hands-on", d:"Index, filter, persist",
-   ai:["Metadata filtering + persistence in Chroma/pgvector","Hybrid index: dense + BM25","Benchmark 3 chunking strategies formally"],
-   fde:["Security review prep: where does customer data live, who can see it? — one page"],
-   dsa:["Recursion — 3 problems"],
-   int:["Q: 'RLS / access control in RAG?' — draft answer"],
-   res:["chroma","pgvector","kamradt","neetcode"]},
-
-  {t:"Hybrid search + re-rankers", d:"BM25 + dense + cross-encoder",
-   ai:["Add BM25 hybrid retrieval","Add re-ranker (cross-encoder or Cohere free trial)","Measure improvement on 10 fixed queries"],
-   fde:["Explain re-ranking to a customer success manager — one paragraph, zero jargon"],
-   dsa:["Trees intro — 3 problems"],
-   int:["Q: 'Hybrid search vs pure vector?' — answer"],
-   res:["langchain","yt","kamradt","neetcode"]},
-
-  {t:"Build RAG v1 on messy data", d:"Real PDFs, citations, no-answer",
-   ai:["Ingest 20+ messy real PDFs","RAG Q&A with source citations","Handle 'I don't know' when retrieval is weak"],
-   fde:["Role-play: customer says 'it gave a wrong answer in front of our CEO' — write your response"],
-   dsa:["BST — 3 problems"],
-   int:["Q: 'How do you handle a confident wrong answer?' — draft"],
-   res:["langchain","yt","freecodecamp","neetcode"]},
-
-  {t:"Retrieval tuning", d:"Recall, citations, grounding",
-   ai:["Tune top-k, chunk overlap, rerank depth","Force citations in the prompt; verify them","Log failure modes: wrong chunk / hallucination / missing context"],
-   fde:["Write the weekly status email you'd send the customer sponsor — progress + risks + ask"],
-   dsa:["BFS/DFS — 3 problems"],
-   int:["Q: 'How do you debug retrieval quality?' — answer"],
-   res:["prompt","langsmith","neetcode","ebbelaar"]},
-
-  {t:"RAG evaluation", d:"Measure it properly",
-   ai:["Build 20 Q/A golden set from your docs","Compute recall@k and faithfulness (LLM-judge)","Before/after tuning comparison table"],
-   fde:["Negotiate the eval: two domain experts disagree on 'correct' — write how you'd resolve"],
-   dsa:["Tree problems — 3"],
-   int:["Q: 'How do you know your RAG is good enough to ship?' — answer"],
-   res:["phoenix","langsmith","deeplearning","neetcode"]},
-
-  {t:"Week 2 review + FDE sim", d:"Consolidate + customer role-play",
-   ai:["RAG design doc + metrics table committed to repo","Fix top 3 failure modes","Weekly log"],
-   fde:["Full FDE simulation: 15-min mock discovery call (record yourself): problem, data, success, timeline, stakeholders","Debrief: what did you miss?"],
-   dsa:["Mock 1 — 45 min timed"],
-   int:["Mock: 'Design a RAG system for a bank' — 10 min whiteboard"],
-   res:["fdeGuide","fdeComp","neetcode","lc","exponent"]},
-
-  {t:"Agent patterns + LangGraph", d:"State machines for agents",
-   ai:["Agent loop: plan → act → observe","LangGraph: state, nodes, edges, cycles","Build minimal ReAct agent"],
-   fde:["Where agents fail in front of customers — list 5 failure modes from your experience/reading"],
-   dsa:["Heaps — 3 problems"],
-   int:["Q: 'What makes an agent different from a chatbot?' — answer"],
-   res:["langchain","deeplearning","langchainYt","neetcode"]},
-
-  {t:"Tool schemas + MCP", d:"Model Context Protocol",
-   ai:["3 strict tool schemas with validation","MCP: run an MCP server locally","Connect your agent to an MCP tool"],
-   fde:["Customer integration story: 'we need it inside Salesforce + Slack' — sketch the MCP/tool map"],
-   dsa:["Greedy — 3 problems"],
-   int:["Q: 'What is MCP and why does it matter?' — answer"],
-   res:["mcp","assemblyai","langchainYt","neetcode"]},
-
-  {t:"Build multi-step agent", d:"Research → summarize → act",
-   ai:["Agent with 3+ tools and bounded loop","Max-iterations + token-cost cap guardrails","Full trace of one run saved"],
-   fde:["Scope it FDE-style: what's the 2-week POC vs the 2-month build? Write both"],
-   dsa:["Backtracking — 3 problems"],
-   int:["Q: 'How do you bound an agent's cost?' — answer"],
-   res:["langchain","langsmith","langchainYt","neetcode"]},
-
-  {t:"Failure handling & guardrails", d:"Retries, idempotency, aborts",
-   ai:["Retry with backoff + fallback model","Idempotent tool design for side-effecting actions","Prompt-injection defense basics + test"],
-   fde:["Incident comms: agent took a wrong action at the customer — write the customer email + internal postmortem outline"],
-   dsa:["Backtracking — 3 problems"],
-   int:["Q: 'Agent loops forever — what do you do?' — answer"],
-   res:["anthropic","phoenix","neetcode","krishnaik"]},
-
-  {t:"Human-in-the-loop + state", d:"Approval gates, persistence",
-   ai:["Approval gate before side-effecting tools","Persist + resume agent state (SQLite)","Audit log of every agent action"],
-   fde:["Governance conversation: 'who approves what?' — draft the autonomy ladder (suggest → draft → act with approval → act autonomously)"],
-   dsa:["Graph BFS/DFS — 3 problems"],
-   int:["Q: 'How much autonomy should our agent have on day 1?' — answer"],
-   res:["langchain","mcp","ebbelaar","neetcode"]},
-
-  {t:"Agent v2 polish", d:"Harden end-to-end",
-   ai:["Agent trajectory eval cases","Kill top 2 failure modes from traces","Per-run cost report"],
-   fde:["Demo hardening: 3 things that will break live in front of the customer — fix or pre-empt them"],
-   dsa:["Topological sort — 3 problems"],
-   int:["Q: 'How do you eval an agent's trajectory, not just its answer?' — answer"],
-   res:["langsmith","phoenix","neetcode"]},
-
-  {t:"Week 3 review + FDE mock", d:"Consolidate + discovery call",
-   ai:["Agent architecture diagram committed","Weekly log + 2-min agent demo recording"],
-   fde:["Mock discovery call #2 (record): given messy brief ('we lose claims adjusters to churn, 40 systems, no docs'), scope a 6-week POC","Get 1 friend/colleague to play the customer — feedback on your questions"],
-   dsa:["Mock 2 — 45 min timed"],
-   int:["Mock: 'Design an agent for X workflow' — 10 min"],
-   res:["fdeGuide","neetcode","exponent"]},
-
-  {t:"Eval suites + golden sets", d:"Systematic quality measurement",
-   ai:["30-case golden set with expected outputs","Offline eval script for RAG + agent","Pass-rate tracked over time"],
-   fde:["Write the acceptance criteria into a 1-page SOW-style doc (exit: eval ≥ X on Y cases)"],
-   dsa:["DP 1D — 3 problems (climbing stairs, house robber)"],
-   int:["Q: 'What does your eval gate look like?' — answer"],
-   res:["phoenix","langsmith","deeplearning","neetcode"]},
-
-  {t:"LLM-as-judge", d:"Automated scoring, calibrated",
-   ai:["Judge prompt with rubric + score anchors","Check judge-human agreement on 10 cases","Wire judge into the eval pipeline"],
-   fde:["Two experts disagree on labels — document how the rubric resolves it (this is the #1 FDE interview topic)"],
-   dsa:["DP 1D — 3 problems (coin change, LIS)"],
-   int:["Q: 'LLM-as-judge — how do you trust it?' — answer"],
-   res:["prompt","phoenix","neetcode"]},
-
-  {t:"Tracing & observability", d:"See everything in production",
-   ai:["Instrument with Phoenix or LangSmith","Dashboard: latency, tokens, cost, errors","Alerting rule for p95 latency / error rate"],
-   fde:["Customer-facing reliability report template: uptime, quality score, cost per workflow"],
-   dsa:["DP 2D — 3 problems (grid paths, LCS)"],
-   int:["Q: 'Agent is slow and expensive — your triage?' — answer"],
-   res:["phoenix","langsmith","neetcode"]},
-
-  {t:"Cost & latency optimization", d:"Budgets that hold",
-   ai:["Semantic caching for repeat queries","Model routing: cheap first, escalate on failure","Hit ≤ $0.01/query (or your target) and document it"],
-   fde:["Commercial framing: turn your cost report into a 'value per workflow' slide for the exec sponsor"],
-   dsa:["DP 2D — 3 problems"],
-   int:["Q: 'Cut agent cost 10x — how?' — answer"],
-   res:["anthropic","yt","neetcode"]},
-
-  {t:"Safety & guardrails", d:"Injection, sandboxing, PII",
-   ai:["10-prompt injection test suite","Sandboxed tool execution + allow-list","Output validation + PII/secret filter"],
-   fde:["Customer security review dry-run: 10 questions their infosec will ask — write crisp answers"],
-   dsa:["Mixed review — 4 problems"],
-   int:["Q: 'Top 3 risks of deploying agents, and mitigations?' — answer"],
-   res:["anthropic","fdeGuide","neetcode"]},
-
-  {t:"CI eval gate", d:"Block regressions automatically",
-   ai:["GitHub Action: evals on PR, fail if pass-rate drops","Store eval history as artifacts","Document the gate in README"],
-   fde:["Rollout plan: pilot → canary → full rollout with rollback at each stage — one page"],
-   dsa:["Graph problems — 3 (Dijkstra, clone graph)"],
-   int:["Q: 'How do you ship weekly without breaking the customer's workflow?' — answer"],
-   res:["github","phoenix","neetcode"]},
-
-  {t:"Week 4 review + FDE exec sim", d:"Consolidate + exec presentation",
-   ai:["Final eval report: before/after","Weekly log"],
-   fde:["Record a 10-minute exec update: problem → what we built → measurable result → ask (expansion budget)","Watch it back — cut every sentence that isn't load-bearing"],
-   dsa:["Mock 3 — 45 min timed"],
-   int:["Mock: 'An FDE project failed — tell me about a time things broke' — STAR format"],
-   res:["fdeMarket","neetcode","exponent","star"]},
-
-  {t:"Flagship scoping", d:"Your portfolio centerpiece",
-   ai:["Pick domain: contracts / support / research / finance ops","Spec: users, tools, success metrics, data sources","Repo scaffold + CI skeleton"],
-   fde:["Write it as a customer SOW: objective, scope, out-of-scope, acceptance eval, timeline, risks — 1 page"],
-   dsa:["DP review — 3 problems"],
-   int:["Q: 'Tell me about a project end-to-end' — start drafting STAR"],
-   res:["github","sysdesign","fdeGuide","neetcode"]},
-
-  {t:"Core pipeline build", d:"Ingest + RAG + agent loop",
-   ai:["Ingestion pipeline with messy real data","Agent loop wired: tools + guardrails + tracing","First end-to-end run works"],
-   fde:["Checkpoints: share a demo-in-progress with 1 person as if they were the customer — capture feedback"],
-   dsa:["Timed set — 4 problems"],
-   int:["Keep a build log — raw material for interview stories"],
-   res:["langchain","yt","ebbelaar","neetcode"]},
-
-  {t:"Eval harness", d:"Prove it works",
-   ai:["30-case golden set for the flagship","Automated eval + LLM-judge in CI","Baseline vs tuned comparison"],
-   fde:["Turn the eval table into the customer's acceptance doc — sign-off criteria they would actually sign"],
-   dsa:["Timed set — 4 problems"],
-   int:["Q: 'How did you measure success?' — answer with numbers"],
-   res:["phoenix","langsmith","neetcode"]},
-
-  {t:"Dockerize & deploy", d:"Live public demo",
-   ai:["Dockerfile + docker-compose","Deploy to Render or Fly.io free tier","Public URL + smoke test"],
-   fde:["Deployment runbook for a customer VPC: prerequisites, install steps, rollback — assume zero access to their network"],
-   dsa:["Mock 4 — 45 min timed"],
-   int:["Q: 'Deployed on-prem vs your cloud — tradeoffs?' — answer"],
-   res:["docker","render","fly","neetcode"]},
-
-  {t:"Observability + cost report", d:"Production finish",
-   ai:["Tracing live in the deployed app","Cost + latency report per workflow","Runbook: top 5 failures + fixes"],
-   fde:["Handover pack: README + runbook + eval report + 15-min walkthrough recording — what you'd leave with the customer"],
-   dsa:["Weak-area drill — 4 problems"],
-   int:["Q: 'Walk me through your production incident process' — answer"],
-   res:["phoenix","langsmith","fdeGuide","neetcode"]},
-
-  {t:"README + demo video", d:"Portfolio packaging",
-   ai:["README: problem → architecture → evals → demo GIF","Architecture diagram (Excalidraw)","5-min Loom demo"],
-   fde:["Two READMEs: (1) engineer-facing deep dive, (2) exec-facing one-pager with outcome metrics"],
-   dsa:["Resume-topics timed set — 4 problems"],
-   int:["Record the 90-second flagship pitch — memorize it"],
-   res:["github","excalidraw","loom","neetcode"]},
-
-  {t:"Week 5 review + retrospective", d:"Flagship retro + applications",
-   ai:["Retro: what broke, what you'd redo","Pin flagship repo on GitHub"],
-   fde:["Write the customer case study: context, constraint, what shipped, numbers, lesson — 400 words","Post it on LinkedIn (tag #AppliedAI #ForwardDeployed)"],
-   dsa:["Full mock — DSA + explain-aloud"],
-   int:["Update resume with flagship metrics; list 20 target roles (AI Engineer, Agentic Engineer, FDE)"],
-   res:["fdeMarket","github","neetcode","lc"]},
-
-  {t:"Resume & profiles", d:"Get past the screen",
-   ai:["Resume v2: flagship first, quantified (eval pass-rate, cost/run, users)","GitHub + LinkedIn polished; headline updated"],
-   fde:["Tailor 2 resume variants: (1) AI/Agentic Engineer, (2) FDE — same projects, different framing (depth vs outcome)"],
-   dsa:["Mixed — 3 problems"],
-   int:["Draft answers: 'why this role', 'why FDE / why not FDE', 'salary expectations research'"],
-   res:["github","fdeMarket","fdeGuide","lc"]},
-
-  {t:"Applications blitz", d:"Volume + referrals",
-   ai:["Apply 10–15 AI/Agentic Engineer roles","5 referral messages to people at target companies","ATS keyword pass on resume (LLM, RAG, evals, agents, MCP, LangGraph)"],
-   fde:["Apply to 5 FDE roles; for each, write 3 bullets mapping their posting → your flagship metrics"],
-   dsa:["Mixed — 3 problems"],
-   int:["Log every application + follow-up date in a tracker"],
-   res:["lc","neetcode","fdeMarket"]},
-
-  {t:"LLM system design I", d:"Design AI systems at scale",
-   ai:["Design: enterprise RAG (1M docs, RBAC, freshness, multi-tenant)","Design: agent platform (guardrails, evals, billing, tool registry)","Both whiteboarded in 45 min each"],
-   fde:["Design it FDE-flavored: same system, but rollout plan + customer acceptance criteria included"],
-   dsa:["Mixed — 3 problems + 1 mock"],
-   int:["Record yourself presenting design #1 — watch for jargon leaks"],
-   res:["sysdesign","deeplearning","bytebytego","neetcode"]},
-
-  {t:"LLM system design II", d:"Failure modes & tradeoffs",
-   ai:["Design: LLM gateway (routing, caching, fallbacks, cost caps)","Design: eval infrastructure (golden sets, judges, CI gates)","Tradeoff language: consistency vs latency vs cost vs safety"],
-   fde:["Tradeoff memo: when NOT to use an LLM at all — customers respect this answer"],
-   dsa:["Mixed — 3 problems"],
-   int:["Q: 'Model selection for a regulated industry?' — answer"],
-   res:["sysdesign","bytebytego","krishnaik"]},
-
-  {t:"Behavioral + STAR bank", d:"Tell your story",
-   ai:["8 STAR stories: flagship, conflict, failure, ambiguity, customer, scale, learning, leadership"],
-   fde:["FDE-specific stories: difficult stakeholder, scope creep, production incident at customer site, saying no to a customer — write all 4"],
-   dsa:["Mock — 45 min"],
-   int:["90-second 'why AI engineering' — memorized, natural"],
-   res:["behavioral","star","exponent"]},
-
-  {t:"Mock interview day 1", d:"Full loop simulation",
-   ai:["Mock: 1 DSA (45m) + 1 LLM design (45m) + flagship deep-dive (30m)","Score yourself; fix 3 weakest points"],
-   fde:["Mock FDE round: 'Scope a POC for this messy brief in 10 min, out loud' — record and review"],
-   dsa:["Timed mixed — 4 problems"],
-   int:["Post-mock: rewrite your 3 weakest answers"],
-   res:["neetcode","lc","sysdesign","exponent"]},
-
-  {t:"Mock interview day 2", d:"Full loop simulation again",
-   ai:["Mock: evals/failure-modes rapid-fire (15 questions)","Mock: live coding with an LLM API (build a small tool-calling function)"],
-   fde:["Mock negotiation: offer call simulation — base, equity, travel %, on-call"],
-   dsa:["Timed mixed — 4 problems"],
-   int:["Salary research: 3 data points for your market (levels.fyi etc.)"],
-   res:["lc","exponent","fdeMarket"]},
-
-  {t:"Final prep + rest", d:"Sharpen, don't cram",
-   ai:["Re-read: your eval report, architecture doc, cost report","Skim MCP + LangGraph docs once more"],
-   fde:["Skim FDE guides once more; keep the one-page autonomy ladder and handover pack handy for interviews"],
-   dsa:["Light review only — 1 easy problem from each pattern"],
-   int:["Interview logistics ready; sleep 8h; walk 30 min; you are prepared"],
-   res:["neetcode","fdeGuide","behavioral"]},
-
-  {t:"Final mock loop + negotiation", d:"Simulate offer stage end-to-end",
-   ai:["Rapid-fire: 20 eval/agent/RAG questions answered out loud, timed","Flagship deep-dive mock — a friend asks 'why this architecture?' until you can't go deeper"],
-   fde:["Negotiation scripts: base vs equity vs travel % vs on-call vs title","Evaluate 2 hypothetical offers side-by-side (AI Engineer vs FDE) — which fits your life?"],
-   dsa:["2 timed mocks — weakest patterns only"],
-   int:["Post-interview thank-you + follow-up email templates written"],
-   res:["exponent","fdeMarket","fdeGuide","lc"]},
-
-  {t:"Interview day / recovery", d:"Perform, decompress, iterate",
-   ai:["Confidence rehearsal: say your 90-second pitch out loud 3 times","Prepare 5 smart questions to ask them (evals? on-call? customer load? success metric for 90 days?)"],
-   fde:["If they probe customer judgment: lead with your case study numbers, not adjectives","If it goes well — ask about the first 90 days and the eval gate they'd put you on"],
-   dsa:["One easy problem for warm-up only, then stop"],
-   int:["After each interview: 10-min debrief log (questions asked, what landed, what to fix) — feed it into the next one"],
-   res:["behavioral","star","neetcode"]}
-];
-
-const state = JSON.parse(localStorage.getItem('sprint45v2') || '{}');
-let current = 0;
-const taskKeys = DAYS.flatMap((d,i)=>[...d.ai.map((_,j)=>`${i}-ai-${j}`),...d.fde.map((_,j)=>`${i}-fde-${j}`),...d.dsa.map((_,j)=>`${i}-dsa-${j}`),...d.int.map((_,j)=>`${i}-int-${j}`)]);
-const totalTasks = taskKeys.length;
-const dayComplete = i => { const d=DAYS[i]; return [...d.ai.map((_,j)=>`${i}-ai-${j}`),...d.fde.map((_,j)=>`${i}-fde-${j}`),...d.dsa.map((_,j)=>`${i}-dsa-${j}`),...d.int.map((_,j)=>`${i}-int-${j}`)].every(k=>state[k]); };
-
-function phaseFor(i){ return PHASES.find(p=>i<p.until).label; }
-function save(){ localStorage.setItem('sprint45v2', JSON.stringify(state)); renderStats(); renderList(); }
-function renderList(){
-  const el = document.getElementById('dayList'); el.innerHTML='';
-  let lastPhase = '';
-  DAYS.forEach((d,i)=>{
-    const ph = phaseFor(i);
-    if(ph!==lastPhase){ const lab=document.createElement('div'); lab.className='phase-label'; lab.textContent=ph.split(' — ')[0] + ' — ' + ph.split(' — ')[1]; el.appendChild(lab); lastPhase=ph; }
-    const b=document.createElement('button');
-    b.className='day-btn'+(i===current?' active':'')+(dayComplete(i)?' done':'');
-    b.innerHTML=`<span class="dot">${dayComplete(i)?'✓':i+1}</span><span class="day-title">Day ${i+1} — ${d.t}</span>`;
-    b.onclick=()=>{current=i;renderList();renderDetail();};
-    el.appendChild(b);
-  });
-}
-function renderDetail(){
-  const d=DAYS[current];
-  const group=(arr,type,title,cls)=>`<div class="card ${cls}"><h3>${title}</h3>`+arr.map((t,j)=>{const key=`${current}-${type}-${j}`,c=!!state[key];return `<label class="task${c?' checked':''}"><input type="checkbox" data-key="${key}" ${c?'checked':''}><span>${t}</span></label>`;}).join('')+`</div>`;
-  const resHtml=d.res.map(k=>{const r=R[k]||YT[k]; if(!r) return ''; const isYt=!!YT[k]; return `<a class="${isYt?'yt':''}" href="${r[1]}" target="_blank" rel="noopener">${r[0]}</a>`;}).join('');
-  document.getElementById('detail').innerHTML=`
-    <div class="phase">Day ${current+1} of 45 &middot; ${phaseFor(current)}</div>
-    <h2>${d.t}</h2>
-    <div class="topic">${d.d}</div>
-    <div class="cols">
-      ${group(d.ai,'ai','AI + Agentic Engineering','ai')}
-      ${group(d.fde,'fde','FDE — Customer & Delivery','fde')}
-      ${group(d.dsa,'dsa','DSA','dsa')}
-      ${group(d.int,'int','Interview prep','int')}
-    </div>
-    <div class="resources"><h3>Free resources</h3>${resHtml}</div>
-    <button class="btn" id="nextDay">${current<44?'Next day →':'Finish ✓'}</button>`;
-  document.querySelectorAll('#detail input[type=checkbox]').forEach(cb=>{
-    cb.onchange=()=>{ if(cb.checked) state[cb.dataset.key]=true; else delete state[cb.dataset.key]; save(); renderDetail(); };
-  });
-  document.getElementById('nextDay').onclick=()=>{ if(current<44){current++;renderList();renderDetail();window.scrollTo(0,0);} };
-}
-function renderStats(){
-  const done=taskKeys.filter(k=>state[k]).length;
-  document.getElementById('taskCount').textContent=done;
-  document.getElementById('taskTotal').textContent=totalTasks;
-  document.getElementById('dayCount').textContent=DAYS.filter((_,i)=>dayComplete(i)).length;
-  const pct=Math.round(done/totalTasks*100);
-  document.getElementById('pct').textContent=pct+'%';
-  document.getElementById('bar').style.width=pct+'%';
-}
-document.getElementById('resetBtn').onclick=()=>{ if(confirm('Reset ALL progress?')){ Object.keys(state).forEach(k=>delete state[k]); save(); renderDetail(); } };
-let tSec=0,tInt=null;
-document.getElementById('timerBtn').onclick=function(){
-  if(tInt){ clearInterval(tInt); tInt=null; this.textContent='Start'; return; }
-  this.textContent='Pause';
-  tInt=setInterval(()=>{ tSec++; const h=String(Math.floor(tSec/3600)).padStart(2,'0'),m=String(Math.floor(tSec/60)%60).padStart(2,'0'),s=String(tSec%60).padStart(2,'0'); document.getElementById('timer').textContent=`${h}:${m}:${s}`; },1000);
-};
-renderStats(); renderList(); renderDetail();
-</script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
