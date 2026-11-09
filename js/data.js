@@ -380,7 +380,7 @@ const ROLES = [
     name: "AI Engineer",
     tagline: "Build LLM-powered product features that serve thousands of users",
     color: "ai",
-    whatYouOwn: "A system or feature many users touch — retrieval quality, agent reliability, cost and latency, and a measurable eval suite.",
+    whatYouOwn: "A system or feature many users touch ï¿½ retrieval quality, agent reliability, cost and latency, and a measurable eval suite.",
     hardPart: "Model quality at scale, latency, cost",
     judgedOn: "Eval pass-rate, product metrics, reliability",
     travel: "None (product team, your codebase)",
@@ -396,18 +396,30 @@ const ROLES = [
       "LLM system design: RAG at scale, LLM gateways, eval infrastructure"
     ],
     roadmap: [
-      { days: "Days 1–7", focus: "Foundations: Python, LLM APIs, prompting, tool calling", phase: 1 },
-      { days: "Days 8–14", focus: "RAG & retrieval — your first shippable AI system", phase: 2 },
-      { days: "Days 15–21", focus: "Agents & tool use — the differentiating skill", phase: 3 },
-      { days: "Days 22–28", focus: "Evals, tracing, cost control — what makes it production-grade", phase: 4 },
-      { days: "Days 29–35", focus: "Flagship project + public demo (your interview artifact)", phase: 5 },
-      { days: "Days 36–45", focus: "Resume, apply to AI Engineer roles, system design + mocks", phase: 6 }
+      { days: "Days 1ï¿½7", focus: "Foundations: Python, LLM APIs, prompting, tool calling", phase: 1 },
+      { days: "Days 8ï¿½14", focus: "RAG & retrieval ï¿½ your first shippable AI system", phase: 2 },
+      { days: "Days 15ï¿½21", focus: "Agents & tool use ï¿½ the differentiating skill", phase: 3 },
+      { days: "Days 22ï¿½28", focus: "Evals, tracing, cost control ï¿½ what makes it production-grade", phase: 4 },
+      { days: "Days 29ï¿½35", focus: "Flagship project + public demo (your interview artifact)", phase: 5 },
+      { days: "Days 36ï¿½45", focus: "Resume, apply to AI Engineer roles, system design + mocks", phase: 6 }
     ],
     interviewFocus: [
       "LLM system design: 'Design RAG for a bank' (RBAC, freshness, multi-tenant)",
       "Deep-dive your flagship: architecture choices, eval numbers, cost per query",
       "Rapid-fire: chunking strategies, hybrid search, LLM-as-judge calibration, CI eval gates",
-      "DSA: standard patterns (arrays ? DP) — NeetCode 150"
+      "DSA: standard patterns (arrays ? DP) ï¿½ NeetCode 150"
+    ],
+    youtube: [
+      ["1. Andrej Karpathy â€” LLM internals from scratch","https://www.youtube.com/@AndrejKarpathy"],
+      ["2. CampusX (Nitish Singh) â€” GenAI + LLM fundamentals","https://www.youtube.com/@campusx-official"],
+      ["3. Krish Naik â€” LLM APIs & prompting","https://www.youtube.com/@krishnaik06"],
+      ["4. RAG From Scratch â€” LangChain official playlist","https://www.youtube.com/playlist?list=PLfaIDFEXuae2LXbO1_PKyVJiQ23ZztA0x"],
+      ["5. Greg Kamradt â€” LangChain 101","https://www.youtube.com/playlist?list=PLqZXAkvF1bPNQER9mLmDbntNfSpzdDIU5"],
+      ["6. freeCodeCamp â€” Production RAG full course (7h)","https://www.youtube.com/@freecodecamp"],
+      ["7. AssemblyAI â€” tool calling, MCP, LLM pipelines","https://www.youtube.com/@AssemblyAI"],
+      ["8. Krish Naik â€” LLMOps: tracing, deployment, guardrails","https://www.youtube.com/@krishnaik06"],
+      ["9. NeetCode â€” 150 DSA pattern videos","https://www.youtube.com/@NeetCode"],
+      ["10. ByteByteGo â€” system design for interviews","https://www.youtube.com/@ByteByteGo"]
     ],
     resources: [
       ["DeepLearning.AI short courses","https://www.deeplearning.ai/short-courses/"],
@@ -421,7 +433,7 @@ const ROLES = [
     name: "Agentic Engineer",
     tagline: "Make autonomous systems reliable: loops, tools, guardrails, recovery",
     color: "fde",
-    whatYouOwn: "The agentic system itself — planning loops, tool orchestration, state machines, failure handling, cost caps, and safe autonomy.",
+    whatYouOwn: "The agentic system itself ï¿½ planning loops, tool orchestration, state machines, failure handling, cost caps, and safe autonomy.",
     hardPart: "Control flow: loops, retries, cost, safe actions on non-deterministic components",
     judgedOn: "Task completion rate, safe failure modes, cost per run",
     travel: "None (platform / product team)",
@@ -435,29 +447,40 @@ const ROLES = [
       "Failure handling: retries with backoff, fallback models, graceful degradation",
       "Trajectory evals: golden tool-call sequences, not just final answers",
       "Observability: step-level traces, per-run cost reports, audit logs",
-      "Multi-agent patterns: researcher/critic, orchestrator/worker — and when NOT to use them"
+      "Multi-agent patterns: researcher/critic, orchestrator/worker ï¿½ and when NOT to use them"
     ],
     roadmap: [
-      { days: "Days 1–7", focus: "Foundations (shared core) — LLM APIs, prompting, tools", phase: 1 },
-      { days: "Days 8–14", focus: "RAG as agent memory — retrieval is the agent's context source", phase: 2 },
-      { days: "Days 15–21", focus: "CORE PHASE — LangGraph, MCP, guardrails, HITL, multi-step agents", phase: 3 },
-      { days: "Days 22–28", focus: "Trajectory evals, tracing, cost caps — the production bar", phase: 4 },
-      { days: "Days 29–35", focus: "Flagship = an agent with evals, guardrails and a live trace demo", phase: 5 },
-      { days: "Days 36–45", focus: "Deep-dive prep: agent failure modes, trajectory evals, live coding", phase: 6 }
+      { days: "Days 1ï¿½7", focus: "Foundations (shared core) ï¿½ LLM APIs, prompting, tools", phase: 1 },
+      { days: "Days 8ï¿½14", focus: "RAG as agent memory ï¿½ retrieval is the agent's context source", phase: 2 },
+      { days: "Days 15ï¿½21", focus: "CORE PHASE ï¿½ LangGraph, MCP, guardrails, HITL, multi-step agents", phase: 3 },
+      { days: "Days 22ï¿½28", focus: "Trajectory evals, tracing, cost caps ï¿½ the production bar", phase: 4 },
+      { days: "Days 29ï¿½35", focus: "Flagship = an agent with evals, guardrails and a live trace demo", phase: 5 },
+      { days: "Days 36ï¿½45", focus: "Deep-dive prep: agent failure modes, trajectory evals, live coding", phase: 6 }
     ],
     interviewFocus: [
-      "'Agent loops forever — what do you do?' (iteration caps, timeouts, human escalation)",
+      "'Agent loops forever ï¿½ what do you do?' (iteration caps, timeouts, human escalation)",
       "'How do you eval an agent trajectory?' (golden sequences, step-level judges, CI gates)",
-      "'Design an agent for X workflow' — with guardrails, HITL and cost caps stated unprompted",
+      "'Design an agent for X workflow' ï¿½ with guardrails, HITL and cost caps stated unprompted",
       "Idempotency and exactly-once semantics for side-effecting tools",
       "MCP: why a protocol beats per-app tool glue"
+    ],
+    youtube: [
+      ["1. Andrej Karpathy â€” 'Let's build GPT' (agent foundations)","https://www.youtube.com/@AndrejKarpathy"],
+      ["2. Krish Naik â€” Complete Agentic AI course (10h, LangGraph + guardrails + evals)","https://www.youtube.com/@krishnaik06"],
+      ["3. codebasics â€” Agentic AI Crash Course with LangChain","https://www.youtube.com/@codebasics"],
+      ["4. LangChain (official) â€” LangGraph agents & state machines","https://www.youtube.com/@LangChain"],
+      ["5. Dave Ebbelaar â€” LangGraph deep-dives & real architectures","https://www.youtube.com/@DaveEbbelaar"],
+      ["6. AssemblyAI â€” MCP servers & agent tool design","https://www.youtube.com/@AssemblyAI"],
+      ["7. Greg Kamradt â€” LangChain 101 tool use series","https://www.youtube.com/playlist?list=PLqZXAkvF1bPNQER9mLmDbntNfSpzdDIU5"],
+      ["8. Krish Naik â€” LangSmith tracing & evals walkthroughs","https://www.youtube.com/@krishnaik06"],
+      ["9. NeetCode â€” DSA patterns (heaps, graphs, DP)","https://www.youtube.com/@NeetCode"]
     ],
     resources: [
       ["LangGraph docs","https://python.langchain.com/docs/introduction/"],
       ["MCP docs","https://modelcontextprotocol.io/"],
-      ["Krish Naik — Agentic AI course (10h)","https://www.youtube.com/@krishnaik06"],
-      ["codebasics — Agentic AI crash course","https://www.youtube.com/@codebasics"],
-      ["DeepLearning.AI — Agentic courses","https://www.deeplearning.ai/short-courses/"]
+      ["Krish Naik â€” Agentic AI course (10h)","https://www.youtube.com/@krishnaik06"],
+      ["codebasics â€” Agentic AI crash course","https://www.youtube.com/@codebasics"],
+      ["DeepLearning.AI â€” Agentic courses","https://www.deeplearning.ai/short-courses/"]
     ]
   },
   {
@@ -465,11 +488,11 @@ const ROLES = [
     name: "Forward Deployed Engineer",
     tagline: "Own one customer's outcome inside their messy reality",
     color: "fde",
-    whatYouOwn: "The outcome at one account: messy data, blocked access, sceptical stakeholders, security review, rollout, adoption — discovery to production.",
+    whatYouOwn: "The outcome at one account: messy data, blocked access, sceptical stakeholders, security review, rollout, adoption ï¿½ discovery to production.",
     hardPart: "The environment & people: undocumented data, permissions, politics, disagreement on 'correct'",
     judgedOn: "Customer adoption + production outcome (and expansion revenue)",
-    travel: "25–50% (OpenAI/Anthropic postings), on-call possible",
-    bestIf: "You like fast end-to-end ownership, ambiguity, direct customer impact, and can handle travel — and saying no.",
+    travel: "25ï¿½50% (OpenAI/Anthropic postings), on-call possible",
+    bestIf: "You like fast end-to-end ownership, ambiguity, direct customer impact, and can handle travel ï¿½ and saying no.",
     syllabus: [
       "Discovery: audit the real workflow vs the documented one; who signs off; success metric",
       "Scoping: 2-week POC vs 2-month build; scope negotiation; saying no with a reason",
@@ -477,30 +500,40 @@ const ROLES = [
       "Deployment into customer environments: VPC, on-prem, air-gapped, data residency, RBAC",
       "Security review readiness: infosec Q&A, PII handling, audit logs, rollback plans",
       "Rollout: pilot ? canary ? full rollout with explicit rollback at each stage",
-      "Exec communication: 10-min updates, outcome metrics, expansion asks — zero jargon",
-      "Handover: runbook, eval report, walkthrough — the system must survive your departure",
+      "Exec communication: 10-min updates, outcome metrics, expansion asks ï¿½ zero jargon",
+      "Handover: runbook, eval report, walkthrough ï¿½ the system must survive your departure",
       "Commercial judgment: autonomy ladder (suggest ? draft ? approve ? act), value-per-workflow framing"
     ],
     roadmap: [
-      { days: "Days 1–7", focus: "Foundations + FDE landscape: read the market analyses, pick your lean (builder vs strategist)", phase: 1 },
-      { days: "Days 8–14", focus: "RAG as the typical first FDE deliverable; practice the 5 discovery questions", phase: 2 },
-      { days: "Days 15–21", focus: "Agents with guardrails + the autonomy ladder — FDE demos live on this", phase: 3 },
-      { days: "Days 22–28", focus: "The negotiated-eval skill + acceptance criteria — FDE's #1 interview topic", phase: 4 },
-      { days: "Days 29–35", focus: "CORE PHASE — build the flagship as a customer engagement: SOW ? build ? deploy ? handover pack", phase: 5 },
-      { days: "Days 36–45", focus: "FDE resume variant, 5 targeted FDE applications, mock FDE rounds, negotiation", phase: 6 }
+      { days: "Days 1ï¿½7", focus: "Foundations + FDE landscape: read the market analyses, pick your lean (builder vs strategist)", phase: 1 },
+      { days: "Days 8ï¿½14", focus: "RAG as the typical first FDE deliverable; practice the 5 discovery questions", phase: 2 },
+      { days: "Days 15ï¿½21", focus: "Agents with guardrails + the autonomy ladder ï¿½ FDE demos live on this", phase: 3 },
+      { days: "Days 22ï¿½28", focus: "The negotiated-eval skill + acceptance criteria ï¿½ FDE's #1 interview topic", phase: 4 },
+      { days: "Days 29ï¿½35", focus: "CORE PHASE ï¿½ build the flagship as a customer engagement: SOW ? build ? deploy ? handover pack", phase: 5 },
+      { days: "Days 36ï¿½45", focus: "FDE resume variant, 5 targeted FDE applications, mock FDE rounds, negotiation", phase: 6 }
     ],
     interviewFocus: [
-      "'Scope a POC from this messy brief, out loud, in 10 minutes' — the signature Palantir-style round",
-      "'Two experts disagree on correctness — how do you settle it?' (negotiated rubric)",
+      "'Scope a POC from this messy brief, out loud, in 10 minutes' ï¿½ the signature Palantir-style round",
+      "'Two experts disagree on correctness ï¿½ how do you settle it?' (negotiated rubric)",
       "Behavioral: difficult stakeholder, production incident at a customer, saying no to scope, failure",
-      "'Why FDE and not product engineering?' — travel, ambiguity, outcome ownership",
+      "'Why FDE and not product engineering?' ï¿½ travel, ambiguity, outcome ownership",
       "Your flagship as a case study: constraint ? what shipped ? numbers ? lesson"
     ],
+    youtube: [
+      ["1. YouTube search: 'forward deployed engineer' â€” Palantir & OpenAI talks","https://www.youtube.com/results?search_query=forward+deployed+engineer"],
+      ["2. ByteByteGo â€” explaining systems to non-engineers (core FDE skill)","https://www.youtube.com/@ByteByteGo"],
+      ["3. Krish Naik â€” end-to-end GenAI projects with client demos","https://www.youtube.com/@krishnaik06"],
+      ["4. Dave Ebbelaar â€” build-along agent projects you can clone & demo","https://www.youtube.com/@DaveEbbelaar"],
+      ["5. codebasics â€” portfolio GenAI projects with full source code","https://www.youtube.com/@codebasics"],
+      ["6. Exponent â€” mock interviews: behavioral, scoping & negotiation","https://www.youtube.com/@Exponent"],
+      ["7. NeetCode â€” DSA for the coding round","https://www.youtube.com/@NeetCode"],
+      ["8. freeCodeCamp â€” Docker & deployment (for customer-VPC rollouts)","https://www.youtube.com/@freecodecamp"]
+    ],
     resources: [
-      ["DeepLearning.AI — The Batch: FDEs","https://www.deeplearning.ai/the-batch/forward-deployed-engineers-and-the-future-of-ai-engineering"],
-      ["open-fde.ai — FDE market analysis","https://open-fde.ai/jobs/market/"],
+      ["DeepLearning.AI â€” The Batch: FDEs","https://www.deeplearning.ai/the-batch/forward-deployed-engineers-and-the-future-of-ai-engineering"],
+      ["open-fde.ai â€” FDE market analysis","https://open-fde.ai/jobs/market/"],
       ["FDE vs AI Engineer (Re:Sourced)","https://www.resourced.com.au/articles/agentic-ai-engineer-vs-forward-deployed-engineer"],
-      ["FDE Interview Prep — complete guide","https://fdeinterviewprep.com/blog/fde-vs-ai-engineer"]
+      ["FDE Interview Prep â€” complete guide","https://fdeinterviewprep.com/blog/fde-vs-ai-engineer"]
     ]
   }
 ];

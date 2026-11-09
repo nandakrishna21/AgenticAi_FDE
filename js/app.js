@@ -187,7 +187,8 @@
           <ul class="interview-list">${r.interviewFocus.map(i => `<li>${i}</li>`).join('')}</ul>
         </div>
       </div>
-      <div class="resources"><h3>Curated free resources</h3>${r.resources.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join('')}</div>`;
+      <div class="resources"><h3>YouTube roadmap (free, in order)</h3><div class="yt-roadmap">${r.youtube.map(([n, u]) => `<a class="yt-item" href="${u}" target="_blank" rel="noopener"><span class="yt-play">▶</span><span>${n}</span></a>`).join('')}</div></div>
+      <div class="resources"><h3>Further reading &amp; docs</h3>${r.resources.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join('')}</div>`;
     document.querySelectorAll('.roadmap-step').forEach(btn => {
       btn.onclick = () => { switchView('plan'); jumpToPhase(+btn.dataset.phase); };
     });
