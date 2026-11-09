@@ -228,3 +228,7 @@ kbd { background: var(--panel2); border: 1px solid var(--border); border-radius:
 .interview-list { list-style: none; }
 .interview-list li { font-size: 0.83rem; color: var(--muted); line-height: 1.45; padding: 6px 10px; border-left: 2px solid var(--border); margin-bottom: 6px; }
 .interview-list li:hover { border-color: var(--accent2); color: var(--text); }
+
+/* ===== View visibility (hidden attr must win over layout display) ===== */
+#planView[hidden] { display: none !important; }
+#rolesView[hidden] { display: none !important; }
