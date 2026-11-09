@@ -458,3 +458,33 @@ h1 { font-size: 1.02rem; white-space: nowrap; }
 .gloss-item { background: var(--panel2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
 .gloss-item b { display: block; color: var(--accent); font-size: 0.8rem; margin-bottom: 3px; }
 .gloss-item span { font-size: 0.78rem; color: var(--muted); line-height: 1.45; }
+
+/* ===== Flashcards ===== */
+#flashView { max-width: 900px; margin: 0 auto; padding: 24px; }
+.fc-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+.fc-head h2 { font-size: 1.3rem; }
+.fc-head p { color: var(--muted); font-size: 0.8rem; margin-top: 4px; max-width: 420px; }
+.fc-due-pill { background: rgba(46,230,168,0.15); color: var(--accent2); border: 1px solid rgba(46,230,168,0.35); border-radius: 999px; font-size: 0.7rem; padding: 3px 12px; vertical-align: middle; margin-left: 8px; }
+.fc-filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.fc-filter { background: var(--panel2); border: 1px solid var(--border); color: var(--muted); border-radius: 999px; padding: 6px 14px; font-size: 0.75rem; cursor: pointer; }
+.fc-filter.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.fc-card { background: linear-gradient(160deg, var(--panel2), var(--panel)); border: 1px solid var(--border); border-radius: 20px; min-height: 260px; padding: 22px; cursor: pointer; display: flex; flex-direction: column; gap: 14px; transition: transform .2s, box-shadow .2s; outline-offset: 4px; }
+.fc-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.fc-card.flipped { border-color: var(--accent2); box-shadow: 0 0 0 1px var(--accent2), 0 14px 44px rgba(46,230,168,0.12); }
+.fc-top { display: flex; justify-content: space-between; align-items: center; }
+.fc-tag { background: rgba(91,157,255,0.15); color: var(--accent); border-radius: 999px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; padding: 3px 12px; }
+.fc-count { color: var(--muted); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+.fc-q { font-size: 1.25rem; line-height: 1.5; font-weight: 600; flex: 1; display: flex; align-items: center; }
+.fc-a { font-size: 1rem; line-height: 1.6; color: var(--accent2); border-left: 3px solid var(--accent2); padding-left: 14px; }
+.fc-flip-hint { color: var(--muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px; }
+.fc-actions { display: flex; gap: 12px; margin-top: 14px; }
+.fc-btn { flex: 1; border: none; border-radius: 14px; padding: 14px; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: transform .15s; }
+.fc-btn:hover { transform: translateY(-2px); }
+.fc-no { background: rgba(255,107,107,0.15); color: #ff8585; border: 1px solid rgba(255,107,107,0.35); }
+.fc-listen { background: var(--panel2); color: var(--muted); border: 1px solid var(--border); flex: 0 0 auto; padding: 14px 18px; font-size: 0.8rem; }
+.fc-yes { background: rgba(46,230,168,0.15); color: var(--accent2); border: 1px solid rgba(46,230,168,0.4); }
+.fc-meta { display: flex; align-items: center; gap: 14px; margin-top: 14px; font-size: 0.78rem; color: var(--muted); }
+.fc-bar { flex: 1; height: 6px; background: var(--panel2); border-radius: 999px; overflow: hidden; }
+.fc-bar > div { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width .4s; }
+.fc-keys { margin-top: 12px; text-align: center; }
+.listen-btn { margin-left: 10px; text-transform: none; letter-spacing: 0; }

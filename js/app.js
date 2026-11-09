@@ -98,7 +98,7 @@
         ${group(d.int, 'int', 'Interview Prep', 'int')}
       </div>
       <div class="syllabus-block">
-        <h3><span>Detailed day syllabus</span> — study in this exact order</h3>
+        <h3><span>Detailed day syllabus</span> — study in this exact order <button class="mini-btn listen-btn" id="listenDayBtn" type="button">Read aloud</button></h3>
         <ol>${SYLLABUS[current].map(item => `<li>${item}</li>`).join('')}</ol>
       </div>
       <details class="phase-guide">
@@ -134,6 +134,8 @@
       };
     });
     document.getElementById('dayNotes').addEventListener('input', e => { const n = getNotes(); n[current] = e.target.value; saveNotes(n); });
+    const listenBtn = document.getElementById('listenDayBtn');
+    if (listenBtn) listenBtn.onclick = () => speak(`Day ${current + 1}. ${d.t}. ` + SYLLABUS[current].join('. '));
     document.getElementById('nextDay').onclick = () => { if (current < 44) { current++; renderList(); renderDetail(); window.scrollTo(0, 0); } };
     document.getElementById('prevDay').onclick = () => { if (current > 0) { current--; renderList(); renderDetail(); window.scrollTo(0, 0); } };
   }
@@ -167,6 +169,17 @@
   document.addEventListener('keydown', e => {
     const tag = (e.target.tagName || '').toLowerCase();
     if (tag === 'input' && e.key !== 'Escape') return;
+    if (tag === 'textarea') return;
+    const fcOpen = document.getElementById('flashView') && !document.getElementById('flashView').hidden;
+    if (fcOpen) {
+      const deck = fcActiveDeck();
+      if (e.key === 'ArrowRight' && deck.length) { fcIndex = (fcIndex + 1) % deck.length; renderFlashcards(); }
+      else if (e.key === 'ArrowLeft' && deck.length) { fcIndex = (fcIndex - 1 + deck.length) % deck.length; renderFlashcards(); }
+      else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flipCard(); }
+      else if (e.key === '1') rateCard(false);
+      else if (e.key === '2') rateCard(true);
+      return;
+    }
     if (e.key === 'ArrowRight' && current < 44) { current++; renderList(); renderDetail(); }
     else if (e.key === 'ArrowLeft' && current > 0) { current--; renderList(); renderDetail(); }
     else if (e.key === '/') { e.preventDefault(); document.getElementById('search').focus(); }
@@ -355,6 +368,97 @@
       </article>`).join('');
   }
 
+  /* ===== Flashcard engine (spaced repetition) ===== */
+  const speak = text => {
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+  };
+
+  const FULL_DECK = [
+    ...GLOSSARY.map(([t, d]) => ({ id: 'g:' + t, tag: 'Glossary', q: t, a: d })),
+    ...QUIZ.map((qa, i) => ({ id: 'q:' + i, tag: `Day ${i + 1} interview Q`, q: qa[0], a: qa[1] }))
+  ];
+  const FC_INTERVALS = [10 * 60 * 1000, 86400000, 3 * 86400000, 7 * 86400000, 16 * 86400000, 35 * 86400000]; // 10min, 1d, 3d, 7d, 16d, 35d
+  const getFcState = () => JSON.parse(localStorage.getItem('sprint45-fc') || '{}');
+  const saveFcState = s => localStorage.setItem('sprint45-fc', JSON.stringify(s));
+  const fcIsDue = (card, s) => { const st = s[card.id]; return !st || st.due <= Date.now(); };
+
+  let fcFilter = 'due', fcIndex = 0, fcFlipped = false;
+  const fcActiveDeck = () => {
+    const s = getFcState();
+    switch (fcFilter) {
+      case 'glossary': return FULL_DECK.filter(c => c.id.startsWith('g:'));
+      case 'quiz': return FULL_DECK.filter(c => c.id.startsWith('q:'));
+      case 'all': return FULL_DECK;
+      default: return FULL_DECK.filter(c => fcIsDue(c, s));
+    }
+  };
+  function renderFlashcards() {
+    const s = getFcState();
+    const deck = fcActiveDeck();
+    const fcDueEl = document.getElementById('fcDue');
+    const dueCount = FULL_DECK.filter(c => fcIsDue(c, s)).length;
+    fcDueEl.textContent = `${dueCount} due`;
+    document.querySelectorAll('.fc-filter').forEach(b => b.classList.toggle('active', b.dataset.deck === fcFilter));
+    const mastered = FULL_DECK.filter(c => (s[c.id]?.level ?? 0) >= 4).length;
+    document.getElementById('fcMastery').textContent = `${mastered} / ${FULL_DECK.length} mastered`;
+    document.getElementById('fcBar').style.width = Math.round(mastered / FULL_DECK.length * 100) + '%';
+    const cardEl = document.getElementById('fcCard');
+    if (!deck.length) {
+      document.getElementById('fcTag').textContent = 'All caught up';
+      document.getElementById('fcQ').textContent = 'No cards due right now. Come back tomorrow — or study the full deck.';
+      document.getElementById('fcA').hidden = true;
+      document.getElementById('fcHint').textContent = '';
+      document.getElementById('fcIndex').textContent = '0 / 0';
+      cardEl.classList.remove('flipped');
+      return;
+    }
+    if (fcIndex >= deck.length) fcIndex = 0;
+    const card = deck[fcIndex];
+    fcFlipped = false;
+    document.getElementById('fcTag').textContent = card.tag;
+    document.getElementById('fcIndex').textContent = `${fcIndex + 1} / ${deck.length}`;
+    document.getElementById('fcQ').textContent = card.q;
+    const a = document.getElementById('fcA'); a.textContent = card.a; a.hidden = true;
+    document.getElementById('fcHint').textContent = 'tap / Space to reveal';
+    cardEl.classList.remove('flipped');
+  }
+  function flipCard(force) {
+    const a = document.getElementById('fcA');
+    fcFlipped = force !== undefined ? force : !fcFlipped;
+    a.hidden = !fcFlipped;
+    document.getElementById('fcHint').textContent = fcFlipped ? 'tap / Space to hide' : 'tap / Space to reveal';
+    document.getElementById('fcCard').classList.toggle('flipped', fcFlipped);
+  }
+  function rateCard(known) {
+    const deck = fcActiveDeck();
+    if (!deck.length) return;
+    const card = deck[fcIndex];
+    const s = getFcState();
+    const cur = s[card.id]?.level ?? 0;
+    const level = known ? Math.min(5, cur + 1) : 0;
+    s[card.id] = { level, due: Date.now() + FC_INTERVALS[level] };
+    saveFcState(s);
+    if (known && level === 5) fireConfetti();
+    if (fcFilter === 'due') { /* deck changed */ } else { fcIndex = (fcIndex + 1) % deck.length; }
+    if (fcFilter === 'due' && fcIndex >= fcActiveDeck().length) fcIndex = 0;
+    renderFlashcards();
+  }
+  const fcCardEl = document.getElementById('fcCard');
+  if (fcCardEl) {
+    fcCardEl.onclick = () => flipCard();
+    fcCardEl.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flipCard(); } });
+    document.getElementById('fcKnow').onclick = () => rateCard(true);
+    document.getElementById('fcDontKnow').onclick = () => rateCard(false);
+    document.getElementById('fcSpeak').onclick = () => {
+      const s = getFcState(); const deck = fcActiveDeck(); if (!deck.length) return;
+      const card = deck[fcIndex];
+      speak(fcFlipped ? card.a : card.q);
+    };
+    document.querySelectorAll('.fc-filter').forEach(b => b.onclick = () => { fcFilter = b.dataset.deck; fcIndex = 0; renderFlashcards(); });
+  }
+
   /* ===== Roles & Roadmaps view ===== */
   let activeRole = 0;
 
@@ -415,20 +519,22 @@
   }
 
   function switchView(view) {
-    const views = { plan: document.getElementById('planView'), roles: document.getElementById('rolesView'), syllabus: document.getElementById('syllabusView') };
-    const tabs = { plan: document.getElementById('tabPlan'), roles: document.getElementById('tabRoles'), syllabus: document.getElementById('tabSyllabus') };
+    const views = { plan: document.getElementById('planView'), roles: document.getElementById('rolesView'), syllabus: document.getElementById('syllabusView'), flash: document.getElementById('flashView') };
+    const tabs = { plan: document.getElementById('tabPlan'), roles: document.getElementById('tabRoles'), syllabus: document.getElementById('tabSyllabus'), flash: document.getElementById('tabFlash') };
     const yt = document.getElementById('yt');
     Object.entries(views).forEach(([key, el]) => { el.hidden = key !== view; });
     Object.entries(tabs).forEach(([key, el]) => { el.classList.toggle('active', key === view); el.setAttribute('aria-selected', key === view); });
     yt.style.display = view === 'plan' ? '' : 'none';
     if (view === 'roles') { renderRolePicker(); renderRoleDetail(); }
     if (view === 'syllabus' && !document.getElementById('moduleList').innerHTML) { renderModules(); renderGlossary(); const gs = document.getElementById('glossSearch'); if (gs && !gs.dataset.wired) { gs.addEventListener('input', e => renderGlossary(e.target.value.trim().toLowerCase())); gs.dataset.wired = '1'; } }
+    if (view === 'flash') renderFlashcards();
     window.scrollTo(0, 0);
   }
 
   document.getElementById('tabPlan').onclick = () => switchView('plan');
   document.getElementById('tabRoles').onclick = () => switchView('roles');
   document.getElementById('tabSyllabus').onclick = () => switchView('syllabus');
+  document.getElementById('tabFlash').onclick = () => switchView('flash');
 
   renderStats(); renderList(); renderDetail(); renderStreak();
 })();

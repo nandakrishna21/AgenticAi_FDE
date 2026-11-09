@@ -23,6 +23,7 @@
         <button class="view-tab active" id="tabPlan" role="tab" aria-selected="true">Plan</button>
         <button class="view-tab" id="tabRoles" role="tab" aria-selected="false">Roles &amp; Roadmaps</button>
         <button class="view-tab" id="tabSyllabus" role="tab" aria-selected="false">Full Syllabus</button>
+        <button class="view-tab" id="tabFlash" role="tab" aria-selected="false">Flashcards</button>
       </div>
       <div class="timer-chip"><b class="timer" id="timer">00:00</b> <button class="mini-btn" id="timerBtn">Start</button></div>
       <button class="icon-btn" id="themeBtn" title="Toggle light / dark" aria-label="Toggle theme">◐</button>
@@ -84,6 +85,33 @@
     <h2><span>Glossary</span> — every term you'll be asked about</h2>
     <div class="search-wrap gloss-search"><input type="text" id="glossSearch" placeholder="Search 41 terms…" aria-label="Search glossary"></div>
     <div class="glossary-grid" id="glossGrid"></div>
+  </div>
+</section>
+
+<section id="flashView" hidden>
+  <div class="fc-wrap">
+    <div class="fc-head">
+      <div><h2>Flashcards <span id="fcDue" class="fc-due-pill">0 due</span></h2><p>Spaced repetition: “Know it” pushes the card days out; “Don’t know” brings it back in minutes.</p></div>
+      <div class="fc-filters" role="tablist">
+        <button class="fc-filter active" data-deck="due">Due today</button>
+        <button class="fc-filter" data-deck="all">All 86</button>
+        <button class="fc-filter" data-deck="glossary">Glossary</button>
+        <button class="fc-filter" data-deck="quiz">Interview Qs</button>
+      </div>
+    </div>
+    <div class="fc-card" id="fcCard" role="button" tabindex="0" aria-label="Flashcard, activate to flip">
+      <div class="fc-top"><span class="fc-tag" id="fcTag">Glossary</span><span class="fc-count" id="fcIndex">1 / 1</span></div>
+      <p class="fc-q" id="fcQ">Loading…</p>
+      <p class="fc-a" id="fcA" hidden></p>
+      <span class="fc-flip-hint" id="fcHint">tap / Space to reveal</span>
+    </div>
+    <div class="fc-actions">
+      <button class="fc-btn fc-no" id="fcDontKnow">✗ Don't know</button>
+      <button class="fc-btn fc-listen" id="fcSpeak">Read aloud</button>
+      <button class="fc-btn fc-yes" id="fcKnow">✓ Know it</button>
+    </div>
+    <div class="fc-meta"><span id="fcMastery">0 mastered</span><div class="fc-bar"><div id="fcBar"></div></div></div>
+    <p class="fc-keys kbd-hint"><kbd>←</kbd><kbd>→</kbd> navigate · <kbd>Space</kbd> flip · <kbd>1</kbd> don't know · <kbd>2</kbd> know</p>
   </div>
 </section>
 
