@@ -575,3 +575,17 @@ h1 { font-size: 1.02rem; white-space: nowrap; }
 .milestone-day { font-weight: 800; color: var(--fde); font-size: 0.8rem; }
 .milestone-text { font-size: 0.85rem; line-height: 1.45; }
 .milestone.done .milestone-text { color: var(--muted); text-decoration: line-through; }
+
+/* ===== Phase links & certifications ===== */
+.phase-links { grid-column: 1; display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; align-items: center; }
+.phase-links-label { font-size: 0.62rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--accent2); width: 100%; margin-top: 6px; }
+.phase-links-label.yt { color: #ff7b7b; }
+.phase-links a { font-size: 0.72rem; color: var(--accent); text-decoration: none; background: var(--panel2); border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; }
+.phase-links a.yt { color: #ff8585; }
+.phase-links a:hover { border-color: var(--accent); transform: translateY(-1px); }
+.certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+.cert-card { background: var(--panel); border: 1px solid var(--border); border-left: 3px solid var(--accent2); border-radius: 12px; padding: 13px 15px; text-decoration: none; display: flex; flex-direction: column; gap: 6px; transition: all .15s; }
+.cert-card:hover { transform: translateY(-2px); border-color: var(--accent2); }
+.cert-cost { font-size: 0.62rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--fde); }
+.cert-name { color: var(--text); font-size: 0.85rem; line-height: 1.45; font-weight: 600; }
+.cert-go { color: var(--accent2); font-size: 0.72rem; font-weight: 700; }

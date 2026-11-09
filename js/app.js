@@ -478,6 +478,7 @@
           <div><h4>${p.title}</h4><span class="phase-days">${p.days} · ${p.duration}</span></div>
         </div>
         <ul class="phase-learn">${p.learn.map(l => `<li>${l}</li>`).join('')}</ul>
+        <div class="phase-links"><span class="phase-links-label">Resources</span>${p.res.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join('')}<span class="phase-links-label yt">YouTube</span>${p.yt.map(([n, u]) => `<a class="yt" href="${u}" target="_blank" rel="noopener">▶ ${n}</a>`).join('')}</div>
         <label class="phase-deliverable ${career['d' + p.num] ? 'done' : ''}"><input type="checkbox" data-key="d${p.num}" ${career['d' + p.num] ? 'checked' : ''}><span><b>Deliverable:</b> ${p.deliverable}</span></label>
         <div class="phase-milestone">${p.milestone}</div>
       </div>`).join('');
@@ -495,6 +496,8 @@
     document.getElementById('titlesGrid').innerHTML = CAREER.jobTitles.map(([stage, titles]) => `<div class="title-row"><span class="title-stage">${stage}</span><span class="title-names">${titles}</span></div>`).join('');
 
     document.getElementById('careerResources').innerHTML = CAREER.resources.map(([s, n, u]) => `<a class="career-res" href="${u}" target="_blank" rel="noopener"><span class="career-res-subject">${s}</span><span>${n}</span></a>`).join('');
+
+    document.getElementById('certsGrid').innerHTML = CAREER.certifications.map(([n, cost, u]) => `<a class="cert-card" href="${u}" target="_blank" rel="noopener"><span class="cert-cost">${cost}</span><span class="cert-name">${n}</span><span class="cert-go">Enroll free →</span></a>`).join('');
 
     document.getElementById('milestoneList').innerHTML = CAREER.milestones.map(([d, m], i) => `
       <label class="milestone ${career['m' + i] ? 'done' : ''}"><input type="checkbox" data-key="m${i}" ${career['m' + i] ? 'checked' : ''}><span class="milestone-day">${d}</span><span class="milestone-text">${m}</span></label>`).join('');
