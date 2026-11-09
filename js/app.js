@@ -1,5 +1,5 @@
 (function () {
-  const { R, YT, PHASES, DAYS, ROLES, PHASE_GUIDE, SYLLABUS } = window.SPRINT_DATA;
+  const { R, YT, PHASES, DAYS, ROLES, PHASE_GUIDE, SYLLABUS, MODULES } = window.SPRINT_DATA;
   const STORAGE_KEY = 'sprint45v2';
   const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
   let current = 0;
@@ -328,6 +328,21 @@
   }
   document.getElementById('startDate').addEventListener('change', e => { localStorage.setItem('sprint45-start', e.target.value); updateSprintBanner(); });
 
+  function renderModules() {
+    document.getElementById('moduleList').innerHTML = MODULES.map(m => `
+      <article class="module-card">
+        <div class="module-head">
+          <span class="module-num">${String(m.num).padStart(2, '0')}</span>
+          <div><h3>${m.title}</h3><div class="module-goal">${m.goal}</div></div>
+          <div class="module-meta"><span class="module-days">${m.days}</span><span class="module-roles">${m.roles}</span></div>
+        </div>
+        <div class="module-body">
+          <ol class="module-items">${m.items.map(i => `<li>${i}</li>`).join('')}</ol>
+          <div class="module-resources">${m.resources.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join('')}</div>
+        </div>
+      </article>`).join('');
+  }
+
   /* ===== Roles & Roadmaps view ===== */
   let activeRole = 0;
 
@@ -388,20 +403,20 @@
   }
 
   function switchView(view) {
-    const plan = document.getElementById('planView');
-    const roles = document.getElementById('rolesView');
+    const views = { plan: document.getElementById('planView'), roles: document.getElementById('rolesView'), syllabus: document.getElementById('syllabusView') };
+    const tabs = { plan: document.getElementById('tabPlan'), roles: document.getElementById('tabRoles'), syllabus: document.getElementById('tabSyllabus') };
     const yt = document.getElementById('yt');
-    const tPlan = document.getElementById('tabPlan'), tRoles = document.getElementById('tabRoles');
-    const showPlan = view === 'plan';
-    plan.hidden = !showPlan; roles.hidden = showPlan; yt.style.display = showPlan ? '' : 'none';
-    tPlan.classList.toggle('active', showPlan); tRoles.classList.toggle('active', !showPlan);
-    tPlan.setAttribute('aria-selected', showPlan); tRoles.setAttribute('aria-selected', !showPlan);
-    if (!showPlan) { renderRolePicker(); renderRoleDetail(); }
+    Object.entries(views).forEach(([key, el]) => { el.hidden = key !== view; });
+    Object.entries(tabs).forEach(([key, el]) => { el.classList.toggle('active', key === view); el.setAttribute('aria-selected', key === view); });
+    yt.style.display = view === 'plan' ? '' : 'none';
+    if (view === 'roles') { renderRolePicker(); renderRoleDetail(); }
+    if (view === 'syllabus' && !document.getElementById('moduleList').innerHTML) renderModules();
     window.scrollTo(0, 0);
   }
 
   document.getElementById('tabPlan').onclick = () => switchView('plan');
   document.getElementById('tabRoles').onclick = () => switchView('roles');
+  document.getElementById('tabSyllabus').onclick = () => switchView('syllabus');
 
   renderStats(); renderList(); renderDetail(); renderStreak();
 })();

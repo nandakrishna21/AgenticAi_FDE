@@ -22,6 +22,7 @@
       <div class="view-tabs" role="tablist">
         <button class="view-tab active" id="tabPlan" role="tab" aria-selected="true">Plan</button>
         <button class="view-tab" id="tabRoles" role="tab" aria-selected="false">Roles &amp; Roadmaps</button>
+        <button class="view-tab" id="tabSyllabus" role="tab" aria-selected="false">Full Syllabus</button>
       </div>
       <div class="timer-chip"><b class="timer" id="timer">00:00</b> <button class="mini-btn" id="timerBtn">Start</button></div>
       <button class="icon-btn" id="themeBtn" title="Toggle light / dark" aria-label="Toggle theme">◐</button>
@@ -70,6 +71,14 @@
     <div id="roleCompare" hidden></div>
   </div>
   <div class="role-detail" id="roleDetail" role="tabpanel"></div>
+</section>
+
+<section id="syllabusView" hidden>
+  <div class="syllabus-intro">
+    <h2>From absolute zero → hired. The complete syllabus.</h2>
+    <p>Ten modules covering every topic across the three roles — AI Engineer, Agentic Engineer, FDE. Each lists what you learn, the exact days in the plan, and free resources. Follow top to bottom; skip nothing.</p>
+  </div>
+  <div class="module-list" id="moduleList"></div>
 </section>
 
 <section id="yt">
