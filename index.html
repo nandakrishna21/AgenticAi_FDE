@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,39 +10,49 @@
 </head>
 <body>
 <header>
-  <div class="header-inner">
-    <div class="logo-badge">45</div>
-    <div>
-      <h1>45-Day <span>AI Engineer</span> + <em>Agentic</em> + <span>FDE</span> Sprint</h1>
-      <div class="sub">12h/day &middot; AI Eng 4h &middot; Agentic Eng 2h &middot; DSA 3.5h &middot; FDE 1.5h &middot; Interview 0.5h &middot; 100% free resources</div>
-    </div>
-    <div class="header-right">
-      <div class="view-tabs" role="tablist">
-        <button class="view-tab active" id="tabPlan" role="tab" aria-selected="true">📅 45-Day Plan</button>
-        <button class="view-tab" id="tabRoles" role="tab" aria-selected="false">🎯 Roles &amp; Roadmaps</button>
+  <div class="header-row">
+    <div class="brand">
+      <div class="logo-badge">45</div>
+      <div>
+        <h1>45-Day <span>AI Engineer</span> + <em>Agentic</em> + <span>FDE</span> Sprint</h1>
+        <div class="sub">12h/day &middot; AI 4h &middot; Agentic 2h &middot; DSA 3.5h &middot; FDE 1.5h &middot; Interview 0.5h</div>
       </div>
-      <div class="timer-chip">⏱ <b class="timer" id="timer">00:00:00</b> <button class="icon-btn" id="timerBtn" style="padding:2px 12px;font-size:0.78rem">Start</button></div>
-      <button class="icon-btn" id="themeBtn" title="Toggle light / dark" aria-label="Toggle theme">◐ Theme</button>
-      <button class="icon-btn" id="exportBtn" title="Download progress (JSON)">Export</button>
-      <button class="icon-btn" id="printBtn" title="Print this plan">Print</button>
-      <button class="icon-btn" id="resetBtn" title="Reset all progress">Reset</button>
+    </div>
+    <div class="header-actions">
+      <div class="view-tabs" role="tablist">
+        <button class="view-tab active" id="tabPlan" role="tab" aria-selected="true">Plan</button>
+        <button class="view-tab" id="tabRoles" role="tab" aria-selected="false">Roles &amp; Roadmaps</button>
+      </div>
+      <div class="timer-chip"><b class="timer" id="timer">00:00</b> <button class="mini-btn" id="timerBtn">Start</button></div>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark" aria-label="Toggle theme">◐</button>
+      <details class="menu">
+        <summary aria-label="More options">⋯</summary>
+        <div class="menu-items">
+          <button id="exportBtn">Export progress (JSON)</button>
+          <button id="printBtn">Print full plan</button>
+          <button id="resetBtn" class="danger">Reset all progress</button>
+        </div>
+      </details>
     </div>
   </div>
-  <div class="progress-wrap"><div class="progress-bar" id="bar"></div></div>
-  <div class="stats">
-    <div class="stat-card"><b id="pct">0%</b>Overall progress</div>
-    <div class="stat-card"><b><span id="taskCount">0</span>/<span id="taskTotal">0</span></b>Tasks complete</div>
-    <div class="stat-card highlight"><b><span id="dayCount">0</span>/45</b>Days complete</div>
-    <div class="stat-card streak"><b><span id="streakCount">0</span> 🔥</b>Day streak</div>
-    <div class="stat-card level"><b><span id="levelName">Rookie</span></b><span class="level-bar"><span id="levelFill"></span></span><small><span id="xpCount">0</span> XP</small></div>
+  <div class="progress-line">
+    <div class="progress-wrap"><div class="progress-bar" id="bar"></div></div>
+    <b id="pct">0%</b>
+  </div>
+  <div class="meta-line">
+    <span><b id="taskCount">0</b>/<b id="taskTotal">268</b> tasks</span>
+    <i>·</i><span><b id="dayCount">0</b>/45 days</span>
+    <i>·</i><span><b id="streakCount">0</b> day streak</span>
+    <i>·</i><span class="meta-level"><b id="levelName">Rookie</b> &middot; <span id="xpCount">0</span> XP <span class="level-bar"><span id="levelFill"></span></span></span>
+    <details class="badges" id="badgesDetails"><summary>Achievements &middot; <span id="badgeCount">0</span>/11</summary><div class="badges-strip" id="badgesStrip"></div></details>
   </div>
 </header>
 
 <div class="sprint-banner" id="sprintBanner" hidden>
-  <div class="sb-left"><b id="sbDay">Day 1</b><span id="sbPace">Set your sprint start date to track pacing</span></div>
-  <label class="sb-right">Sprint starts <input type="date" id="startDate"></label>
+  <b id="sbDay">Day 1</b><span id="sbPace">Set your start date</span>
+  <label>Sprint starts <input type="date" id="startDate"></label>
 </div>
-<section class="badges-strip" id="badgesStrip" aria-label="Achievements"></section>
+
 <main id="planView">
   <nav class="sidebar" aria-label="Day planner">
     <div class="search-wrap"><input type="text" id="search" placeholder="Search days, topics, tasks…" aria-label="Search days"></div>
@@ -53,94 +63,89 @@
 
 <section id="rolesView" hidden>
   <div class="roles-intro">
-    <h2>Three roles. One skill stack. First AI Engineer, then Agentic depth, then FDE.</h2>
-    <p>Click any role to see its full syllabus, day-by-day roadmap inside this 45-day plan, interview focus, and curated free resources.</p>
+    <h2>Three roles. One skill stack.</h2>
+    <p>Learn in this order: <b>AI Engineer</b> first (job volume), <b>Agentic depth</b> second (the differentiator), <b>FDE</b> third (the senior move). Click a role for its syllabus, roadmap and YouTube path.</p>
     <div class="role-picker" id="rolePicker" role="tablist" aria-label="Choose a role"></div>
-    <button class="icon-btn" id="compareToggle" style="margin-top:14px">⇄ Compare all three roles side-by-side</button>
+    <button class="icon-btn" id="compareToggle" style="margin-top:12px">⇄ Compare all three side-by-side</button>
     <div id="roleCompare" hidden></div>
   </div>
   <div class="role-detail" id="roleDetail" role="tabpanel"></div>
 </section>
 
 <section id="yt">
-  <h2><span>YouTube resources by phase</span> (all free)</h2>
-  <div class="yt-grid">
-    <div class="yt-card">
-      <h3>Phase 1 — Foundations &amp; LLM APIs</h3>
-      <a href="https://www.youtube.com/@AndrejKarpathy" target="_blank" rel="noopener">Andrej Karpathy<small>"Let's build GPT" — LLM internals from scratch</small></a>
-      <a href="https://www.youtube.com/@krishnaik06" target="_blank" rel="noopener">Krish Naik<small>LLM APIs, prompting, complete Agentic AI course</small></a>
-      <a href="https://www.youtube.com/@campusx-official" target="_blank" rel="noopener">CampusX (Nitish Singh)<small>Best GenAI playlists for absolute beginners</small></a>
-      <a href="https://www.youtube.com/@AssemblyAI" target="_blank" rel="noopener">AssemblyAI<small>LLM, tool-calling, MCP walkthroughs</small></a>
-    </div>
-    <div class="yt-card">
-      <h3>Phase 2 — RAG &amp; Retrieval (AI Eng)</h3>
-      <a href="https://www.youtube.com/playlist?list=PLfaIDFEXuae2LXbO1_PKyVJiQ23ZztA0x" target="_blank" rel="noopener">RAG From Scratch — LangChain official<small>Canonical RAG build series</small></a>
-      <a href="https://www.youtube.com/playlist?list=PLqZXAkvF1bPNQER9mLmDbntNfSpzdDIU5" target="_blank" rel="noopener">LangChain 101 — Greg Kamradt<small>Chains, retrievers, loaders</small></a>
-      <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">freeCodeCamp — Production RAG full course<small>LangChain + vector DBs, 7h+</small></a>
-      <a href="https://www.youtube.com/@DaveEbbelaar" target="_blank" rel="noopener">Dave Ebbelaar<small>Agentic RAG, local models, production patterns</small></a>
-    </div>
-    <div class="yt-card">
-      <h3>Phase 3 — Agentic Engineering</h3>
-      <a href="https://www.youtube.com/@LangChain" target="_blank" rel="noopener">LangChain (official)<small>LangGraph agents, state machines</small></a>
-      <a href="https://www.youtube.com/@codebasics" target="_blank" rel="noopener">codebasics<small>"Agentic AI Crash Course using LangChain"</small></a>
-      <a href="https://www.youtube.com/@krishnaik06" target="_blank" rel="noopener">Krish Naik — Agentic AI / LangGraph<small>10h complete course incl. guardrails &amp; evals</small></a>
-      <a href="https://www.youtube.com/@DaveEbbelaar" target="_blank" rel="noopener">Dave Ebbelaar — LangGraph deep-dives<small>Real architectures, not toy demos</small></a>
-    </div>
-    <div class="yt-card">
-      <h3>Phase 4 — Evals, LLMOps &amp; Production</h3>
-      <a href="https://www.deeplearning.ai/short-courses/" target="_blank" rel="noopener">DeepLearning.AI short courses<small>Evaluating &amp; debugging LLMs, LLMOps, agents</small></a>
-      <a href="https://www.youtube.com/@LangChain" target="_blank" rel="noopener">LangChain — LangSmith tracing<small>Evals in CI, feedback loops</small></a>
-      <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">freeCodeCamp — Docker / MLOps courses<small>Containers, CI/CD</small></a>
-    </div>
-    <div class="yt-card">
-      <h3>Phase 5 — FDE Track</h3>
-      <a href="https://www.youtube.com/results?search_query=forward+deployed+engineer" target="_blank" rel="noopener">YouTube search: "forward deployed engineer"<small>Palantir FDSE talks, OpenAI/Anthropic FDE interviews</small></a>
-      <a href="https://www.youtube.com/@ByteByteGo" target="_blank" rel="noopener">ByteByteGo<small>Explaining systems to non-engineers — essential FDE skill</small></a>
-      <a href="https://www.youtube.com/@Exponent" target="_blank" rel="noopener">Exponent<small>Behavioral, scoping &amp; negotiation mocks</small></a>
-    </div>
-    <div class="yt-card">
-      <h3>Phase 6 — DSA &amp; Interview prep</h3>
-      <a href="https://www.youtube.com/@NeetCode" target="_blank" rel="noopener">NeetCode<small>150 pattern videos + mock interviews</small></a>
-      <a href="https://www.youtube.com/@ByteByteGo" target="_blank" rel="noopener">ByteByteGo — system design<small>RAG/agent system design for interviews</small></a>
-      <a href="https://www.youtube.com/@Exponent" target="_blank" rel="noopener">Exponent<small>Mock interviews, negotiation (free tier)</small></a>
-    </div>
-  </div>
-
-  <h2 style="margin-top:26px"><span>freeCodeCamp full courses mapped to your syllabus</span> (all free)</h2>
+  <h2><span>YouTube by phase</span> (free)</h2>
   <div class="yt-grid">
     <div class="yt-card">
       <h3>Phase 1 — Foundations</h3>
-      <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">Python for Everybody (full course)<small>https://www.youtube.com/@freecodecamp — search "Python for Everybody"</small></a>
-      <a href="https://youtu.be/nJ25yl34Uqw" target="_blank" rel="noopener">GenAI Essentials — freeCodeCamp<small>Core GenAI concepts in one free course</small></a>
-      <a href="https://youtu.be/mEsleV16qdo" target="_blank" rel="noopener">Generative AI Full Course — freeCodeCamp<small>LLMs, prompting, LangChain, RAG end-to-end</small></a>
+      <a href="https://www.youtube.com/@AndrejKarpathy" target="_blank" rel="noopener">Andrej Karpathy<small>"Let's build GPT" — internals from scratch</small></a>
+      <a href="https://www.youtube.com/@krishnaik06" target="_blank" rel="noopener">Krish Naik<small>LLM APIs, prompting, agentic AI</small></a>
+      <a href="https://www.youtube.com/@campusx-official" target="_blank" rel="noopener">CampusX<small>Beginner GenAI playlists</small></a>
+      <a href="https://www.youtube.com/@AssemblyAI" target="_blank" rel="noopener">AssemblyAI<small>Tool calling, MCP walkthroughs</small></a>
     </div>
     <div class="yt-card">
       <h3>Phase 2 — RAG</h3>
-      <a href="https://youtu.be/sVcwVQRHIc8" target="_blank" rel="noopener">RAG from Scratch — freeCodeCamp<small>Retrieval, chunking, embeddings, generation</small></a>
-      <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">Production RAG with LangChain &amp; Vector DBs<small>Search the channel for "Production RAG" (7h+)</small></a>
+      <a href="https://www.youtube.com/playlist?list=PLfaIDFEXuae2LXbO1_PKyVJiQ23ZztA0x" target="_blank" rel="noopener">RAG From Scratch — LangChain<small>Canonical build series</small></a>
+      <a href="https://www.youtube.com/playlist?list=PLqZXAkvF1bPNQER9mLmDbntNfSpzdDIU5" target="_blank" rel="noopener">Greg Kamradt — LangChain 101<small>Retrievers &amp; loaders</small></a>
+      <a href="https://youtu.be/sVcwVQRHIc8" target="_blank" rel="noopener">RAG from Scratch — freeCodeCamp<small>End-to-end in one video</small></a>
+      <a href="https://www.youtube.com/@DaveEbbelaar" target="_blank" rel="noopener">Dave Ebbelaar<small>Agentic RAG patterns</small></a>
     </div>
     <div class="yt-card">
-      <h3>Phase 3 — Agents</h3>
-      <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">AI Agents courses on freeCodeCamp<small>Search the channel for "AI agents LangGraph" and "LangChain agents"</small></a>
+      <h3>Phase 3 — Agentic</h3>
+      <a href="https://www.youtube.com/watch?v=rV3HJ4LEZ7k" target="_blank" rel="noopener">Agentic AI (10h) — Krish Naik<small>LangGraph + guardrails + evals</small></a>
+      <a href="https://www.youtube.com/@codebasics" target="_blank" rel="noopener">codebasics<small>Agentic AI crash course</small></a>
+      <a href="https://www.youtube.com/@LangChain" target="_blank" rel="noopener">LangChain (official)<small>LangGraph deep-dives</small></a>
+      <a href="https://www.youtube.com/@DaveEbbelaar" target="_blank" rel="noopener">Dave Ebbelaar<small>Real agent architectures</small></a>
     </div>
     <div class="yt-card">
       <h3>Phase 4 — Production</h3>
-      <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">Docker &amp; MLOps courses<small>Search "Docker full course" and "MLOps" — needed for Day 32 deploy</small></a>
+      <a href="https://www.deeplearning.ai/short-courses/" target="_blank" rel="noopener">DeepLearning.AI short courses<small>Evaluating &amp; debugging LLMs</small></a>
+      <a href="https://www.youtube.com/playlist?list=PLfaIDFEXuae0um8Fj0V4dHG37fGFU8Q5S" target="_blank" rel="noopener">LangSmith Evals — LangChain<small>Evals in CI</small></a>
+      <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">freeCodeCamp<small>Docker &amp; MLOps courses</small></a>
     </div>
     <div class="yt-card">
-      <h3>Phase 6 — DSA</h3>
-      <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">DSA full courses (12h+)<small>Search "data structures and algorithms full course"</small></a>
-      <a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/" target="_blank" rel="noopener">freeCodeCamp — Algorithm practice<small>Structured coding curriculum, completely free</small></a>
+      <h3>Phase 5 — FDE</h3>
+      <a href="https://www.youtube.com/results?search_query=forward+deployed+engineer" target="_blank" rel="noopener">FDE talks<small>Palantir, OpenAI, Anthropic</small></a>
+      <a href="https://www.youtube.com/@ByteByteGo" target="_blank" rel="noopener">ByteByteGo<small>Explaining systems to non-engineers</small></a>
+      <a href="https://www.youtube.com/@Exponent" target="_blank" rel="noopener">Exponent<small>Scoping &amp; negotiation mocks</small></a>
+    </div>
+    <div class="yt-card">
+      <h3>Phase 6 — DSA &amp; Interviews</h3>
+      <a href="https://www.youtube.com/@NeetCode" target="_blank" rel="noopener">NeetCode<small>150 pattern videos + mocks</small></a>
+      <a href="https://www.youtube.com/@ByteByteGo" target="_blank" rel="noopener">ByteByteGo<small>System design</small></a>
+      <a href="https://www.youtube.com/@Exponent" target="_blank" rel="noopener">Exponent<small>Mock interviews, negotiation</small></a>
+    </div>
+  </div>
+
+  <h2 style="margin-top:22px"><span>freeCodeCamp mapped to syllabus</span></h2>
+  <div class="yt-grid">
+    <div class="yt-card">
+      <h3>Phase 1</h3>
+      <a href="https://youtu.be/nJ25yl34Uqw" target="_blank" rel="noopener">GenAI Essentials<small>Concepts in one course</small></a>
+      <a href="https://youtu.be/mEsleV16qdo" target="_blank" rel="noopener">Generative AI Full Course<small>LLM → LangChain → RAG</small></a>
+    </div>
+    <div class="yt-card">
+      <h3>Phase 2</h3>
+      <a href="https://youtu.be/sVcwVQRHIc8" target="_blank" rel="noopener">RAG from Scratch</a>
+      <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">Production RAG (search channel)<small>LangChain + vector DBs, 7h+</small></a>
+    </div>
+    <div class="yt-card">
+      <h3>Phase 3</h3>
+      <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">AI Agents / LangGraph courses<small>Search "AI agents" on the channel</small></a>
+    </div>
+    <div class="yt-card">
+      <h3>Phase 6</h3>
+      <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">DSA full courses (12h+)<small>Data structures &amp; algorithms</small></a>
     </div>
   </div>
 </section>
 
 <footer class="footer-bar">
-  <span>100% free resources &middot; Progress saved locally in your browser (localStorage)</span>
+  <span>100% free resources &middot; progress saved locally &middot; <span id="footYear"></span></span>
   <span>45-Day Sprint &middot; built for Nanda Krishna</span>
 </footer>
 
 <script src="js/data.js"></script>
 <script src="js/app.js"></script>
+<script>document.getElementById('footYear').textContent = new Date().getFullYear();</script>
 </body>
 </html>

@@ -391,7 +391,7 @@ const ROLES = [
     name: "AI Engineer",
     tagline: "Build LLM-powered product features that serve thousands of users",
     color: "ai",
-    whatYouOwn: "A system or feature many users touch ï¿½ retrieval quality, agent reliability, cost and latency, and a measurable eval suite.",
+    whatYouOwn: "A system or feature many users touch  â€”  retrieval quality, agent reliability, cost and latency, and a measurable eval suite.",
     hardPart: "Model quality at scale, latency, cost",
     judgedOn: "Eval pass-rate, product metrics, reliability",
     travel: "None (product team, your codebase)",
@@ -407,18 +407,18 @@ const ROLES = [
       "LLM system design: RAG at scale, LLM gateways, eval infrastructure"
     ],
     roadmap: [
-      { days: "Days 1ï¿½7", focus: "Foundations: Python, LLM APIs, prompting, tool calling", phase: 1 },
-      { days: "Days 8ï¿½14", focus: "RAG & retrieval ï¿½ your first shippable AI system", phase: 2 },
-      { days: "Days 15ï¿½21", focus: "Agents & tool use ï¿½ the differentiating skill", phase: 3 },
-      { days: "Days 22ï¿½28", focus: "Evals, tracing, cost control ï¿½ what makes it production-grade", phase: 4 },
-      { days: "Days 29ï¿½35", focus: "Flagship project + public demo (your interview artifact)", phase: 5 },
-      { days: "Days 36ï¿½45", focus: "Resume, apply to AI Engineer roles, system design + mocks", phase: 6 }
+      { days: "Days 1 â€” 7", focus: "Foundations: Python, LLM APIs, prompting, tool calling", phase: 1 },
+      { days: "Days 8 â€” 14", focus: "RAG & retrieval  â€”  your first shippable AI system", phase: 2 },
+      { days: "Days 15 â€” 21", focus: "Agents & tool use  â€”  the differentiating skill", phase: 3 },
+      { days: "Days 22 â€” 28", focus: "Evals, tracing, cost control  â€”  what makes it production-grade", phase: 4 },
+      { days: "Days 29 â€” 35", focus: "Flagship project + public demo (your interview artifact)", phase: 5 },
+      { days: "Days 36 â€” 45", focus: "Resume, apply to AI Engineer roles, system design + mocks", phase: 6 }
     ],
     interviewFocus: [
       "LLM system design: 'Design RAG for a bank' (RBAC, freshness, multi-tenant)",
       "Deep-dive your flagship: architecture choices, eval numbers, cost per query",
       "Rapid-fire: chunking strategies, hybrid search, LLM-as-judge calibration, CI eval gates",
-      "DSA: standard patterns (arrays ? DP) ï¿½ NeetCode 150"
+      "DSA: standard patterns (arrays ? DP)  â€”  NeetCode 150"
     ],
     youtube: [
       ["1. Generative AI for Beginners â€” Microsoft full course","https://www.youtube.com/playlist?list=PLlrxD0HtieHj2nfK54c62lcs3-YSTx3Je"],
@@ -444,7 +444,7 @@ const ROLES = [
     name: "Agentic Engineer",
     tagline: "Make autonomous systems reliable: loops, tools, guardrails, recovery",
     color: "fde",
-    whatYouOwn: "The agentic system itself ï¿½ planning loops, tool orchestration, state machines, failure handling, cost caps, and safe autonomy.",
+    whatYouOwn: "The agentic system itself  â€”  planning loops, tool orchestration, state machines, failure handling, cost caps, and safe autonomy.",
     hardPart: "Control flow: loops, retries, cost, safe actions on non-deterministic components",
     judgedOn: "Task completion rate, safe failure modes, cost per run",
     travel: "None (platform / product team)",
@@ -458,20 +458,20 @@ const ROLES = [
       "Failure handling: retries with backoff, fallback models, graceful degradation",
       "Trajectory evals: golden tool-call sequences, not just final answers",
       "Observability: step-level traces, per-run cost reports, audit logs",
-      "Multi-agent patterns: researcher/critic, orchestrator/worker ï¿½ and when NOT to use them"
+      "Multi-agent patterns: researcher/critic, orchestrator/worker  â€”  and when NOT to use them"
     ],
     roadmap: [
-      { days: "Days 1ï¿½7", focus: "Foundations (shared core) ï¿½ LLM APIs, prompting, tools", phase: 1 },
-      { days: "Days 8ï¿½14", focus: "RAG as agent memory ï¿½ retrieval is the agent's context source", phase: 2 },
-      { days: "Days 15ï¿½21", focus: "CORE PHASE ï¿½ LangGraph, MCP, guardrails, HITL, multi-step agents", phase: 3 },
-      { days: "Days 22ï¿½28", focus: "Trajectory evals, tracing, cost caps ï¿½ the production bar", phase: 4 },
-      { days: "Days 29ï¿½35", focus: "Flagship = an agent with evals, guardrails and a live trace demo", phase: 5 },
-      { days: "Days 36ï¿½45", focus: "Deep-dive prep: agent failure modes, trajectory evals, live coding", phase: 6 }
+      { days: "Days 1 â€” 7", focus: "Foundations (shared core)  â€”  LLM APIs, prompting, tools", phase: 1 },
+      { days: "Days 8 â€” 14", focus: "RAG as agent memory  â€”  retrieval is the agent's context source", phase: 2 },
+      { days: "Days 15 â€” 21", focus: "CORE PHASE  â€”  LangGraph, MCP, guardrails, HITL, multi-step agents", phase: 3 },
+      { days: "Days 22 â€” 28", focus: "Trajectory evals, tracing, cost caps  â€”  the production bar", phase: 4 },
+      { days: "Days 29 â€” 35", focus: "Flagship = an agent with evals, guardrails and a live trace demo", phase: 5 },
+      { days: "Days 36 â€” 45", focus: "Deep-dive prep: agent failure modes, trajectory evals, live coding", phase: 6 }
     ],
     interviewFocus: [
-      "'Agent loops forever ï¿½ what do you do?' (iteration caps, timeouts, human escalation)",
+      "'Agent loops forever  â€”  what do you do?' (iteration caps, timeouts, human escalation)",
       "'How do you eval an agent trajectory?' (golden sequences, step-level judges, CI gates)",
-      "'Design an agent for X workflow' ï¿½ with guardrails, HITL and cost caps stated unprompted",
+      "'Design an agent for X workflow'  â€”  with guardrails, HITL and cost caps stated unprompted",
       "Idempotency and exactly-once semantics for side-effecting tools",
       "MCP: why a protocol beats per-app tool glue"
     ],
@@ -500,11 +500,11 @@ const ROLES = [
     name: "Forward Deployed Engineer",
     tagline: "Own one customer's outcome inside their messy reality",
     color: "fde",
-    whatYouOwn: "The outcome at one account: messy data, blocked access, sceptical stakeholders, security review, rollout, adoption ï¿½ discovery to production.",
+    whatYouOwn: "The outcome at one account: messy data, blocked access, sceptical stakeholders, security review, rollout, adoption  â€”  discovery to production.",
     hardPart: "The environment & people: undocumented data, permissions, politics, disagreement on 'correct'",
     judgedOn: "Customer adoption + production outcome (and expansion revenue)",
-    travel: "25ï¿½50% (OpenAI/Anthropic postings), on-call possible",
-    bestIf: "You like fast end-to-end ownership, ambiguity, direct customer impact, and can handle travel ï¿½ and saying no.",
+    travel: "25 â€” 50% (OpenAI/Anthropic postings), on-call possible",
+    bestIf: "You like fast end-to-end ownership, ambiguity, direct customer impact, and can handle travel  â€”  and saying no.",
     syllabus: [
       "Discovery: audit the real workflow vs the documented one; who signs off; success metric",
       "Scoping: 2-week POC vs 2-month build; scope negotiation; saying no with a reason",
@@ -512,16 +512,16 @@ const ROLES = [
       "Deployment into customer environments: VPC, on-prem, air-gapped, data residency, RBAC",
       "Security review readiness: infosec Q&A, PII handling, audit logs, rollback plans",
       "Rollout: pilot ? canary ? full rollout with explicit rollback at each stage",
-      "Exec communication: 10-min updates, outcome metrics, expansion asks ï¿½ zero jargon",
-      "Handover: runbook, eval report, walkthrough ï¿½ the system must survive your departure",
+      "Exec communication: 10-min updates, outcome metrics, expansion asks  â€”  zero jargon",
+      "Handover: runbook, eval report, walkthrough  â€”  the system must survive your departure",
       "Commercial judgment: autonomy ladder (suggest ? draft ? approve ? act), value-per-workflow framing"
     ],
     roadmap: [
-      { days: "Days 1ï¿½7", focus: "Foundations + FDE landscape: read the market analyses, pick your lean (builder vs strategist)", phase: 1 },
-      { days: "Days 8ï¿½14", focus: "RAG as the typical first FDE deliverable; practice the 5 discovery questions", phase: 2 },
-      { days: "Days 15ï¿½21", focus: "Agents with guardrails + the autonomy ladder ï¿½ FDE demos live on this", phase: 3 },
-      { days: "Days 22ï¿½28", focus: "The negotiated-eval skill + acceptance criteria ï¿½ FDE's #1 interview topic", phase: 4 },
-      { days: "Days 29ï¿½35", focus: "CORE PHASE ï¿½ build the flagship as a customer engagement: SOW ? build ? deploy ? handover pack", phase: 5 },
+      { days: "Days 1 â€” 7", focus: "Foundations + FDE landscape: read the market analyses, pick your lean (builder vs strategist)", phase: 1 },
+      { days: "Days 8 â€” 14", focus: "RAG as the typical first FDE deliverable; practice the 5 discovery questions", phase: 2 },
+      { days: "Days 15 â€” 21", focus: "Agents with guardrails + the autonomy ladder  â€”  FDE demos live on this", phase: 3 },
+      { days: "Days 22 â€” 28", focus: "The negotiated-eval skill + acceptance criteria  â€”  FDE's #1 interview topic", phase: 4 },
+      { days: "Days 29 â€” 35", focus: "CORE PHASE  â€”  build the flagship as a customer engagement: SOW ? build ? deploy ? handover pack", phase: 5 },
       { days: "Days 36â€“45", focus: "FDE resume variant, 5 targeted FDE applications, mock FDE rounds, negotiation", phase: 6 }
     ],
     playbook: [
@@ -568,10 +568,10 @@ const ROLES = [
       ]}
     ],
     interviewFocus: [
-      "'Scope a POC from this messy brief, out loud, in 10 minutes' ï¿½ the signature Palantir-style round",
-      "'Two experts disagree on correctness ï¿½ how do you settle it?' (negotiated rubric)",
+      "'Scope a POC from this messy brief, out loud, in 10 minutes'  â€”  the signature Palantir-style round",
+      "'Two experts disagree on correctness  â€”  how do you settle it?' (negotiated rubric)",
       "Behavioral: difficult stakeholder, production incident at a customer, saying no to scope, failure",
-      "'Why FDE and not product engineering?' ï¿½ travel, ambiguity, outcome ownership",
+      "'Why FDE and not product engineering?'  â€”  travel, ambiguity, outcome ownership",
       "Your flagship as a case study: constraint ? what shipped ? numbers ? lesson"
     ],
     youtube: [
@@ -598,95 +598,95 @@ window.SPRINT_DATA.ROLES = ROLES;
 
 const SYLLABUS = [
   // Day 1
-  ["What an LLM really is: next-token prediction, parameters, no database — why hallucination is structural","Tokens & tokenization: ~0.75 words per token, input vs output pricing math (do 3 cost calculations by hand)","Messages API: system / user / assistant roles; statelessness — memory = resending history","Sampling parameters: temperature, top_p, max_tokens — when to use 0 vs 0.7","Context windows & 'lost in the middle'; KV cache at a conceptual level","Lab: venv + .env + first streaming call to OpenAI AND Anthropic; print usage/tokens"],
+  ["What an LLM really is: next-token prediction, parameters, no database  â€”  why hallucination is structural","Tokens & tokenization: ~0.75 words per token, input vs output pricing math (do 3 cost calculations by hand)","Messages API: system / user / assistant roles; statelessness  â€”  memory = resending history","Sampling parameters: temperature, top_p, max_tokens  â€”  when to use 0 vs 0.7","Context windows & 'lost in the middle'; KV cache at a conceptual level","Lab: venv + .env + first streaming call to OpenAI AND Anthropic; print usage/tokens"],
   // Day 2
-  ["Prompt anatomy: role, context, task, constraints, output format — the 5-part system prompt","Few-shot vs zero-shot; when examples beat instructions","Chain-of-thought: 'think step by step' — pros/cons and token cost","Delimiters & instruction/data separation (prevents prompt injection)","Structured outputs: JSON schema mode, pydantic validation, retry-on-invalid","Lab: build 4 reusable prompt templates (classify / extract / summarize / rewrite) with typed JSON outputs"],
+  ["Prompt anatomy: role, context, task, constraints, output format  â€”  the 5-part system prompt","Few-shot vs zero-shot; when examples beat instructions","Chain-of-thought: 'think step by step'  â€”  pros/cons and token cost","Delimiters & instruction/data separation (prevents prompt injection)","Structured outputs: JSON schema mode, pydantic validation, retry-on-invalid","Lab: build 4 reusable prompt templates (classify / extract / summarize / rewrite) with typed JSON outputs"],
   // Day 3
   ["Tool calling end-to-end: declare name + description + JSON schema ? model emits structured call ? your code executes ? result returns to model","Designing tool descriptions the model can actually choose correctly (verbs, when-to-use hints)","Argument validation & malformed-call handling; unknown tool names","Token cost of tool schemas in context","Lab: calculator + web search tools wired to a chat loop; log every call"],
   // Day 4
   ["Conversation memory patterns: sliding window, summarization, SQLite persistence","CLI UX: commands, /help, graceful exit, colored output","Error handling: rate limits, retries with backoff, timeouts","Streaming display in a terminal","Lab: ship the CLI chatbot; write README with setup steps; record 60s demo"],
   // Day 5
-  ["Embeddings: what a vector is; cosine similarity vs dot product; dimensions (384/768/1536)","Embedding model tradeoffs: OpenAI text-embedding-3 vs open (BGE, E5)","Vector DBs: Chroma (local) vs pgvector (Postgres) vs Pinecone (managed) — when each","Indexing: HNSW intuition; metadata filtering; persistence","Lab: embed 100 docs, query them, compare top-5 for related vs unrelated queries"],
+  ["Embeddings: what a vector is; cosine similarity vs dot product; dimensions (384/768/1536)","Embedding model tradeoffs: OpenAI text-embedding-3 vs open (BGE, E5)","Vector DBs: Chroma (local) vs pgvector (Postgres) vs Pinecone (managed)  â€”  when each","Indexing: HNSW intuition; metadata filtering; persistence","Lab: embed 100 docs, query them, compare top-5 for related vs unrelated queries"],
   // Day 6
-  ["Retrieval-augmented generation: the full loop (query ? embed ? search ? stuff context ? generate)","Chunking: fixed, recursive (paragraph?sentence), semantic; overlap tradeoffs","Prompt assembly for RAG: instruction + retrieved chunks + question; citation instructions","Measuring: which chunking won on your 5 test queries — write the comparison table","Lab: bolt retrieval onto Day-4 chatbot ? working RAG v0"],
+  ["Retrieval-augmented generation: the full loop (query ? embed ? search ? stuff context ? generate)","Chunking: fixed, recursive (paragraph?sentence), semantic; overlap tradeoffs","Prompt assembly for RAG: instruction + retrieved chunks + question; citation instructions","Measuring: which chunking won on your 5 test queries  â€”  write the comparison table","Lab: bolt retrieval onto Day-4 chatbot ? working RAG v0"],
   // Day 7
-  ["Consolidation week: re-do your weakest topic — no new material today","Learning log method: learned / built / stuck / next — 5 minutes, every Sunday","FDE landscape: the 5 FDE jobs (production builder, pre-sales, strategist, domain expert, field engineer)","Resume headline + GitHub profile refresh","Mock: 5-minute self-intro out loud, recorded"],
+  ["Consolidation week: re-do your weakest topic  â€”  no new material today","Learning log method: learned / built / stuck / next  â€”  5 minutes, every Sunday","FDE landscape: the 5 FDE jobs (production builder, pre-sales, strategist, domain expert, field engineer)","Resume headline + GitHub profile refresh","Mock: 5-minute self-intro out loud, recorded"],
   // Day 8
   ["Naive vs advanced RAG: HyDE, query rewriting, multi-query, step-back prompting","Pipeline design doc: ingest ? clean ? chunk ? embed ? store ? retrieve ? re-rank ? generate ? cite","When RAG fails: stale data (? re-index pipeline), wrong chunks (? better retrieval), hallucination (? grounding)","Token budget: how much context to stuff and why more ? better","Deliverable: RAG design document committed to repo"],
   // Day 9
-  ["Vector DB operations: upsert, query, metadata filter (where clauses), persistence, namespaces","Hybrid indexing: dense (semantic) + sparse (BM25 keywords) — why each catches what the other misses","Benchmarking methodology: same 20 queries × 3 chunking strategies ? recall@k table","pgvector vs Chroma: install, inspect with psql or chroma cli","Security note: where embeddings can leak content (membership inference) — know the risk"],
+  ["Vector DB operations: upsert, query, metadata filter (where clauses), persistence, namespaces","Hybrid indexing: dense (semantic) + sparse (BM25 keywords)  â€”  why each catches what the other misses","Benchmarking methodology: same 20 queries  â€”  3 chunking strategies ? recall@k table","pgvector vs Chroma: install, inspect with psql or chroma cli","Security note: where embeddings can leak content (membership inference)  â€”  know the risk"],
   // Day 10
-  ["BM25Okapi intuition: term frequency × inverse document frequency; why keywords still matter","Re-rankers: bi-encoder (fast, retrieval) vs cross-encoder (slow, precise) — two-stage retrieval","Fusion: reciprocal rank fusion (RRF) for combining dense+sparse","Cohere Rerank free tier or local cross-encoder (ms-marco-MiniLM)","Measure: same 10 queries before/after re-ranking — table the latency vs quality win"],
+  ["BM25Okapi intuition: term frequency  â€”  inverse document frequency; why keywords still matter","Re-rankers: bi-encoder (fast, retrieval) vs cross-encoder (slow, precise)  â€”  two-stage retrieval","Fusion: reciprocal rank fusion (RRF) for combining dense+sparse","Cohere Rerank free tier or local cross-encoder (ms-marco-MiniLM)","Measure: same 10 queries before/after re-ranking  â€”  table the latency vs quality win"],
   // Day 11
   ["Document ingestion of messy real PDFs: PyMuPDF/pdfplumber, OCR for scans (Tesseract), table extraction","Handling bad text: encoding issues, headers/footers, multi-column layouts","Citations: chunk ? source page mapping; 'according to [doc, p.3]' format","No-answer handling: similarity threshold + 'I don't know' instruction","Deliverable: RAG v1 answering questions over YOUR documents with verifiable citations"],
   // Day 12
-  ["Retrieval tuning knobs: top-k, chunk overlap, rerank depth, score threshold — one variable at a time","Grounding & faithfulness: 'answer ONLY from context' + citation verification pass","Failure taxonomy: wrong chunk / missing context / hallucination / stale data — log each with examples","Prompt iteration discipline: change one thing, re-run the same 10 queries, keep the winner","Deliverable: before/after metrics table on your golden 10"],
+  ["Retrieval tuning knobs: top-k, chunk overlap, rerank depth, score threshold  â€”  one variable at a time","Grounding & faithfulness: 'answer ONLY from context' + citation verification pass","Failure taxonomy: wrong chunk / missing context / hallucination / stale data  â€”  log each with examples","Prompt iteration discipline: change one thing, re-run the same 10 queries, keep the winner","Deliverable: before/after metrics table on your golden 10"],
   // Day 13
-  ["Golden set construction: 20 Q/A from real docs incl. unanswerable cases; leakage check","Metrics: recall@k (retrieval) vs faithfulness/relevance (generation) — know what each proves","LLM-as-judge basics: pairwise vs absolute scoring; why you must spot-check the judge","Eval harness structure: run_eval.py ? JSON report ? tracked pass-rate","Deliverable: baseline vs tuned comparison committed to repo"],
+  ["Golden set construction: 20 Q/A from real docs incl. unanswerable cases; leakage check","Metrics: recall@k (retrieval) vs faithfulness/relevance (generation)  â€”  know what each proves","LLM-as-judge basics: pairwise vs absolute scoring; why you must spot-check the judge","Eval harness structure: run_eval.py ? JSON report ? tracked pass-rate","Deliverable: baseline vs tuned comparison committed to repo"],
   // Day 14
-  ["Review week 2 — no new material","RAG design doc polish: architecture diagram + metrics + failure modes","FDE sim: 15-min mock discovery call — record yourself asking: problem, data, users, success metric, timeline, stakeholders","Debrief framework: what did I ask, what did I miss, what would I ask differently","Mock DSA #1: 45 minutes, timed, then honest review"],
+  ["Review week 2  â€”  no new material","RAG design doc polish: architecture diagram + metrics + failure modes","FDE sim: 15-min mock discovery call  â€”  record yourself asking: problem, data, users, success metric, timeline, stakeholders","Debrief framework: what did I ask, what did I miss, what would I ask differently","Mock DSA #1: 45 minutes, timed, then honest review"],
   // Day 15
   ["Agent loop anatomy: observation ? reasoning ? action (ReAct pattern)","LangGraph core: State (TypedDict), nodes, edges, conditional edges, cycles","Why state machines > prompt chains: inspectability, resumability, testability","Minimal ReAct agent from scratch, then the same thing in LangGraph","When agents are the wrong tool (single-shot tasks, deterministic pipelines)"],
   // Day 16
-  ["Tool schema design: name, description, parameters (JSON Schema) — the model reads these to choose","MCP (Model Context Protocol): what it solves — one tool server, any agent (USB-C analogy)","MCP architecture: host ? client ? server; tools/resources/prompts primitives","Run an MCP server (filesystem or GitHub) and connect it to your agent","Security: MCP servers have your permissions — treat them as trusted code"],
+  ["Tool schema design: name, description, parameters (JSON Schema)  â€”  the model reads these to choose","MCP (Model Context Protocol): what it solves  â€”  one tool server, any agent (USB-C analogy)","MCP architecture: host ? client ? server; tools/resources/prompts primitives","Run an MCP server (filesystem or GitHub) and connect it to your agent","Security: MCP servers have your permissions  â€”  treat them as trusted code"],
   // Day 17
   ["Multi-step agent design: planner ? executor ? verifier","Loop control: max_iterations, token budget, timeout, stop conditions","State management: what goes in State vs external store","Full trace capture: every step logged (input/output/tokens/latency)","Lab: research agent (search ? read ? synthesize ? cite) with all guardrails on"],
   // Day 18
   ["Retry patterns: exponential backoff + jitter; fallback model routing","Idempotency: why 'create_ticket' must be safe to retry (idempotency keys)","Prompt injection: 3 attack classes (ignore-instructions, exfiltration, tool hijack) + defenses","Sandboxing tool execution; allow-list actions; deny-list patterns","Circuit breakers: stop after N consecutive failures, alert a human"],
   // Day 19
-  ["Human-in-the-loop: interrupt_before / approval gates for side-effecting tools","Autonomy ladder design: suggest ? draft ? approve ? act — and when to graduate a stage","State persistence: checkpointers (SQLite); resume after crash/interrupt","Audit logging: who approved what, when, with what context","Escalation design: when the agent is stuck ? hand off with full context, not a shrug"],
+  ["Human-in-the-loop: interrupt_before / approval gates for side-effecting tools","Autonomy ladder design: suggest ? draft ? approve ? act  â€”  and when to graduate a stage","State persistence: checkpointers (SQLite); resume after crash/interrupt","Audit logging: who approved what, when, with what context","Escalation design: when the agent is stuck ? hand off with full context, not a shrug"],
   // Day 20
-  ["Agent trajectory evals: golden tool-call sequences; step-level scoring","Trace analysis workflow: find the top failure ? fix ? re-run eval suite","Cost report: $ per completed task, tokens per step — know your unit economics","Determinism tactics: temperature 0 for tool-choosing, seed prompts for tests","Deliverable: hardened agent v2 + eval results + cost table"],
+  ["Agent trajectory evals: golden tool-call sequences; step-level scoring","Trace analysis workflow: find the top failure ? fix ? re-run eval suite","Cost report: $ per completed task, tokens per step  â€”  know your unit economics","Determinism tactics: temperature 0 for tool-choosing, seed prompts for tests","Deliverable: hardened agent v2 + eval results + cost table"],
   // Day 21
-  ["Review week 3 — no new material","Agent architecture diagram: nodes, edges, state, guardrails, HITL points","FDE sim: discovery call #2 on the 'claims adjusters' brief — scope a 6-week POC out loud, recorded","Feedback loop: play it back, note the 3 weakest moments","Mock DSA #2 + mock: 'Design an agent for X workflow'"],
+  ["Review week 3  â€”  no new material","Agent architecture diagram: nodes, edges, state, guardrails, HITL points","FDE sim: discovery call #2 on the 'claims adjusters' brief  â€”  scope a 6-week POC out loud, recorded","Feedback loop: play it back, note the 3 weakest moments","Mock DSA #2 + mock: 'Design an agent for X workflow'"],
   // Day 22
   ["Golden sets at scale: 30+ cases; stratified by task type and difficulty; unanswerables included","Eval harness design: dataset ? runner ? judge ? report ? threshold gate","Classification of evals: exact-match, contains, regex, semantic/LLM-judge","Regression tracking: pass-rate over time; per-category breakdowns","Deliverable: automated offline eval for RAG + agent"],
   // Day 23
-  ["LLM-as-judge: absolute rubric scoring vs pairwise comparison — when to use which","Rubric design: dimensions (correctness, groundedness, completeness, format) with score anchors 1–5","Calibration: judge vs 10 human-labeled cases; Cohen's agreement; iterate the rubric","Bias awareness: position bias, verbosity bias, self-preference","Deliverable: calibrated judge wired into CI"],
+  ["LLM-as-judge: absolute rubric scoring vs pairwise comparison  â€”  when to use which","Rubric design: dimensions (correctness, groundedness, completeness, format) with score anchors 1 â€” 5","Calibration: judge vs 10 human-labeled cases; Cohen's agreement; iterate the rubric","Bias awareness: position bias, verbosity bias, self-preference","Deliverable: calibrated judge wired into CI"],
   // Day 24
-  ["Tracing: what to capture (prompts, context, tool I/O, tokens, latency, errors)","Phoenix (open source) vs LangSmith (managed) — instrumentation in ~10 lines","Dashboards: latency p50/p95, cost/run, error rate, eval pass-rate, tool success rate","Alerting: p95 latency breach, error spike, eval regression","Deliverable: live dashboard + one alert rule + on-call thinking"],
+  ["Tracing: what to capture (prompts, context, tool I/O, tokens, latency, errors)","Phoenix (open source) vs LangSmith (managed)  â€”  instrumentation in ~10 lines","Dashboards: latency p50/p95, cost/run, error rate, eval pass-rate, tool success rate","Alerting: p95 latency breach, error spike, eval regression","Deliverable: live dashboard + one alert rule + on-call thinking"],
   // Day 25
-  ["Semantic caching: cache by embedding similarity of queries; invalidation","Model routing: cheap tier first (gpt-4o-mini/Haiku), escalate on judge failure","Context engineering cost cuts: retrieved chunks trimming, prompt compression","Budget enforcement: hard cap per request + daily cap + alerts","Measure & document: $/query before vs after — target = $0.01"],
+  ["Semantic caching: cache by embedding similarity of queries; invalidation","Model routing: cheap tier first (gpt-4o-mini/Haiku), escalate on judge failure","Context engineering cost cuts: retrieved chunks trimming, prompt compression","Budget enforcement: hard cap per request + daily cap + alerts","Measure & document: $/query before vs after  â€”  target = $0.01"],
   // Day 26
   ["Prompt injection defense-in-depth: delimiters, instruction hierarchy, output validation, tool allow-lists","10-case injection test suite: ignore-previous, system-prompt-leak, tool-misuse, data-exfiltration","PII/secret detection in outputs (regex + Presidio); redaction before logging","Sandboxed tools: least privilege, separate credentials, audit trail","Output policy: length/format validators; brand-safety classifiers for customer-facing agents"],
   // Day 27
-  ["CI for AI: GitHub Actions running the eval suite on PR; fail on regression (e.g., pass-rate drops >2%)","Artifacts & history: store eval reports per commit; trend line in README badge","Gating strategy: block merge vs warn — calibrate to eval confidence","Rollout plan: pilot ? canary (10%) ? full; rollback criteria written in advance","Deliverable: green CI badge backed by real evals"],
+  ["CI for AI: GitHub Actions running the eval suite on PR; fail on regression (e.g., pass-rate drops >2%)","Artifacts & history: store eval reports per commit; trend line in README badge","Gating strategy: block merge vs warn  â€”  calibrate to eval confidence","Rollout plan: pilot ? canary (10%) ? full; rollback criteria written in advance","Deliverable: green CI badge backed by real evals"],
   // Day 28
-  ["Week 4 review + exec sim","Final eval report: before/after, methodology, caveats — one page","Exec update recording: problem ? what shipped ? the number ? the ask (10 min)","Backup plan: what breaks live, what you say, what the fallback demo is","Mock DSA #3 + STAR story: 'an FDE project failed'"],
+  ["Week 4 review + exec sim","Final eval report: before/after, methodology, caveats  â€”  one page","Exec update recording: problem ? what shipped ? the number ? the ask (10 min)","Backup plan: what breaks live, what you say, what the fallback demo is","Mock DSA #3 + STAR story: 'an FDE project failed'"],
   // Day 29
-  ["Choosing the flagship domain: contracts / support / research / finance ops — pick where YOU have context","Spec like a PM + FDE: users, jobs-to-be-done, tools, data sources, success metric, out-of-scope","SOW-style one-pager: objective, scope, out-of-scope, acceptance eval, timeline, risks, assumptions","Success metric written BEFORE building: e.g., '=85% faithfulness on 30-case golden set, =$0.01/query'","Repo scaffold: README skeleton, CI, .env.example, architecture stub"],
+  ["Choosing the flagship domain: contracts / support / research / finance ops  â€”  pick where YOU have context","Spec like a PM + FDE: users, jobs-to-be-done, tools, data sources, success metric, out-of-scope","SOW-style one-pager: objective, scope, out-of-scope, acceptance eval, timeline, risks, assumptions","Success metric written BEFORE building: e.g., '=85% faithfulness on 30-case golden set, =$0.01/query'","Repo scaffold: README skeleton, CI, .env.example, architecture stub"],
   // Day 30
-  ["Ingestion at volume: batch pipeline, progress tracking, retry failed docs, idempotent loads","Messy real-world data: scans (OCR), tables, mixed languages, duplicates","Agent layer: tools for search/calc/API; guardrails from Day 17–19 wired in","Tracing on from the first commit — never 'add observability later'","Milestone: end-to-end happy path works on 5 real queries"],
+  ["Ingestion at volume: batch pipeline, progress tracking, retry failed docs, idempotent loads","Messy real-world data: scans (OCR), tables, mixed languages, duplicates","Agent layer: tools for search/calc/API; guardrails from Day 17 â€” 19 wired in","Tracing on from the first commit  â€”  never 'add observability later'","Milestone: end-to-end happy path works on 5 real queries"],
   // Day 31
-  ["Golden set for the flagship: 30 cases incl. adversarial and unanswerable","CI eval gate (Day 27 pattern) applied to the flagship repo","Baseline vs tuned: one improvement iteration documented with numbers","Acceptance doc: the table the customer would sign — eval results + criteria","Deliverable: CI badge + acceptance.md in repo"],
+  ["Golden set for the flagship: 30 cases incl. adversarial and unanswerable","CI eval gate (Day 27 pattern) applied to the flagship repo","Baseline vs tuned: one improvement iteration documented with numbers","Acceptance doc: the table the customer would sign  â€”  eval results + criteria","Deliverable: CI badge + acceptance.md in repo"],
   // Day 32
-  ["Docker: multi-stage builds, .dockerignore, env injection, health checks","Deploy to Render/Fly.io free tier or a VPS; persistent disk for SQLite/vector store","HTTPS + auth on the demo (even basic auth) — you don't ship open endpoints","Smoke tests post-deploy; restart policy; logs","Customer-VPC runbook: prerequisites, install, config, verify, rollback — zero access assumed"],
+  ["Docker: multi-stage builds, .dockerignore, env injection, health checks","Deploy to Render/Fly.io free tier or a VPS; persistent disk for SQLite/vector store","HTTPS + auth on the demo (even basic auth)  â€”  you don't ship open endpoints","Smoke tests post-deploy; restart policy; logs","Customer-VPC runbook: prerequisites, install, config, verify, rollback  â€”  zero access assumed"],
   // Day 33
   ["Production tracing in the deployed app: spans per step, user-visible latency","Cost report per workflow: tokens in/out, $ per completed task, monthly projection","Runbook: top-5 failures with diagnosis + fix + escalation","SLOs: set p95 latency + error-rate + eval-score targets for your own app","Deliverable: runbook.md + cost-report.md committed"],
   // Day 34
-  ["README structure: problem ? architecture (diagram) ? quickstart ? evals (table) ? demo GIF ? limitations","Architecture diagram in Excalidraw: components, data flow, trust boundaries","Demo video: 5 min — problem, 60s live demo, eval numbers, what's next","Two READMEs: engineer deep-dive + exec one-pager with outcome metrics","Pin the repo; clean commit history; tag v1.0"],
+  ["README structure: problem ? architecture (diagram) ? quickstart ? evals (table) ? demo GIF ? limitations","Architecture diagram in Excalidraw: components, data flow, trust boundaries","Demo video: 5 min  â€”  problem, 60s live demo, eval numbers, what's next","Two READMEs: engineer deep-dive + exec one-pager with outcome metrics","Pin the repo; clean commit history; tag v1.0"],
   // Day 35
-  ["Week 5 retro: what broke, what you'd redo, top lesson — write it publicly","Pin + post: flagship on GitHub; case study post on LinkedIn with #AppliedAI","Resume update: flagship metrics quoted (eval pass-rate, cost/run, latency)","Target list: 20 roles — AI Engineer, Agentic Engineer, FDE at product cos + labs + services","Full mock: DSA + explain-aloud; update application tracker"],
+  ["Week 5 retro: what broke, what you'd redo, top lesson  â€”  write it publicly","Pin + post: flagship on GitHub; case study post on LinkedIn with #AppliedAI","Resume update: flagship metrics quoted (eval pass-rate, cost/run, latency)","Target list: 20 roles  â€”  AI Engineer, Agentic Engineer, FDE at product cos + labs + services","Full mock: DSA + explain-aloud; update application tracker"],
   // Day 36
-  ["Resume, FDE variant: same projects, outcome framing (numbers, adoption, rollout) not tech-stack listing","Resume, AI Engineer variant: depth framing (architecture, evals, cost, scale)","ATS pass: LLM, RAG, agents, MCP, LangGraph, evals, Python, cloud keywords","GitHub profile README + pinned flagship; LinkedIn headline + featured section","Tailor rule: 3 bullets rewritten per JD — never spray the same resume"],
+  ["Resume, FDE variant: same projects, outcome framing (numbers, adoption, rollout) not tech-stack listing","Resume, AI Engineer variant: depth framing (architecture, evals, cost, scale)","ATS pass: LLM, RAG, agents, MCP, LangGraph, evals, Python, cloud keywords","GitHub profile README + pinned flagship; LinkedIn headline + featured section","Tailor rule: 3 bullets rewritten per JD  â€”  never spray the same resume"],
   // Day 37
-  ["Volume strategy: 10–15 tailored applications/day beats 50 generic","Referrals: find 1st/2nd degree at target cos; specific ask ('15 min on your AI platform team?')","Tracker: role, company, date, contact, stage, follow-up — Notion/Sheet","LinkedIn post cadence: 2–3/week — your learning log is content","Pipeline math: ~20% screen ? ~30% onsite ? 1 offer per 50 applications is normal"],
+  ["Volume strategy: 10 â€” 15 tailored applications/day beats 50 generic","Referrals: find 1st/2nd degree at target cos; specific ask ('15 min on your AI platform team?')","Tracker: role, company, date, contact, stage, follow-up  â€”  Notion/Sheet","LinkedIn post cadence: 2 â€” 3/week  â€”  your learning log is content","Pipeline math: ~20% screen ? ~30% onsite ? 1 offer per 50 applications is normal"],
   // Day 38
-  ["Design: enterprise RAG — 1M docs, RBAC, freshness/re-indexing, multi-tenant, audit","Design: agent platform — tool registry, guardrails, evals-as-a-service, billing per run","Framework: requirements ? data model ? components ? failure modes ? scale/cost ? rollout","Whiteboard discipline: clarify first (5 min), high-level ? deep-dives ? bottlenecks","Deliverable: both designs whiteboarded + recorded once each"],
+  ["Design: enterprise RAG  â€”  1M docs, RBAC, freshness/re-indexing, multi-tenant, audit","Design: agent platform  â€”  tool registry, guardrails, evals-as-a-service, billing per run","Framework: requirements ? data model ? components ? failure modes ? scale/cost ? rollout","Whiteboard discipline: clarify first (5 min), high-level ? deep-dives ? bottlenecks","Deliverable: both designs whiteboarded + recorded once each"],
   // Day 39
-  ["Design: LLM gateway — routing, caching, fallback, cost caps, PII scrubbing","Design: eval infrastructure — golden sets, judge service, CI gates, drift alerts","Tradeoff vocabulary: consistency vs availability vs latency vs cost vs safety — say the tradeoff out loud for every decision","When NOT to use an LLM: deterministic parsing, rules, search — and say this first","Deliverable: tradeoff memo for one design — customers/interviewers both respect this"],
+  ["Design: LLM gateway  â€”  routing, caching, fallback, cost caps, PII scrubbing","Design: eval infrastructure  â€”  golden sets, judge service, CI gates, drift alerts","Tradeoff vocabulary: consistency vs availability vs latency vs cost vs safety  â€”  say the tradeoff out loud for every decision","When NOT to use an LLM: deterministic parsing, rules, search  â€”  and say this first","Deliverable: tradeoff memo for one design  â€”  customers/interviewers both respect this"],
   // Day 40
-  ["STAR method: Situation–Task–Action–Result; Result must be quantified","The 8 stories every AI candidate needs: flagship, conflict, failure, ambiguity, customer, scale, learning, leadership","FDE variants: difficult stakeholder, scope creep, prod incident at customer, saying no","Delivery: 90-second answers, spoken — not written; record 3 and grade yourself","'Why this role / why us' — research 3 companies, one genuinely specific sentence each"],
+  ["STAR method: Situation â€” Task â€” Action â€” Result; Result must be quantified","The 8 stories every AI candidate needs: flagship, conflict, failure, ambiguity, customer, scale, learning, leadership","FDE variants: difficult stakeholder, scope creep, prod incident at customer, saying no","Delivery: 90-second answers, spoken  â€”  not written; record 3 and grade yourself","'Why this role / why us'  â€”  research 3 companies, one genuinely specific sentence each"],
   // Day 41
-  ["Full loop simulation: DSA 45m timed + LLM system design 45m + flagship deep-dive 30m","Self-scoring rubric: communication, approach, correctness, recovery from hints","Fix the 3 weakest points immediately — don't 'practice more generally'","FDE round: scope a POC from a messy brief out loud, 10 minutes, recorded","Recovery plan: how you'll handle each interview bomb the next day"],
+  ["Full loop simulation: DSA 45m timed + LLM system design 45m + flagship deep-dive 30m","Self-scoring rubric: communication, approach, correctness, recovery from hints","Fix the 3 weakest points immediately  â€”  don't 'practice more generally'","FDE round: scope a POC from a messy brief out loud, 10 minutes, recorded","Recovery plan: how you'll handle each interview bomb the next day"],
   // Day 42
-  ["Rapid-fire drill: 15 eval/agent/RAG questions, 30 seconds each — train instant recall","Live-coding-with-LLM round: build a tool-calling function under observation — narrate tradeoffs","Negotiation fundamentals: base, equity, bonus, level, travel %, on-call, signing","Offer evaluation framework: comp × growth × manager × team's AI maturity","Salary research: 3 data points for your market — floor, target, stretch"],
+  ["Rapid-fire drill: 15 eval/agent/RAG questions, 30 seconds each  â€”  train instant recall","Live-coding-with-LLM round: build a tool-calling function under observation  â€”  narrate tradeoffs","Negotiation fundamentals: base, equity, bonus, level, travel %, on-call, signing","Offer evaluation framework: comp  â€”  growth  â€”  manager  â€”  team's AI maturity","Salary research: 3 data points for your market  â€”  floor, target, stretch"],
   // Day 43
-  ["Final review — NO new learning; consolidation only","Re-read flagship README, eval report, cost report — you'll be asked to defend every number","Skim MCP + LangGraph docs once more — vocabulary currency matters","DSA warm-up only: 1 easy per pattern; then stop — resting beats cramming","Logistics: quiet room, IDE/setup tested, timer, water, phone away"],
+  ["Final review  â€”  NO new learning; consolidation only","Re-read flagship README, eval report, cost report  â€”  you'll be asked to defend every number","Skim MCP + LangGraph docs once more  â€”  vocabulary currency matters","DSA warm-up only: 1 easy per pattern; then stop  â€”  resting beats cramming","Logistics: quiet room, IDE/setup tested, timer, water, phone away"],
   // Day 44
-  ["Offer-stage negotiation scripts: 'Is there flexibility on base?' / 'What does leveling look like?' / 'How do you measure success in 90 days?'","Compare two offers out loud (AI Engineer vs FDE): comp, learning, mentorship, travel, scope","Thank-you emails within 24h: one specific callback + one piece of new thinking","Rapid-fire eval questions — still sharp; flagship deep-dive until flawless","Mindset: interviews are a skill; your reps are done — trust the preparation"],
+  ["Offer-stage negotiation scripts: 'Is there flexibility on base?' / 'What does leveling look like?' / 'How do you measure success in 90 days?'","Compare two offers out loud (AI Engineer vs FDE): comp, learning, mentorship, travel, scope","Thank-you emails within 24h: one specific callback + one piece of new thinking","Rapid-fire eval questions  â€”  still sharp; flagship deep-dive until flawless","Mindset: interviews are a skill; your reps are done  â€”  trust the preparation"],
   // Day 45
-  ["Interview day execution: warm-up pitch out loud ×3; arrive early; breathe","Ask THEM: evals? on-call? customer load? success metric for first 90 days? team's biggest failure?","If customer-judgment probed: lead with numbers from your case study, not opinions","Debrief within 10 min of every round: questions asked, what landed, one fix for next round","After the offer: celebrate, then update this tracker — you did the thing"]
+  ["Interview day execution: warm-up pitch out loud  â€” 3; arrive early; breathe","Ask THEM: evals? on-call? customer load? success metric for first 90 days? team's biggest failure?","If customer-judgment probed: lead with numbers from your case study, not opinions","Debrief within 10 min of every round: questions asked, what landed, one fix for next round","After the offer: celebrate, then update this tracker  â€”  you did the thing"]
 ];
 
 window.SPRINT_DATA.SYLLABUS = SYLLABUS;

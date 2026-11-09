@@ -349,3 +349,70 @@ kbd { background: var(--panel2); border: 1px solid var(--border); border-radius:
 .badge:not(.earned) .badge-glyph { background: var(--panel2); color: var(--muted); }
 .badge-name { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); text-align: center; line-height: 1.3; }
 .badge.earned .badge-name { color: var(--text); }
+
+/* ============ V2 DECLUTTER ============ */
+header { padding: 10px 20px 8px; }
+.header-row { max-width: 1500px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.logo-badge { width: 40px; height: 40px; font-size: 1.05rem; border-radius: 11px; }
+h1 { font-size: 1.02rem; white-space: nowrap; }
+.sub { font-size: 0.7rem; margin-top: 1px; }
+.header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.view-tabs { padding: 3px; }
+.view-tab { padding: 6px 14px; font-size: 0.8rem; }
+.timer-chip { padding: 4px 10px; font-size: 0.8rem; gap: 6px; }
+.mini-btn { background: var(--panel); border: 1px solid var(--border); color: var(--accent2); border-radius: 6px; font-size: 0.7rem; padding: 2px 8px; cursor: pointer; }
+.icon-btn { padding: 6px 12px; border-radius: 9px; }
+
+/* overflow menu */
+.menu { position: relative; }
+.menu summary { list-style: none; cursor: pointer; background: var(--panel2); border: 1px solid var(--border); border-radius: 9px; padding: 6px 13px; font-size: 1rem; line-height: 1; user-select: none; }
+.menu summary::-webkit-details-marker { display: none; }
+.menu-items { position: absolute; right: 0; top: calc(100% + 8px); z-index: 50; background: var(--panel-solid); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; min-width: 210px; }
+.menu-items button { display: block; width: 100%; text-align: left; background: transparent; border: none; color: var(--text); padding: 11px 14px; font-size: 0.85rem; cursor: pointer; }
+.menu-items button:hover { background: var(--panel2); }
+.menu-items button.danger { color: #ff8585; }
+
+/* slim progress + meta line */
+.progress-line { max-width: 1500px; margin: 10px auto 4px; display: flex; align-items: center; gap: 12px; }
+.progress-wrap { flex: 1; margin: 0; height: 8px; }
+.progress-line b { font-size: 0.8rem; color: var(--accent2); width: 40px; text-align: right; }
+.meta-line { max-width: 1500px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 0.75rem; color: var(--muted); }
+.meta-line b { color: var(--text); }
+.meta-line i { opacity: 0.4; font-style: normal; }
+.meta-level { display: inline-flex; align-items: center; gap: 6px; }
+.level-bar { display: inline-block; width: 80px; height: 4px; background: var(--panel2); border-radius: 999px; overflow: hidden; }
+.level-bar span { display: block; height: 100%; background: linear-gradient(90deg,#ffc94d,#ff9d4d); }
+.badges > summary { cursor: pointer; list-style: none; }
+.badges > summary::-webkit-details-marker { display: none; }
+.badges > summary:hover { color: var(--text); }
+.badges-strip { padding: 8px 0 2px; margin: 0; }
+
+/* slim sprint banner */
+.sprint-banner { padding: 5px 16px; margin: 10px auto 0; border-radius: 10px; font-size: 0.78rem; gap: 14px; }
+.sprint-banner b { font-size: 0.82rem; }
+.sprint-banner label { display: flex; align-items: center; gap: 6px; }
+
+/* collapsible phase guide */
+.phase-guide { display: block; background: var(--panel2); border: 1px solid var(--border); border-radius: 12px; margin-top: 16px; padding: 0; overflow: hidden; }
+.phase-guide summary { cursor: pointer; padding: 10px 14px; font-size: 0.78rem; color: var(--accent); letter-spacing: 0.6px; text-transform: uppercase; user-select: none; list-style: none; }
+.phase-guide summary::-webkit-details-marker { display: none; }
+.phase-guide .pg-row, .phase-guide ul, .phase-guide .pg-tip { margin: 0 14px 10px; }
+.phase-guide ul { margin: 0 14px 12px 32px; }
+.pg-tip { margin-bottom: 12px !important; }
+
+/* hide old v1 bits */
+.stats, .stat-card { display: none; }
+
+/* tighter detail */
+.detail { padding: 20px 22px; }
+.cols { margin-top: 14px; gap: 10px; }
+.card { padding: 11px 13px; }
+.syllabus-block { margin-top: 14px; }
+
+/* responsive */
+@media (max-width: 1100px) {
+  h1 { white-space: normal; font-size: 0.9rem; }
+  .sub { display: none; }
+  .meta-line { gap: 8px; font-size: 0.7rem; }
+}

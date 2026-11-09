@@ -101,14 +101,13 @@
         <h3><span>Detailed day syllabus</span> — study in this exact order</h3>
         <ol>${SYLLABUS[current].map(item => `<li>${item}</li>`).join('')}</ol>
       </div>
-      <div class="phase-guide">
-        <div class="pg-row"><b>Phase focus</b><span>${pg.focus}</span></div>
-        <div class="pg-row"><b>Checkpoint before moving on</b><span>${pg.checkpoint}</span></div>
-        <details class="pg-details"><summary>Common pitfalls &amp; study tip</summary>
-          <ul>${pg.pitfalls.map(p => `<li>${p}</li>`).join('')}</ul>
-          <div class="pg-tip">Study tip: ${pg.studyTip}</div>
-        </details>
-      </div>
+      <details class="phase-guide">
+        <summary><b>Phase focus, checkpoint &amp; pitfalls</b></summary>
+        <div class="pg-row"><b>Focus</b><span>${pg.focus}</span></div>
+        <div class="pg-row"><b>Checkpoint</b><span>${pg.checkpoint}</span></div>
+        <ul>${pg.pitfalls.map(p => `<li>${p}</li>`).join('')}</ul>
+        <div class="pg-tip">Study tip: ${pg.studyTip}</div>
+      </details>
       <div class="resources"><h3>Free Resources</h3>${resHtml}</div>
       <div class="notes-block">
         <label for="dayNotes">Day ${current + 1} notes — write what confused you, what you built, what to revisit</label>
@@ -303,9 +302,12 @@
     return streak;
   }
   function renderBadges() {
+    const earned = BADGES.filter(b => b.test()).length;
+    const counter = document.getElementById('badgeCount');
+    if (counter) counter.textContent = earned;
     document.getElementById('badgesStrip').innerHTML = BADGES.map(b => {
-      const earned = b.test();
-      return `<div class="badge ${earned ? 'earned' : ''}" title="${b.desc}"><span class="badge-glyph">${b.glyph}</span><span class="badge-name">${b.name}</span></div>`;
+      const got = b.test();
+      return `<div class="badge ${got ? 'earned' : ''}" title="${b.desc}"><span class="badge-glyph">${b.glyph}</span><span class="badge-name">${b.name}</span></div>`;
     }).join('');
   }
 
