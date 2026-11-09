@@ -820,3 +820,86 @@ const GLOSSARY = [
 
 window.SPRINT_DATA.QUIZ = QUIZ;
 window.SPRINT_DATA.GLOSSARY = GLOSSARY;
+const CAREER = {
+  mission: "Become an AI-first Forward Deployed Engineer — build intelligent systems, solve real business problems, integrate AI into enterprise workflows, and deliver solutions to customers.",
+  principle: "Learn → Code → Build → Deploy → Explain",
+  fromTo: [
+    ["Customer support", "1 year experience", "Domain knowledge: real customer language, pain points and escalation patterns — most engineers don't have this"],
+    ["Customer communication", "Existing experience", "FDE foundation: stakeholder empathy, structured discovery, expectation management"],
+    ["Problem-solving & process", "Existing experience", "Business-process understanding maps directly to workflow automation design"],
+    ["Python programming", "Beginner", "Foundation phase: Python + OOP + SQL until you can build unaided"],
+    ["Backend engineering", "Needs strengthening", "FastAPI + PostgreSQL phase; deploy behind real APIs"],
+    ["AI / LLM", "Needs structured learning", "LLM APIs, prompting, RAG, evaluation"],
+    ["Agentic AI", "Needs structured learning", "LangGraph, tool calling, HITL, multi-agent"],
+    ["Cloud & deployment", "Needs learning", "Docker, cloud basics, CI — enough to ship to a customer environment"],
+    ["Client-facing work", "Existing foundation", "Your unfair advantage for FDE roles"]
+  ],
+  phases: [
+    { num: 1, title: "Programming Foundations", days: "Days 1–15", duration: "15 days",
+      learn: ["Python fundamentals and OOP","Data structures and algorithms basics","Git and GitHub workflow","SQL and PostgreSQL","Problem-solving exercises (DSA lite)"],
+      deliverable: "Python mini-projects and a database-backed application",
+      milestone: "Day 15 — you can write Python programs independently" },
+    { num: 2, title: "AI Engineering", days: "Days 16–35", duration: "20 days",
+      learn: ["FastAPI and REST APIs","LLM fundamentals","Prompt engineering","Embeddings and vector databases","RAG architecture","LLM evaluation"],
+      deliverable: "AI-powered customer support application (Project 1)",
+      milestone: "Day 35 — you can build and deploy a basic LLM application" },
+    { num: 3, title: "Agentic AI Engineering", days: "Days 36–55", duration: "20 days",
+      learn: ["AI agents and agent architectures","Tool calling and function calling","Agent memory","LangGraph","Multi-agent systems","Human approval workflows","Agent monitoring and evaluation"],
+      deliverable: "Multi-agent customer service automation (Project 2)",
+      milestone: "Day 55 — you can build a working agentic workflow" },
+    { num: 4, title: "FDE Engineering", days: "Days 56–75", duration: "20 days",
+      learn: ["Docker and deployment","Cloud fundamentals","API integrations (Stripe/Zendesk/Slack-style webhooks)","Authentication and security","Logging and monitoring","System design","Customer discovery and requirements gathering"],
+      deliverable: "Production-style enterprise AI solution (Project 3)",
+      milestone: "Day 75 — you can integrate and deploy an end-to-end business solution" },
+    { num: 5, title: "Portfolio & Interviews", days: "Days 76–90", duration: "15 days",
+      learn: ["Complete and polish the three major projects","GitHub documentation and architecture diagrams","Technical interview preparation","Python coding exercises","FDE mock client discussions","Resume and LinkedIn optimization"],
+      deliverable: "Job-ready portfolio and application strategy",
+      milestone: "Day 90 — demo projects, explain architecture, handle interviews" }
+  ],
+  projects: [
+    { name: "Enterprise AI Customer Support Platform", tag: "Project 1 · AI Engineering",
+      points: ["Accepts customer questions via web/API","Retrieves answers from company documentation (RAG)","Generates contextual responses with citations","Creates support tickets automatically","Identifies unanswered questions (eval gap log)","Escalates to human agents when confidence is low"],
+      tech: "Python · FastAPI · PostgreSQL · LLM API · Embeddings · Vector DB" },
+    { name: "Autonomous Multi-Agent Support System", tag: "Project 2 · Agentic AI Engineering",
+      points: ["Customer Query Agent","Intent Classification Agent","Knowledge Retrieval Agent","Resolution Agent","Sentiment Analysis Agent","Escalation Agent","Human approval gate before sensitive actions"],
+      tech: "Python · LangGraph · LLM APIs · Tools · PostgreSQL" },
+    { name: "Enterprise Voice AI Intelligence Platform", tag: "Project 3 · AI + Agentic + FDE",
+      points: ["Processes customer call recordings","Transcribes speech-to-text and summarizes calls","Analyzes sentiment and unresolved problems","Generates automated quality-assessment reports","Manager dashboard: trends, failures, wins","Dockerized, deployable, documented"],
+      tech: "Python · FastAPI · speech-to-text · LLMs · RAG · PostgreSQL · React · Docker" }
+  ],
+  schedule: [
+    ["7:00–9:00 AM", "Python / technical concepts"],
+    ["9:00–11:00 AM", "Hands-on coding"],
+    ["11:00–12:00 PM", "SQL / DSA"],
+    ["12:00–1:00 PM", "Lunch & break"],
+    ["1:00–3:00 PM", "AI / LLM engineering"],
+    ["3:00–5:00 PM", "Project development"],
+    ["5:00–6:00 PM", "Communication, FDE skills & technical documentation"]
+  ],
+  jobTitles: [
+    ["Entry-level", "Python Developer · Junior AI Engineer"],
+    ["AI application development", "AI Application Developer · LLM Engineer"],
+    ["Agentic AI", "Agentic AI Developer · AI Automation Engineer"],
+    ["Customer-facing engineering", "AI Solutions Engineer · Implementation Engineer"],
+    ["FDE pathway", "Associate FDE · Forward Deployed Engineer"]
+  ],
+  resources: [
+    ["Python", "Python official tutorial", "https://docs.python.org/3/tutorial/"],
+    ["SQL", "PostgreSQL documentation", "https://www.postgresql.org/docs/"],
+    ["FastAPI", "FastAPI tutorial", "https://fastapi.tiangolo.com/tutorial/"],
+    ["LLMs", "Hugging Face courses", "https://huggingface.co/learn/llm-course"],
+    ["RAG", "LangChain documentation", "https://python.langchain.com/docs/introduction/"],
+    ["Agentic AI", "LangGraph documentation", "https://python.langchain.com/docs/introduction/"],
+    ["AI fundamentals", "DeepLearning.AI short courses", "https://www.deeplearning.ai/short-courses/"],
+    ["Docker", "Docker getting started", "https://docs.docker.com/get-started/"],
+    ["Cloud", "Microsoft Learn", "https://learn.microsoft.com/"]
+  ],
+  milestones: [
+    ["Day 15", "Write Python programs independently (small scripts, OOP, files, SQL)"],
+    ["Day 35", "Build and deploy a basic LLM application with RAG"],
+    ["Day 55", "Build a working multi-agent workflow with approvals"],
+    ["Day 75", "Integrate and deploy an end-to-end business solution"],
+    ["Day 90", "Demo projects, explain architecture, handle interviews"]
+  ]
+};
+window.SPRINT_DATA.CAREER = CAREER;

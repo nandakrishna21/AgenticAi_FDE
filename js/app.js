@@ -1,5 +1,5 @@
 (function () {
-  const { R, YT, PHASES, DAYS, ROLES, PHASE_GUIDE, SYLLABUS, MODULES, QUIZ, GLOSSARY } = window.SPRINT_DATA;
+  const { R, YT, PHASES, DAYS, ROLES, PHASE_GUIDE, SYLLABUS, MODULES, QUIZ, GLOSSARY, CAREER } = window.SPRINT_DATA;
   const STORAGE_KEY = 'sprint45v2';
   const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
   let current = 0;
@@ -459,6 +459,57 @@
     document.querySelectorAll('.fc-filter').forEach(b => b.onclick = () => { fcFilter = b.dataset.deck; fcIndex = 0; renderFlashcards(); });
   }
 
+  /* ===== 90-Day Career view ===== */
+  const getCareer = () => JSON.parse(localStorage.getItem('sprint45-career') || '{}');
+  const saveCareer = s => localStorage.setItem('sprint45-career', JSON.stringify(s));
+
+  function renderCareer() {
+    document.getElementById('careerMission').textContent = CAREER.mission;
+    document.getElementById('careerPrinciple').innerHTML = CAREER.principle.split(' → ').map(s => `<span>${s}</span>`).join('<i>→</i>');
+
+    document.getElementById('gapTable').innerHTML = CAREER.fromTo.map(([a, b, c]) => `
+      <div class="gap-row"><div class="gap-skill">${a}</div><div class="gap-now">${b}</div><div class="gap-edge">${c}</div></div>`).join('');
+
+    const career = getCareer();
+    document.getElementById('phaseTrack').innerHTML = CAREER.phases.map(p => `
+      <div class="phase-card" data-phase="${p.num}">
+        <div class="phase-card-head">
+          <span class="phase-num">${p.num}</span>
+          <div><h4>${p.title}</h4><span class="phase-days">${p.days} · ${p.duration}</span></div>
+        </div>
+        <ul class="phase-learn">${p.learn.map(l => `<li>${l}</li>`).join('')}</ul>
+        <label class="phase-deliverable ${career['d' + p.num] ? 'done' : ''}"><input type="checkbox" data-key="d${p.num}" ${career['d' + p.num] ? 'checked' : ''}><span><b>Deliverable:</b> ${p.deliverable}</span></label>
+        <div class="phase-milestone">${p.milestone}</div>
+      </div>`).join('');
+
+    document.getElementById('projectGrid').innerHTML = CAREER.projects.map(p => `
+      <article class="project-card">
+        <span class="project-tag">${p.tag}</span>
+        <h4>${p.name}</h4>
+        <ul>${p.points.map(pt => `<li>${pt}</li>`).join('')}</ul>
+        <div class="project-tech">${p.tech}</div>
+      </article>`).join('');
+
+    document.getElementById('scheduleList').innerHTML = CAREER.schedule.map(([t, a]) => `<div class="schedule-row"><span class="schedule-time">${t}</span><span class="schedule-activity">${a}</span></div>`).join('');
+
+    document.getElementById('titlesGrid').innerHTML = CAREER.jobTitles.map(([stage, titles]) => `<div class="title-row"><span class="title-stage">${stage}</span><span class="title-names">${titles}</span></div>`).join('');
+
+    document.getElementById('careerResources').innerHTML = CAREER.resources.map(([s, n, u]) => `<a class="career-res" href="${u}" target="_blank" rel="noopener"><span class="career-res-subject">${s}</span><span>${n}</span></a>`).join('');
+
+    document.getElementById('milestoneList').innerHTML = CAREER.milestones.map(([d, m], i) => `
+      <label class="milestone ${career['m' + i] ? 'done' : ''}"><input type="checkbox" data-key="m${i}" ${career['m' + i] ? 'checked' : ''}><span class="milestone-day">${d}</span><span class="milestone-text">${m}</span></label>`).join('');
+
+    // wire checkboxes + progress
+    const totalChecks = CAREER.phases.length + CAREER.milestones.length;
+    const doneChecks = Object.keys(getCareer()).length;
+    const pct = Math.round(doneChecks / totalChecks * 100);
+    document.getElementById('careerBar').style.width = pct + '%';
+    document.getElementById('careerPct').textContent = pct + '%';
+    document.querySelectorAll('#careerView input[type=checkbox]').forEach(cb => {
+      cb.onchange = () => { const c = getCareer(); if (cb.checked) c[cb.dataset.key] = true; else delete c[cb.dataset.key]; saveCareer(c); renderCareer(); };
+    });
+  }
+
   /* ===== Roles & Roadmaps view ===== */
   let activeRole = 0;
 
@@ -519,8 +570,8 @@
   }
 
   function switchView(view) {
-    const views = { plan: document.getElementById('planView'), roles: document.getElementById('rolesView'), syllabus: document.getElementById('syllabusView'), flash: document.getElementById('flashView') };
-    const tabs = { plan: document.getElementById('tabPlan'), roles: document.getElementById('tabRoles'), syllabus: document.getElementById('tabSyllabus'), flash: document.getElementById('tabFlash') };
+    const views = { plan: document.getElementById('planView'), roles: document.getElementById('rolesView'), syllabus: document.getElementById('syllabusView'), flash: document.getElementById('flashView'), career: document.getElementById('careerView') };
+    const tabs = { plan: document.getElementById('tabPlan'), roles: document.getElementById('tabRoles'), syllabus: document.getElementById('tabSyllabus'), flash: document.getElementById('tabFlash'), career: document.getElementById('tabCareer') };
     const yt = document.getElementById('yt');
     Object.entries(views).forEach(([key, el]) => { el.hidden = key !== view; });
     Object.entries(tabs).forEach(([key, el]) => { el.classList.toggle('active', key === view); el.setAttribute('aria-selected', key === view); });
@@ -528,6 +579,7 @@
     if (view === 'roles') { renderRolePicker(); renderRoleDetail(); }
     if (view === 'syllabus' && !document.getElementById('moduleList').innerHTML) { renderModules(); renderGlossary(); const gs = document.getElementById('glossSearch'); if (gs && !gs.dataset.wired) { gs.addEventListener('input', e => renderGlossary(e.target.value.trim().toLowerCase())); gs.dataset.wired = '1'; } }
     if (view === 'flash') renderFlashcards();
+    if (view === 'career') renderCareer();
     window.scrollTo(0, 0);
   }
 
@@ -535,6 +587,7 @@
   document.getElementById('tabRoles').onclick = () => switchView('roles');
   document.getElementById('tabSyllabus').onclick = () => switchView('syllabus');
   document.getElementById('tabFlash').onclick = () => switchView('flash');
+  document.getElementById('tabCareer').onclick = () => switchView('career');
 
   renderStats(); renderList(); renderDetail(); renderStreak();
 })();

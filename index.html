@@ -24,6 +24,7 @@
         <button class="view-tab" id="tabRoles" role="tab" aria-selected="false">Roles &amp; Roadmaps</button>
         <button class="view-tab" id="tabSyllabus" role="tab" aria-selected="false">Full Syllabus</button>
         <button class="view-tab" id="tabFlash" role="tab" aria-selected="false">Flashcards</button>
+        <button class="view-tab" id="tabCareer" role="tab" aria-selected="false">90-Day Career</button>
       </div>
       <div class="timer-chip"><b class="timer" id="timer">00:00</b> <button class="mini-btn" id="timerBtn">Start</button></div>
       <button class="icon-btn" id="themeBtn" title="Toggle light / dark" aria-label="Toggle theme">◐</button>
@@ -113,6 +114,64 @@
     <div class="fc-meta"><span id="fcMastery">0 mastered</span><div class="fc-bar"><div id="fcBar"></div></div></div>
     <p class="fc-keys kbd-hint"><kbd>←</kbd><kbd>→</kbd> navigate · <kbd>Space</kbd> flip · <kbd>1</kbd> don't know · <kbd>2</kbd> know</p>
   </div>
+</section>
+
+<section id="careerView" hidden>
+  <div class="career-hero">
+    <div class="career-mission">
+      <span class="career-kicker">Your career mission</span>
+      <h2 id="careerMission"></h2>
+      <div class="career-principle" id="careerPrinciple"></div>
+      <div class="career-progress"><div class="career-progress-bar" id="careerBar"></div><span id="careerPct">0%</span></div>
+      <p class="career-hint">Tick milestones and phase deliverables as you finish them — progress saves locally.</p>
+    </div>
+    <nav class="career-nav" aria-label="Career sections">
+      <a href="#career-gap">Where you start</a>
+      <a href="#career-roadmap">5 Phases</a>
+      <a href="#career-projects">3 Projects</a>
+      <a href="#career-schedule">Daily schedule</a>
+      <a href="#career-titles">Job titles</a>
+      <a href="#career-resources">Free resources</a>
+      <a href="#career-milestones">Milestones</a>
+    </nav>
+  </div>
+
+  <section class="career-section" id="career-gap">
+    <h3>Where you start — your unfair advantage</h3>
+    <p class="section-sub">Customer support is not unrelated to engineering — it's the FDE half of the job most engineers lack.</p>
+    <div class="gap-table" id="gapTable"></div>
+  </section>
+
+  <section class="career-section" id="career-roadmap">
+    <h3>The 90-day roadmap — Beginner → AI developer → Agentic developer → FDE-ready</h3>
+    <div class="phase-track" id="phaseTrack"></div>
+  </section>
+
+  <section class="career-section" id="career-projects">
+    <h3>Three signature projects — built from YOUR support background</h3>
+    <p class="section-sub">Use synthetic data, never your former employer's confidential data. These projects prove AI + agentic + FDE in one body of work.</p>
+    <div class="project-grid" id="projectGrid"></div>
+  </section>
+
+  <section class="career-section" id="career-schedule">
+    <h3>Your 10-hour day</h3>
+    <div class="schedule-list" id="scheduleList"></div>
+  </section>
+
+  <section class="career-section" id="career-titles">
+    <h3>What to put on applications — don't limit yourself to “FDE”</h3>
+    <div class="titles-grid" id="titlesGrid"></div>
+  </section>
+
+  <section class="career-section" id="career-resources">
+    <h3>Free learning resources — official &amp; practical</h3>
+    <div class="career-resources" id="careerResources"></div>
+  </section>
+
+  <section class="career-section" id="career-milestones">
+    <h3>Milestones — your day-by-day proof of progress</h3>
+    <div class="milestone-list" id="milestoneList"></div>
+  </section>
 </section>
 
 <section id="yt">
