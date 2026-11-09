@@ -356,7 +356,7 @@ kbd { background: var(--panel-3); border: 1px solid var(--border-strong); border
 .fc-bar > div { height: 100%; width: 0%; background: var(--accent-2); }
 .fc-keys { margin-top: 10px; text-align: center; }
 
-/* ================= 90-Day Career view ================= */
+/* ================= 45-Day Career view ================= */
 #careerView { max-width: 1200px; margin: 0 auto; padding: 22px 24px 36px; }
 .career-hero { display: grid; grid-template-columns: 1.35fr 1fr; gap: 14px; margin-bottom: 22px; }
 @media (max-width: 900px) { .career-hero { grid-template-columns: 1fr; } }

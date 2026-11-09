@@ -459,7 +459,7 @@
     document.querySelectorAll('.fc-filter').forEach(b => b.onclick = () => { fcFilter = b.dataset.deck; fcIndex = 0; renderFlashcards(); });
   }
 
-  /* ===== 90-Day Career view ===== */
+  /* ===== 45-Day Career view ===== */
   const getCareer = () => JSON.parse(localStorage.getItem('sprint45-career') || '{}');
   const saveCareer = s => localStorage.setItem('sprint45-career', JSON.stringify(s));
 
