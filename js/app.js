@@ -1,5 +1,5 @@
 (function () {
-  const { R, YT, PHASES, DAYS, ROLES } = window.SPRINT_DATA;
+  const { R, YT, PHASES, DAYS, ROLES, PHASE_GUIDE } = window.SPRINT_DATA;
   const STORAGE_KEY = 'sprint45v2';
   const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
   let current = 0;
@@ -37,7 +37,7 @@
         const total = end - start, done = Array.from({ length: total }, (_, k) => start + k).filter(dayComplete).length;
         const lab = document.createElement('div');
         lab.className = 'phase-label';
-        lab.innerHTML = `<span>${ph.key} — ${ph.label}</span><span class="phase-progress">${done}/${total} days</span>`;
+        lab.innerHTML = `<span>${ph.key} — ${ph.label}</span><span class="phase-progress">${done}/${total} days</span><div class="phase-bar"><div style="width:${(done / total) * 100}%"></div></div>`;
         el.appendChild(lab);
         lastPhase = ph;
       }
@@ -68,6 +68,9 @@
       return `<a class="${YT[k] ? 'yt' : ''}" href="${r[1]}" target="_blank" rel="noopener">${r[0]}</a>`;
     }).join('');
 
+    const phaseIndex = PHASES.findIndex(p => current < p.until);
+    const pg = PHASE_GUIDE[phaseIndex];
+    const notes = getNotes()[current] || '';
     document.getElementById('detail').innerHTML = `
       <div class="detail-top">
         <div>
@@ -94,7 +97,19 @@
         ${group(d.dsa, 'dsa', 'DSA', 'dsa')}
         ${group(d.int, 'int', 'Interview Prep', 'int')}
       </div>
+      <div class="phase-guide">
+        <div class="pg-row"><b>Phase focus</b><span>${pg.focus}</span></div>
+        <div class="pg-row"><b>Checkpoint before moving on</b><span>${pg.checkpoint}</span></div>
+        <details class="pg-details"><summary>Common pitfalls &amp; study tip</summary>
+          <ul>${pg.pitfalls.map(p => `<li>${p}</li>`).join('')}</ul>
+          <div class="pg-tip">Study tip: ${pg.studyTip}</div>
+        </details>
+      </div>
       <div class="resources"><h3>Free Resources</h3>${resHtml}</div>
+      <div class="notes-block">
+        <label for="dayNotes">Day ${current + 1} notes — write what confused you, what you built, what to revisit</label>
+        <textarea id="dayNotes" placeholder="e.g. 'Cosine similarity clicked when I visualized it. Still stuck on hybrid BM25 weighting…'">${notes.replace(/</g, '&lt;')}</textarea>
+      </div>
       <div class="btn-row">
         <button class="btn ghost" id="prevDay">← Day ${Math.max(1, current)}</button>
         <span class="kbd-hint">Use <kbd>←</kbd> <kbd>→</kbd> to navigate &middot; <kbd>/</kbd> to search</span>
@@ -102,8 +117,16 @@
       </div>`;
 
     document.querySelectorAll('#detail input[type=checkbox]').forEach(cb => {
-      cb.onchange = () => { if (cb.checked) state[cb.dataset.key] = true; else delete state[cb.dataset.key]; save(); renderDetail(); };
+      cb.onchange = () => {
+        const wasComplete = dayComplete(current);
+        if (cb.checked) state[cb.dataset.key] = true; else delete state[cb.dataset.key];
+        touchStreak();
+        save();
+        if (!wasComplete && dayComplete(current)) fireConfetti();
+        renderDetail();
+      };
     });
+    document.getElementById('dayNotes').addEventListener('input', e => { const n = getNotes(); n[current] = e.target.value; saveNotes(n); });
     document.getElementById('nextDay').onclick = () => { if (current < 44) { current++; renderList(); renderDetail(); window.scrollTo(0, 0); } };
     document.getElementById('prevDay').onclick = () => { if (current > 0) { current--; renderList(); renderDetail(); window.scrollTo(0, 0); } };
   }
@@ -141,6 +164,99 @@
     else if (e.key === '/') { e.preventDefault(); document.getElementById('search').focus(); }
     else if (e.key === 'Escape') { e.target.blur && e.target.blur(); }
   });
+
+  /* ===== Notes, streak, theme, confetti, export, print, compare ===== */
+  const getNotes = () => JSON.parse(localStorage.getItem('sprint45-notes') || '{}');
+  const saveNotes = n => localStorage.setItem('sprint45-notes', JSON.stringify(n));
+
+  const getActiveDates = () => JSON.parse(localStorage.getItem('sprint45-active') || '[]');
+  function touchStreak() {
+    const today = new Date().toISOString().slice(0, 10);
+    const dates = getActiveDates();
+    if (!dates.includes(today)) { dates.push(today); localStorage.setItem('sprint45-active', JSON.stringify(dates)); }
+    renderStreak();
+  }
+  function renderStreak() {
+    const dates = new Set(getActiveDates());
+    let streak = 0;
+    const d = new Date();
+    // if today not active yet, streak can still count from yesterday
+    if (!dates.has(d.toISOString().slice(0, 10))) d.setDate(d.getDate() - 1);
+    while (dates.has(d.toISOString().slice(0, 10))) { streak++; d.setDate(d.getDate() - 1); }
+    document.getElementById('streakCount').textContent = streak;
+  }
+
+  const themeBtn = document.getElementById('themeBtn');
+  const applyTheme = t => { document.documentElement.dataset.theme = t; localStorage.setItem('sprint45-theme', t); };
+  applyTheme(localStorage.getItem('sprint45-theme') || 'dark');
+  themeBtn.onclick = () => applyTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light');
+
+  document.getElementById('exportBtn').onclick = () => {
+    const payload = { exportedAt: new Date().toISOString(), completedTasks: taskKeys.filter(k => state[k]), notes: getNotes(), activeDates: getActiveDates() };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'sprint45-progress.json'; a.click(); URL.revokeObjectURL(a.href);
+  };
+
+  document.getElementById('printBtn').onclick = () => {
+    let sheet = document.getElementById('printSheet');
+    if (!sheet) { sheet = document.createElement('div'); sheet.id = 'printSheet'; document.body.appendChild(sheet); }
+    sheet.innerHTML = '<h1>45-Day AI Engineer + Agentic + FDE Sprint — Full Plan</h1>' + DAYS.map((d, i) => `
+      <section class="ps-day">
+        <h2>Day ${i + 1} — ${d.t}</h2>
+        <p class="ps-topic">${d.d}</p>
+        <div class="ps-cols">
+          <div><b>AI + Agentic</b><ul>${d.ai.map(t => `<li>${t}</li>`).join('')}</ul></div>
+          <div><b>FDE</b><ul>${d.fde.map(t => `<li>${t}</li>`).join('')}</ul></div>
+          <div><b>DSA</b><ul>${d.dsa.map(t => `<li>${t}</li>`).join('')}</ul></div>
+          <div><b>Interview</b><ul>${d.int.map(t => `<li>${t}</li>`).join('')}</ul></div>
+        </div>
+      </section>`).join('');
+    window.print();
+  };
+
+  const compareRows = [
+    ['What you own', r => r.whatYouOwn],
+    ['Hard part', r => r.hardPart],
+    ['Judged on', r => r.judgedOn],
+    ['Travel / context', r => r.travel],
+    ['Best if', r => r.bestIf],
+    ['Roadmap focus', r => r.roadmap.find(s => s.focus.includes('CORE'))?.focus || r.roadmap[2].focus]
+  ];
+  function renderCompare() {
+    document.getElementById('roleCompare').innerHTML = `
+      <table class="compare-table">
+        <thead><tr><th></th>${ROLES.map(r => `<th>${r.name}</th>`).join('')}</tr></thead>
+        <tbody>${compareRows.map(([label, fn]) => `<tr><th>${label}</th>${ROLES.map(r => `<td>${fn(r)}</td>`).join('')}</tr>`).join('')}</tbody>
+      </table>`;
+  }
+  document.getElementById('compareToggle').onclick = function () {
+    const el = document.getElementById('roleCompare');
+    el.hidden = !el.hidden;
+    if (!el.hidden && !el.innerHTML) renderCompare();
+    this.textContent = el.hidden ? '⇄ Compare all three roles side-by-side' : '× Hide comparison';
+  };
+
+  function fireConfetti() {
+    const canvas = document.createElement('canvas');
+    canvas.className = 'confetti';
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    canvas.width = innerWidth; canvas.height = innerHeight;
+    const colors = ['#5b9dff', '#2ee6a8', '#ffc94d', '#c792ea', '#ff7b7b'];
+    const parts = Array.from({ length: 120 }, () => ({
+      x: Math.random() * canvas.width, y: -20 - Math.random() * canvas.height * 0.3,
+      w: 6 + Math.random() * 6, h: 8 + Math.random() * 10,
+      vy: 2 + Math.random() * 3, vx: -1.5 + Math.random() * 3,
+      color: colors[(Math.random() * colors.length) | 0], rot: Math.random() * Math.PI, vr: -0.05 + Math.random() * 0.1
+    }));
+    const start = performance.now();
+    (function frame(now) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      parts.forEach(p => { p.y += p.vy; p.x += p.vx; p.rot += p.vr; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.color; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); ctx.restore(); });
+      if (now - start < 2200) requestAnimationFrame(frame); else canvas.remove();
+    })(start);
+  }
 
   /* ===== Roles & Roadmaps view ===== */
   let activeRole = 0;
@@ -217,5 +333,5 @@
   document.getElementById('tabPlan').onclick = () => switchView('plan');
   document.getElementById('tabRoles').onclick = () => switchView('roles');
 
-  renderStats(); renderList(); renderDetail();
+  renderStats(); renderList(); renderDetail(); renderStreak();
 })();

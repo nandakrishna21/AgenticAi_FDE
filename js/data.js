@@ -374,6 +374,17 @@ const DAYS = [
 
 window.SPRINT_DATA = { R, YT, PHASES, DAYS };
 
+const PHASE_GUIDE = [
+  { focus: "Ship muscle + DSA patterns before anything else.", checkpoint: "You can call an LLM API from memory, explain tokens/temperature, and solved ~20 DSA problems.", pitfalls: ["Watching tutorials without typing code", "Skipping DSA because 'AI is the goal' — interviews filter on it", "API keys hardcoded in repos — use .env"], studyTip: "Code along every video; pause and implement before the instructor shows the answer." },
+  { focus: "RAG is the #1 portfolio and interview topic. Retrieval quality is the product.", checkpoint: "A RAG app over your own messy PDFs with citations, a golden set, and measured recall@k.", pitfalls: ["Chunking blindly (fixed 500-token chunks with no measurement)", "No eval set — 'it looks like it works'", "Ignoring the 'I don't know' case"], studyTip: "Debug retrieval first, prompts second. 80% of bad answers are retrieval problems." },
+  { focus: "Agents = loops with tools and a budget. Your job is bounding autonomy.", checkpoint: "A multi-step agent with guardrails (max iterations, cost cap), tracing, and an approval gate.", pitfalls: ["No max-iteration cap — the infinite loop interview question", "Non-idempotent side-effecting tools", "Skipping tracing; then debugging blind"], studyTip: "Trace every run. Failures you can see become fixes; failures you can't see become outages." },
+  { focus: "Evals are unit tests for non-deterministic systems. CI gates separate demos from products.", checkpoint: "CI fails when eval pass-rate drops; you can quote your cost/query and p95 latency.", pitfalls: ["LLM-as-judge never calibrated against humans", "Eval set too small (<20) — noise, not signal", "Guardrails bolted on last instead of designed in"], studyTip: "Write the judge rubric first, then check it against 10 human-labeled cases before trusting it." },
+  { focus: "FDE = own one customer's outcome. Audit, negotiate the eval, rollout slowly, handover.", checkpoint: "Flagship built as a customer engagement: SOW → demo → deploy → handover pack + case study.", pitfalls: ["Building before shadowing the real workflow", "Demoing without a backup environment", "No handover — the customer can't maintain it"], studyTip: "Play customer seriously: get a friend to push back on your scope out loud." },
+  { focus: "Convert everything into interview signal: numbers, stories, reps.", checkpoint: "2 resume variants, 25+ applications sent, 5+ mock interviews done, negotiation scripts ready.", pitfalls: ["One generic resume for both roles", "Zero mock interviews — first real interview shouldn't be your first rep", "Weak stories: adjectives instead of numbers"], studyTip: "Describe your work in one quantified sentence per project. If you can't, you don't understand it yet." }
+];
+
+window.SPRINT_DATA.PHASE_GUIDE = PHASE_GUIDE;
+
 const ROLES = [
   {
     id: "ai-engineer",

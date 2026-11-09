@@ -22,6 +22,9 @@
         <button class="view-tab" id="tabRoles" role="tab" aria-selected="false">🎯 Roles &amp; Roadmaps</button>
       </div>
       <div class="timer-chip">⏱ <b class="timer" id="timer">00:00:00</b> <button class="icon-btn" id="timerBtn" style="padding:2px 12px;font-size:0.78rem">Start</button></div>
+      <button class="icon-btn" id="themeBtn" title="Toggle light / dark" aria-label="Toggle theme">◐ Theme</button>
+      <button class="icon-btn" id="exportBtn" title="Download progress (JSON)">Export</button>
+      <button class="icon-btn" id="printBtn" title="Print this plan">Print</button>
       <button class="icon-btn" id="resetBtn" title="Reset all progress">Reset</button>
     </div>
   </div>
@@ -30,6 +33,7 @@
     <div class="stat-card"><b id="pct">0%</b>Overall progress</div>
     <div class="stat-card"><b><span id="taskCount">0</span>/<span id="taskTotal">0</span></b>Tasks complete</div>
     <div class="stat-card highlight"><b><span id="dayCount">0</span>/45</b>Days complete</div>
+    <div class="stat-card streak"><b><span id="streakCount">0</span> 🔥</b>Day streak</div>
   </div>
 </header>
 
@@ -46,6 +50,8 @@
     <h2>Three roles. One skill stack. First AI Engineer, then Agentic depth, then FDE.</h2>
     <p>Click any role to see its full syllabus, day-by-day roadmap inside this 45-day plan, interview focus, and curated free resources.</p>
     <div class="role-picker" id="rolePicker" role="tablist" aria-label="Choose a role"></div>
+    <button class="icon-btn" id="compareToggle" style="margin-top:14px">⇄ Compare all three roles side-by-side</button>
+    <div id="roleCompare" hidden></div>
   </div>
   <div class="role-detail" id="roleDetail" role="tabpanel"></div>
 </section>
